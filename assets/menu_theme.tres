@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ba1o537iqqi4k"]
+
+[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="1_e40mt"]
+
+[resource]
+default_font = ExtResource("1_e40mt")

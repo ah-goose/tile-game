@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca2mfmt2k3kb"]
+
+[ext_resource type="Script" path="res://scenes/interface/info/next_invasion_indicator.gd" id="1_ns36w"]
+[ext_resource type="Texture2D" uid="uid://bwusje7f2r1u5" path="res://assets/GUI/menu_items/right-bar-bg.png" id="2_4k4tw"]
+[ext_resource type="Texture2D" uid="uid://rwijyurg7nql" path="res://assets/GUI/menu_items/right-bar-top-frame.png" id="2_765s1"]
+[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_lk51b"]
+[ext_resource type="Texture2D" uid="uid://clgnoi6gxvbb3" path="res://assets/GUI/menu_items/right-bar-bottom-frame.png" id="4_kg0nu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxyf7"]
+font = ExtResource("2_lk51b")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.74902)
+
+[node name="next_invasion_indicator" type="VBoxContainer"]
+offset_right = 88.0
+offset_bottom = 42.0
+theme_override_constants/separation = 1
+script = ExtResource("1_ns36w")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(1, 9.5)
+texture = ExtResource("2_4k4tw")
+centered = false
+
+[node name="top-frame" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_765s1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+text = "To Next Invasion"
+label_settings = SubResource("LabelSettings_qxyf7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="bottom-frame" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_kg0nu")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn7xe2sjtwl6n"]
+
+[ext_resource type="Texture2D" uid="uid://c0m2co71abtat" path="res://assets/GUI/menu_items/frame.png" id="1_avxer"]
+[ext_resource type="Script" path="res://scenes/interface/menu_items/select.gd" id="2_bt7lh"]
+[ext_resource type="Texture2D" uid="uid://cgkdd5rm1b027" path="res://assets/buildings/wall.png" id="3_k7pcj"]
+[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="4_obcgh"]
+
+[node name="select_wall" type="TextureRect"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+focus_mode = 1
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_avxer")
+stretch_mode = 2
+script = ExtResource("2_bt7lh")
+resource = "wall"
+
+[node name="resource" type="Sprite2D" parent="."]
+position = Vector2(12, 12)
+texture = ExtResource("3_k7pcj")
+
+[node name="equiped" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -25.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.0196078, 0.588235, 0.541176, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_obcgh")
+text = "E"
+vertical_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_item_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_item_mouse_exited"]

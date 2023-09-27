@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqem6xrvsfbm"]
+
+[ext_resource type="Texture2D" uid="uid://bb2emdi3kk7m4" path="res://assets/GUI/resources/wood.png" id="1_t7ieo"]
+[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_njisl"]
+
+[node name="wood" type="HBoxContainer"]
+offset_right = 115.0
+offset_bottom = 18.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_t7ieo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_njisl")
+text = "X"
+vertical_alignment = 2
+
+[node name="amount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_njisl")
+text = "0"
+vertical_alignment = 2

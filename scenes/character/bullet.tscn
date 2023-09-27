@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn15x7eiejji2"]
+
+[ext_resource type="Script" path="res://scenes/character/bullet.gd" id="1_upokj"]
+[ext_resource type="Texture2D" uid="uid://c1oyda4qv1725" path="res://assets/bullet.png" id="2_qkhcn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbp2w"]
+radius = 9.0
+
+[sub_resource type="Curve" id="Curve_nqmuh"]
+_data = [Vector2(0.0134228, 0.409091), 0.0, 0.0416783, 0, 0, Vector2(0.996644, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_efkfl"]
+curve = SubResource("Curve_nqmuh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7gljb"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_efkfl")
+color = Color(0.870588, 0, 0, 1)
+
+[node name="bullet" type="CharacterBody2D" groups=["bullet"]]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_upokj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gbp2w")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." groups=["bullet"]]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_7gljb")
+texture = ExtResource("2_qkhcn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.741176, 0, 0.0117647, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_qkhcn")
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 360.0
+autostart = true
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

@@ -1,0 +1,238 @@
+[gd_scene load_steps=21 format=3 uid="uid://n8unqd6bldoo"]
+
+[ext_resource type="Script" path="res://scenes/GUI.gd" id="1_1nmvn"]
+[ext_resource type="Texture2D" uid="uid://bwuopsx64d1fl" path="res://assets/GUI/top-bar.png" id="2_hf83i"]
+[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_7yyn8"]
+[ext_resource type="PackedScene" uid="uid://c4t18kswfuf5g" path="res://scenes/interface/resources/workers.tscn" id="4_c2u74"]
+[ext_resource type="PackedScene" uid="uid://ca2mfmt2k3kb" path="res://scenes/interface/info/next_invasion_indicator.tscn" id="4_r8qrl"]
+[ext_resource type="PackedScene" uid="uid://doex3qgc8pxpo" path="res://scenes/interface/resources/rock.tscn" id="5_fhx0l"]
+[ext_resource type="PackedScene" uid="uid://bqem6xrvsfbm" path="res://scenes/interface/resources/wood.tscn" id="6_mw2hk"]
+[ext_resource type="PackedScene" uid="uid://dufge04wick8s" path="res://scenes/interface/resources/gems.tscn" id="6_vamnn"]
+[ext_resource type="PackedScene" uid="uid://v4r3kblb2ayl" path="res://scenes/interface/resources/food.tscn" id="7_jg5vf"]
+[ext_resource type="Texture2D" uid="uid://bwusje7f2r1u5" path="res://assets/GUI/menu_items/right-bar-bg.png" id="8_iai35"]
+[ext_resource type="Texture2D" uid="uid://rwijyurg7nql" path="res://assets/GUI/menu_items/right-bar-top-frame.png" id="8_k1826"]
+[ext_resource type="PackedScene" uid="uid://bablwtguvji1h" path="res://scenes/interface/menu_items/select_mountain.tscn" id="9_h5omd"]
+[ext_resource type="PackedScene" uid="uid://dg0t0xlcmhyji" path="res://scenes/interface/menu_items/select_tree.tscn" id="10_a8vhd"]
+[ext_resource type="PackedScene" uid="uid://beqt5duu27e8t" path="res://scenes/interface/menu_items/select_house.tscn" id="11_hkbx5"]
+[ext_resource type="PackedScene" uid="uid://7244gatb7r5u" path="res://scenes/interface/menu_items/select_farm.tscn" id="12_0dmgf"]
+[ext_resource type="PackedScene" uid="uid://cn7xe2sjtwl6n" path="res://scenes/interface/menu_items/select_wall.tscn" id="13_pejdx"]
+[ext_resource type="PackedScene" uid="uid://ccw87ylnrjb67" path="res://scenes/interface/menu_items/select_tower.tscn" id="13_wsrvy"]
+[ext_resource type="PackedScene" uid="uid://d34osoaytxiuy" path="res://scenes/interface/menu_items/select_door.tscn" id="15_usgmb"]
+[ext_resource type="Texture2D" uid="uid://clgnoi6gxvbb3" path="res://assets/GUI/menu_items/right-bar-bottom-frame.png" id="16_kkplk"]
+[ext_resource type="PackedScene" uid="uid://flgba3ai02sf" path="res://scenes/menus/in_game_pause.tscn" id="19_k2tf4"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_1nmvn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBarBG" type="Sprite2D" parent="Control"]
+texture = ExtResource("2_hf83i")
+centered = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_direction = 1
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 31.0
+size_flags_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+
+[node name="Container" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.5
+
+[node name="BaseHP" type="ProgressBar" parent="Control/HBoxContainer/Container"]
+modulate = Color(0.0392157, 1, 0.0862745, 1)
+custom_minimum_size = Vector2(150, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+max_value = 500.0
+step = 1.0
+value = 2.0
+show_percentage = false
+
+[node name="PrepInvasion" type="ProgressBar" parent="Control/HBoxContainer/Container"]
+modulate = Color(0, 0.356863, 0.964706, 1)
+custom_minimum_size = Vector2(150, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+max_value = 160.0
+step = 1.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Wave" type="Label" parent="Control/HBoxContainer/Container/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7yyn8")
+text = "Wave"
+
+[node name="wave_count" type="Label" parent="Control/HBoxContainer/Container/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7yyn8")
+text = "1"
+
+[node name="resources" type="HBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="workers" parent="Control/HBoxContainer/resources" instance=ExtResource("4_c2u74")]
+layout_mode = 2
+
+[node name="rock" parent="Control/HBoxContainer/resources" instance=ExtResource("5_fhx0l")]
+layout_mode = 2
+
+[node name="wood" parent="Control/HBoxContainer/resources" instance=ExtResource("6_mw2hk")]
+layout_mode = 2
+
+[node name="food" parent="Control/HBoxContainer/resources" instance=ExtResource("7_jg5vf")]
+layout_mode = 2
+
+[node name="gems" parent="Control/HBoxContainer/resources" instance=ExtResource("6_vamnn")]
+layout_mode = 2
+
+[node name="right_menu" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 552.0
+offset_top = 32.0
+offset_right = 640.0
+offset_bottom = 107.0
+size_flags_horizontal = 8
+size_flags_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_constants/separation = 0
+
+[node name="rows" type="VBoxContainer" parent="Control/right_menu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="bg" type="Sprite2D" parent="Control/right_menu/rows"]
+position = Vector2(0, 5)
+scale = Vector2(1, 18)
+texture = ExtResource("8_iai35")
+centered = false
+
+[node name="top_frame" type="TextureRect" parent="Control/right_menu/rows"]
+layout_mode = 2
+texture = ExtResource("8_k1826")
+
+[node name="row1" type="HBoxContainer" parent="Control/right_menu/rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="select_mountain" parent="Control/right_menu/rows/row1" instance=ExtResource("9_h5omd")]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="select_tree" parent="Control/right_menu/rows/row1" instance=ExtResource("10_a8vhd")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="select_tree2" parent="Control/right_menu/rows/row1" instance=ExtResource("11_hkbx5")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="row2" type="HBoxContainer" parent="Control/right_menu/rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="select_tree" parent="Control/right_menu/rows/row2" instance=ExtResource("12_0dmgf")]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="select_tree2" parent="Control/right_menu/rows/row2" instance=ExtResource("13_pejdx")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="select_wall" parent="Control/right_menu/rows/row2" instance=ExtResource("15_usgmb")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="row3" type="HBoxContainer" parent="Control/right_menu/rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="select_tower" parent="Control/right_menu/rows/row3" instance=ExtResource("13_wsrvy")]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TextureRect2" type="TextureRect" parent="Control/right_menu/rows"]
+layout_mode = 2
+texture = ExtResource("16_kkplk")
+
+[node name="next_invasion_indicator" parent="Control/right_menu/rows" instance=ExtResource("4_r8qrl")]
+layout_direction = 3
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+visible = false
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 26.0
+
+[node name="options" type="HBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="1" type="PanelContainer" parent="Control/CenterContainer/options"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/options/1"]
+layout_mode = 2
+text = "One"
+
+[node name="2" type="PanelContainer" parent="Control/CenterContainer/options"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/options/2"]
+layout_mode = 2
+text = "Two"
+
+[node name="3" type="PanelContainer" parent="Control/CenterContainer/options"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/options/3"]
+layout_mode = 2
+text = "Three"
+
+[node name="4" type="PanelContainer" parent="Control/CenterContainer/options"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/options/4"]
+layout_mode = 2
+text = "Four"
+
+[node name="top_bar" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="in_game_pause" parent="Control" instance=ExtResource("19_k2tf4")]

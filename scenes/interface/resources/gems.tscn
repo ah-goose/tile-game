@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dufge04wick8s"]
+
+[ext_resource type="Texture2D" uid="uid://4wjp0iegwja0" path="res://assets/GUI/resources/gem.png" id="1_ot55v"]
+[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_s4sq6"]
+
+[node name="gems" type="HBoxContainer"]
+offset_right = 115.0
+offset_bottom = 18.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ot55v")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s4sq6")
+text = "X"
+vertical_alignment = 2
+
+[node name="amount" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s4sq6")
+text = "0"
+vertical_alignment = 2

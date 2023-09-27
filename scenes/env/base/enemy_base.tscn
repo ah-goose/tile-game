@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2exlbcgcd6kb"]
+
+[ext_resource type="Script" path="res://scenes/env/base/home_base.gd" id="1_l4rn5"]
+[ext_resource type="Texture2D" uid="uid://bqjt10ce6wu7e" path="res://assets/buildings/castle-1.png" id="2_q5cy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfvs"]
+size = Vector2(32, 32)
+
+[node name="home_base" type="Area2D" groups=["building", "main_base"]]
+modulate = Color(1, 0.482353, 0.109804, 1)
+script = ExtResource("1_l4rn5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q5cy7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3hfvs")
