@@ -241,12 +241,8 @@ func _character_moved():
 func _on_invasion_duration_timeout():
 	Global.is_invasion_phase = false
 	is_invading = false
-#	invasion_duration.stop()
 	to_next_invasion = 1000000
 	spawn_invader.stop()
-	
-#	prep_phase.start()
-
 
 func _on_spawn_invader_timeout():
 	if !Global.is_invasion_phase:

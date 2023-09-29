@@ -159,15 +159,7 @@ theme_override_constants/separation = 2
 
 [node name="select_tree" parent="Control/right_menu/rows/row2" instance=ExtResource("12_0dmgf")]
 layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="select_tree2" parent="Control/right_menu/rows/row2" instance=ExtResource("13_pejdx")]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="select_wall" parent="Control/right_menu/rows/row2" instance=ExtResource("15_usgmb")]
-layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 
 [node name="row3" type="HBoxContainer" parent="Control/right_menu/rows"]
 layout_mode = 2
@@ -176,7 +168,15 @@ theme_override_constants/separation = 2
 
 [node name="select_tower" parent="Control/right_menu/rows/row3" instance=ExtResource("13_wsrvy")]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 10
+
+[node name="select_tree2" parent="Control/right_menu/rows/row3" instance=ExtResource("13_pejdx")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="select_wall" parent="Control/right_menu/rows/row3" instance=ExtResource("15_usgmb")]
+layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Control/right_menu/rows"]
 layout_mode = 2

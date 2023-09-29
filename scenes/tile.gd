@@ -33,6 +33,7 @@ var tower_radius = 64
 var tower_max_amo = 5
 var tower_amo = 5
 
+
 var rnd = RandomNumberGenerator.new()
 
 @onready var tower_attack_line = Line2D.new()
@@ -217,12 +218,12 @@ func _process(delta):
 		modulate = Color.WHITE
 		modulate.a = 1
 		
-	if to_select_tile:
-		if Input.is_action_just_pressed('left_mouse_click'):
-			var character = get_tree().root.get_node('character')
-			var tile_use = character.action_tile_use == 'add'
-			var resource_to_use = character.tile_resource
-			UseTile(resource_to_use, tile_use)
+#	if to_select_tile:
+#		if Input.is_action_just_pressed('left_mouse_click'):
+#			var character = get_tree().root.get_node('character')
+#			var tile_use = character.action_tile_use == 'add'
+#			var resource_to_use = character.tile_resource
+#			UseTile(resource_to_use, tile_use)
 	if is_wall:
 		CheckWallView()
 	if is_river:
