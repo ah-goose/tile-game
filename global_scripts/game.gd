@@ -21,7 +21,8 @@ var resource_cost = {
 	'trees': {'gems': 25},
 	'house': {'gems': 25, 'food': 50},
 	'farm': {'gems': 25},
-	'tower': {'wood': 50, 'rock': 50, 'food': 30},
+#	'tower': {'wood': 50, 'rock': 50, 'food': 30},
+	'tower': {'gems': 1},
 	'wall': {'wood': 10, 'rock': 10},
 	'door': {'wood': 15, 'rock': 15}
 }
@@ -31,7 +32,8 @@ var resource_cost_max = {
 	'trees': {'gems': 5},
 	'house': {'gems': 10, 'food': 20},
 	'farm': {'gems': 5},
-	'tower': {'wood': 10, 'rock': 10, 'food': 10},
+#	'tower': {'wood': 10, 'rock': 10, 'food': 10},
+	'tower': {'gems': 1},
 	'wall': {'wood': 2, 'rock': 2},
 	'door': {'wood': 2, 'rock': 2}
 }
