@@ -41,7 +41,8 @@ var resource_cost = {
 	'trees': {'gems': 25},
 	'house': {'gems': 25, 'food': 50},
 	'farm': {'gems': 25},
-	'tower': {'wood': 50, 'rock': 50, 'food': 30},
+	'tower': {'gems': 1},
+#	'tower': {'wood': 50, 'rock': 50, 'food': 30},
 	'wall': {'wood': 10, 'rock': 10},
 	'door': {'wood': 15, 'rock': 15}
 }

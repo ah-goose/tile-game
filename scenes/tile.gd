@@ -28,6 +28,7 @@ var hp = 0
 
 var is_wall = false
 
+var tower = preload("res://scenes/env/towers/tower.tscn")
 var tower_dmg = 1
 var tower_radius = 64
 var tower_max_amo = 5
@@ -152,7 +153,7 @@ var tile_functionality = {
 	},
 	'tower': {
 		'hp': 2, 
-		'action': 'TowerAttack',
+		'action': null,
 		'params': null,
 		'setup': 'TowerSetup', 
 		'coords': Vector2i(1, 3),
@@ -258,6 +259,9 @@ func ResetTile(params = false):
 		var decrease_to = Global.resources_max[tile_functionality[prev_tile_focus].params] - tile_functionality[prev_tile_focus].max_increase
 		Global.UpdateResourceMax(tile_functionality[prev_tile_focus].params, decrease_to)
 		prev_tile_focus = 'default'
+	if tile_focus == 'tower':
+		for c in get_children():
+			c.queue_free()
 	is_active = false
 	is_wall = false
 	walkable = false
@@ -305,6 +309,9 @@ func RockSetup():
 #	$Sprite2D.position.y = 0
 
 func TowerSetup(params = null):
+	var new_tower = tower.instantiate()
+	new_tower.radius = 64.0
+	add_child(new_tower)
 	add_to_group('building')
 	hp = tile_functionality['tower'].hp
 	emit_signal('UpdateTile', tile_coordinates, tile_functionality['tower'].coords)
