@@ -1,8 +1,7 @@
-res://scenes/env/base/home_base.gd
 res://default_env.tres
-res://scenes/env/base/home_base.tscn
-res://assets/tilemaps/test-tilemap.tres
 res://scenes/tile.tscn
+res://assets/tilemaps/test-tilemap.tres
+res://scenes/env/base/home_base.tscn
 res://scenes/zombies/zombie.tscn
 res://scenes/character/character.tscn
 res://scenes/interface/gui.tscn
@@ -11,5 +10,3 @@ res://scenes/env/base/enemy_base.tscn
 res://scenes/zombies/invader.tscn
 res://scenes/character/bullet.tscn
 res://scenes/invasions.tscn
-res://scenes/character/bullet.gd
-res://scenes/tile.gd
