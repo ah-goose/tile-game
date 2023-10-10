@@ -30,17 +30,15 @@ func _physics_process(delta):
 			UpdateResource(r, resource_amount, Global.resources_max[r])
 		Global.update_resource = false
 	if is_preping:
-		print('is preping gui')
 		is_preping = false
 		var prep_tween = create_tween()
-		prep_tween.tween_property(prep_invasion, 'value', 160, 20)
+		prep_tween.tween_property(prep_invasion, 'value', 160, 60*3)
 		prep_tween.tween_callback(self.FinishPreping)
 		
 	if Global.is_invasion_phase and is_invading:
-		print('is invading gui')
 		is_invading = false
 		var invasion_tween = create_tween()
-		invasion_tween.tween_property(prep_invasion, 'value', 0, 20)
+		invasion_tween.tween_property(prep_invasion, 'value', 0, 60*3)
 		invasion_tween.tween_callback(self.FinishInvasion)
 		
 

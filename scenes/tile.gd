@@ -72,29 +72,29 @@ var bridge_coords = {
 	's': Vector2i(2, 34),
 }
 var wall_coords = {
-	0 : Vector2i(3, 33),
-	'n': Vector2i(2, 32),
-	'ne': Vector2i(2, 33),
-	'nes': Vector2i(1, 31),
-	'new': Vector2i(1, 32),
-	'nesw': Vector2i(3, 32),
-	'ns': Vector2i(2, 32),
-	'nsw': Vector2i(0, 31),
-	'nw': Vector2i(4, 33),
-	'e': Vector2i(3, 33),
-	'es': Vector2i(2, 31),
-	'esw': Vector2i(0, 32),
-	'ew': Vector2i(3, 33),
-	's': Vector2i(2, 32),
-	'sw': Vector2i(4, 31),
-	'w': Vector2i(3, 33)
+	0 : Vector2i(1, 0),
+	'n': Vector2i(2, 1),
+	'ne': Vector2i(0, 2),
+	'nes': Vector2i(3, 1),
+	'new': Vector2i(4, 1),
+	'nesw': Vector2i(1, 3),
+	'ns': Vector2i(2, 1),
+	'nsw': Vector2i(4, 0),
+	'nw': Vector2i(2, 2),
+	'e': Vector2i(1, 0),
+	'es': Vector2i(0, 0),
+	'esw': Vector2i(3, 0),
+	'ew': Vector2i(1, 0),
+	's': Vector2i(2, 1),
+	'sw': Vector2i(2, 0),
+	'w': Vector2i(1, 0)
 }
 var door_coords = {
-	0: Vector2i(1, 4),
-	'w': Vector2i(1, 4),
-	'e': Vector2i(1, 4),
-	'n': Vector2i(5, 31),
-	's': Vector2i(5, 31),
+	0: Vector2i(3, 2),
+	'w': Vector2i(3, 2),
+	'e': Vector2i(3, 2),
+	'n': Vector2i(4, 2),
+	's': Vector2i(4, 2),
 }
 var tile_images = {
 	'default': load("res://assets/tile.png"),
@@ -261,7 +261,9 @@ func ResetTile(params = false):
 		prev_tile_focus = 'default'
 	if tile_focus == 'tower':
 		for c in get_children():
-			c.queue_free()
+			if 'tower' in c.get_groups():
+				c.queue_free()
+				break
 	is_active = false
 	is_wall = false
 	walkable = false

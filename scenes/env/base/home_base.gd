@@ -17,13 +17,11 @@ func _start():
 	reload_speed_timer.wait_time = reload_speed
 
 func _process(delta):
-	print('bullets left', bullets_left, can_fire)
 	if Input.is_action_just_pressed("left_mouse_click") and Global.is_inside_base and can_fire:
 		Shoot()
 
 func GetHit(dmg):
 	hp -= dmg
-	print('base hp ', hp)
 	if hp <= 0:
 		print('GAME OVER!!!!')
 		Global.game_over = true

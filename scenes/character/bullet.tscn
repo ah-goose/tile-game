@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn15x7eiejji2"]
+[gd_scene load_steps=9 format=3 uid="uid://bn15x7eiejji2"]
 
 [ext_resource type="Script" path="res://scenes/character/bullet.gd" id="1_upokj"]
 [ext_resource type="Texture2D" uid="uid://c1oyda4qv1725" path="res://assets/bullet.png" id="2_qkhcn"]
@@ -18,6 +18,27 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_efkfl")
 color = Color(0.870588, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_nf2oq"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgb76"]
+_data = {
+"spin": SubResource("Animation_nf2oq")
+}
+
 [node name="bullet" type="CharacterBody2D" groups=["bullet"]]
 collision_layer = 8
 collision_mask = 4
@@ -33,11 +54,18 @@ texture = ExtResource("2_qkhcn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.741176, 0, 0.0117647, 1)
+rotation = 3.1765
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_qkhcn")
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 360.0
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_vgb76")
+}
 
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

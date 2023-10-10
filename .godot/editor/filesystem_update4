@@ -1,9 +1,6 @@
 res://default_env.tres
-res://assets/tilemaps/test-tilemap.tres
-res://scenes/env/towers/tower.tscn
-res://scenes/env/towers/tower.gd
-res://scenes/tile.gd
 res://scenes/tile.tscn
+res://assets/tilemaps/test-tilemap.tres
 res://scenes/env/base/home_base.tscn
 res://scenes/zombies/zombie.tscn
 res://scenes/character/character.tscn
@@ -13,6 +10,11 @@ res://scenes/env/base/enemy_base.tscn
 res://scenes/zombies/invader.tscn
 res://scenes/character/bullet.tscn
 res://scenes/invasions.tscn
-res://global_scripts/game.gd
+res://scenes/env/towers/tower.tscn
 res://scenes/interface/menu_items/select_tower.tscn
-res://global_scripts/global.gd
+res://scenes/env/towers/tower.gd
+res://scenes/tile.gd
+res://scenes/env/base/home_base.gd
+res://scenes/zombies/invader.gd
+res://scenes/invasions.gd
+res://scenes/GUI.gd

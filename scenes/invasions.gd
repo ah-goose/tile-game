@@ -143,8 +143,8 @@ func SetUpRiver():
 					tiles[sp_x + x][sp_y + river_h - 1].UseTile('bridge', true)
 	
 func GrassTileSetup(coords : Vector2i):
-	var tile_x = rnd.randi_range(0, 3)
-	tile_map.set_cell(0, coords, 0, Vector2i(tile_x, 0))
+	var tile_x = rnd.randi_range(0, 4)
+	tile_map.set_cell(0, coords, 0, Vector2i(tile_x, 4))
 	
 func SetUpCharacter():
 	var mid_point_x = ($'/root/Global'.grid_size_x / 2) - 2

@@ -17,7 +17,6 @@ func movement(delta):
 	var collision = move_and_collide(vel * delta)
 	if collision:
 		var base = collision.get_collider()
-		print(base.get_groups())
 		if 'main_base' in base.get_groups():
 			base.get_parent().GetHit(damage)
 			queue_free()
