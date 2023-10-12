@@ -12,9 +12,3 @@ res://scenes/character/bullet.tscn
 res://scenes/invasions.tscn
 res://scenes/env/towers/tower.tscn
 res://scenes/interface/menu_items/select_tower.tscn
-res://scenes/env/towers/tower.gd
-res://scenes/tile.gd
-res://scenes/env/base/home_base.gd
-res://scenes/zombies/invader.gd
-res://scenes/invasions.gd
-res://scenes/GUI.gd
