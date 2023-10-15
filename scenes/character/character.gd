@@ -11,6 +11,7 @@ var action_tile_use = 'add'
 var tile_resource = null
 
 var last_location : Vector2i
+var can_enter_base = false
 
 var gems = 0
 
@@ -24,6 +25,13 @@ func _process(delta):
 		$Sprite2D.visible = false
 	elif !Global.is_inside_base and !$Sprite2D.visible:
 		$Sprite2D.visible = true
+	
+	if can_enter_base and Global.is_invasion_phase:
+		$to_enter.visible = true
+		if Input.is_action_just_pressed("use_action"):
+			Global.is_inside_base = true
+	else:
+		$to_enter.visible = false
 	
 	if Global.is_inside_base and Global.is_invasion_phase:
 		return
@@ -63,16 +71,17 @@ func Movement():
 	elif Input.is_action_pressed("move_up"):
 		MoveToTile("top")
 	elif Input.is_action_pressed("move_left"):
-		scale.x = -1
+		$Sprite2D.scale.x = -1
 		MoveToTile("left")
 	elif Input.is_action_pressed("move_right"):
-		scale.x = 1
+		$Sprite2D.scale.x = 1
 		MoveToTile("right")
 
 func MoveToTile(tile):
 	if Global.is_inside_base:
 		Global.is_inside_base = false
-	if active_tile[tile] and (!active_tile[tile].is_active or active_tile[tile].walkable):
+	var allowed_to_walk = active_tile[tile] and (!active_tile[tile].is_active or active_tile[tile].walkable)
+	if allowed_to_walk:
 		is_moving = true
 #		tween.interpolate_value(global_position, active_tile[tile].global_position, 0.25, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		var new_tween = create_tween()
@@ -82,8 +91,6 @@ func MoveToTile(tile):
 #		global_position = active_tile[tile].global_position
 		active_tile = active_tile[tile]
 		emit_signal("CharacterMoved")
-	elif active_tile[tile].is_home_base and Global.is_invasion_phase:
-		Global.is_inside_base = true
 	else:
 		return
 

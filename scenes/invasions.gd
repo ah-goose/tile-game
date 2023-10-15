@@ -165,7 +165,7 @@ func SetUpBase():
 	var selected_tile = tiles[mid_point_x][mid_point_y]
 	new_base.position = selected_tile.position
 	camera.mid_point = selected_tile.position
-	add_child(new_base)
+	add_child(new_base)  
 	base = new_base
 
 func AddInvader():

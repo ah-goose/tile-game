@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_start_pressed():
-	Global.ChangeScene("res://scenes/tilemap.tscn")
+	Global.ChangeScene("res://scenes/invasions.tscn")
 	
 
 

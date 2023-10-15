@@ -32,7 +32,6 @@ func Shoot():
 	if bullets_left == 0:
 		return
 	bullets_left -= 1
-	print('bullets left ', bullets_left)
 	var target_focus = get_global_mouse_position()
 	var bull = bullet.instantiate()
 	bull.target = target_focus
@@ -46,7 +45,15 @@ func _on_fortify_body_entered(body):
 
 
 func _on_reload_timer_timeout():
-	print('reload complete')
 	can_fire = true
 	bullets_left = bullet_capacity
 	reload_speed_timer.stop()
+
+func _on_area_entered(area):
+	if 'character' in area.get_groups():
+		area.can_enter_base = true
+
+
+func _on_area_exited(area):
+	if 'character' in area.get_groups():
+		area.can_enter_base = false

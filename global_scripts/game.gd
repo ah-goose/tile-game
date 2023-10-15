@@ -71,3 +71,6 @@ func UpgradeResource(upgrade):
 		if (resource_cost[upgrade][r] - points) >= resource_cost_max[upgrade][r]:
 			resource_cost[upgrade][r] -= points
 	print('resources ', upgrade, ' ', resource_cost[upgrade])
+
+func ReenforceWall():
+	pass

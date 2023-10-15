@@ -28,7 +28,7 @@ func _ready():
 func _process(delta):
 	if can_fire:
 		CheckTarget()
-	tower_1.visible = Global.is_invasion_phase
+#	tower_1.visible = Global.is_invasion_phase
 		
 func TakeDamage(dmg):
 	hp -= dmg
@@ -65,3 +65,11 @@ func Shoot(tar):
 func _on_fire_rate_timer_timeout():
 	can_fire = true
 	fire_rate_timer.stop()
+
+
+func _on_mouse_entered():
+	tower_1.visible = true
+
+
+func _on_mouse_exited():
+	tower_1.visible = false

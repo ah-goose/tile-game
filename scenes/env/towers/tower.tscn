@@ -29,13 +29,14 @@ _data = {
 }
 
 [node name="tower" type="StaticBody2D" groups=["tower"]]
+input_pickable = true
 script = ExtResource("1_f3lfm")
 
 [node name="tower_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_04gwd")
-disabled = true
 
 [node name="Tower-1" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.447059)
 rotation = 2.30383
 texture = ExtResource("2_vptci")
@@ -49,4 +50,6 @@ libraries = {
 "": SubResource("AnimationLibrary_if7p2")
 }
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="fire_rate_timer" to="." method="_on_fire_rate_timer_timeout"]
