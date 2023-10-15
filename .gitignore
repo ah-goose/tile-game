@@ -3,4 +3,6 @@ tile-game.pub
 tile_game
 tile_game.pub
 .godot/*
-
+.godot/
+/.godot/
+/.godot/*
