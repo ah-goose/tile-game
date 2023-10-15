@@ -127,7 +127,7 @@ var tile_functionality = {
 		'action': 'AddResource',
 		'params': 'wood', 
 		'setup': null, 
-		'coords': Vector2i(4, 0),
+		'coords': Vector2i(2, 3),
 		'group': 'building',
 		'max_increase': 200,
 		'collider': true
@@ -156,7 +156,7 @@ var tile_functionality = {
 		'action': null,
 		'params': null,
 		'setup': 'TowerSetup', 
-		'coords': Vector2i(1, 3),
+		'coords': Vector2i(0, 3),
 		'group': 'building',
 		'collider': true
 	},

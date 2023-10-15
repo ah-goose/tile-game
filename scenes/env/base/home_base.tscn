@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qkynseolkuhi"]
 
 [ext_resource type="Script" path="res://scenes/env/base/home_base.gd" id="1_umed7"]
-[ext_resource type="Texture2D" uid="uid://bqjt10ce6wu7e" path="res://assets/buildings/castle-1.png" id="2_21o4n"]
+[ext_resource type="Texture2D" uid="uid://b0a5lrdfcx7kt" path="res://assets/buildings/castle-2.png" id="2_boe68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfvs"]
 size = Vector2(32, 32)
@@ -14,7 +14,7 @@ collision_mask = 4
 script = ExtResource("1_umed7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_21o4n")
+texture = ExtResource("2_boe68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3hfvs")
