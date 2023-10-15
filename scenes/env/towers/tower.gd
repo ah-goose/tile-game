@@ -8,6 +8,7 @@ var target_options = []
 var bullet = preload("res://scenes/character/bullet.tscn")
 var bullet_capacity = 5.0
 var bullets_left = 5.0
+var bullet_damage = 5.0
 var can_fire = true
 var radius := 10.0
 
@@ -53,6 +54,7 @@ func Shoot(tar):
 	
 	var bull = bullet.instantiate()
 	bull.target = tar
+	bull.damage = bullet_damage
 	add_child(bull)
 	fire_rate_timer.start()
 	if bullets_left == 0 and reload_speed_timer.is_stopped():

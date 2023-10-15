@@ -312,7 +312,10 @@ func RockSetup():
 
 func TowerSetup(params = null):
 	var new_tower = tower.instantiate()
-	new_tower.radius = 64.0
+	new_tower.radius = Game.tower_stats['tower_radius']
+	new_tower.bullet_damage = Game.tower_stats['tower_dmg']
+	new_tower.fire_rate_timer = Game.tower_stats['tower_fire_rate']
+	hp = Game.tower_stats['tower_hp']
 	add_child(new_tower)
 	add_to_group('building')
 	hp = tile_functionality['tower'].hp
@@ -327,6 +330,7 @@ func RockBlock():
 
 func WallSetup(params = false):
 	is_wall = true
+	hp = Game.wall_stats['hp']
 
 func DoorSetup(params = false):
 	walkable = true

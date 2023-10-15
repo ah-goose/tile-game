@@ -12,9 +12,29 @@ var tutorial = true
 var knowledge_points = 0
 
 var unlocked_lore = []
+var tower_base_stats = {
+	'tower_dmg': 5, 
+	'tower_radius': 32.0, 
+	'tower_max_amo': 5, 
+	'tower_hp': 5,
+	'tower_fire_rate': 0.75
+}
+var tower_stats = {
+	'tower_dmg': 5, 
+	'tower_radius': 32.0, 
+	'tower_max_amo': 5, 
+	'tower_hp': 5,
+	'tower_fire_rate': 0.75
+}
+var tower_max_stats = {
+	'tower_dmg': 5, 
+	'tower_radius': 32.0, 
+	'tower_max_amo': 5, 
+	'tower_hp': 5,
+	'tower_fire_rate': 0.75
+}
 
-var tower_stats = {'tower_dmg': 1, 'tower_radius': 4, 'tower_max_amo': 5}
-var tower_max_stats = {'tower_dmg': 10, 'tower_radius': 8, 'tower_max_amo': 50}
+var wall_stats = {'hp': 2}
 
 var resource_cost = {
 	'rock': {'gems': 30},
@@ -38,10 +58,8 @@ var resource_cost_max = {
 	'door': {'wood': 2, 'rock': 2}
 }
 
-func UpgradeTower(upgrade):
-	var point = 1
-	if upgrade == 'tower_max_amo':
-		point = 5
+func UpgradeTower(upgrade, amount):
+	var point = amount
 	
 	if (tower_stats[upgrade] + point) <= tower_max_stats[upgrade]:
 		tower_stats[upgrade] += point
