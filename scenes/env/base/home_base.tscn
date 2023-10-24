@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://qkynseolkuhi"]
 
 [ext_resource type="Script" path="res://scenes/env/base/home_base.gd" id="1_umed7"]
-[ext_resource type="Texture2D" uid="uid://b0a5lrdfcx7kt" path="res://assets/buildings/castle-2.png" id="2_boe68"]
+[ext_resource type="Texture2D" uid="uid://bqjt10ce6wu7e" path="res://assets/buildings/castle-1.png" id="2_21o4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfvs"]
-size = Vector2(48, 48)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e450j"]
 size = Vector2(32, 32)
 
 [node name="home_base" type="Area2D" groups=["building", "main_base"]]
-collision_mask = 6
+collision_mask = 4
 script = ExtResource("1_umed7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_boe68")
+texture = ExtResource("2_21o4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3hfvs")
@@ -27,6 +27,4 @@ shape = SubResource("RectangleShape2D_e450j")
 
 [node name="reloadTimer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]
