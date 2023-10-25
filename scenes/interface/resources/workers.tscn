@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4t18kswfuf5g"]
 
-[ext_resource type="Texture2D" uid="uid://bw5wvt54tluvw" path="res://assets/GUI/resources/workers.png" id="1_mpdaq"]
+[ext_resource type="Texture2D" uid="uid://dv6wbexprhtp3" path="res://assets/GUI/resources/workers-1.png" id="1_jytbh"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_3j6kf"]
 
 [node name="workers" type="HBoxContainer"]
@@ -10,7 +10,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_mpdaq")
+texture = ExtResource("1_jytbh")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

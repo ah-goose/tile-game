@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://doex3qgc8pxpo"]
 
-[ext_resource type="Texture2D" uid="uid://u0xnahmvhyxk" path="res://assets/GUI/resources/rock.png" id="1_dnq1q"]
+[ext_resource type="Texture2D" uid="uid://bmxhd0xstnewr" path="res://assets/GUI/resources/rock-1.png" id="1_hqqoy"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_dal3o"]
 
 [node name="rock" type="HBoxContainer"]
@@ -10,7 +10,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_dnq1q")
+texture = ExtResource("1_hqqoy")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

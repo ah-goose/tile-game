@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v4r3kblb2ayl"]
 
-[ext_resource type="Texture2D" uid="uid://exy5yrgsbkwr" path="res://assets/GUI/resources/food.png" id="1_ci6b6"]
+[ext_resource type="Texture2D" uid="uid://c2nota17p8i1e" path="res://assets/GUI/resources/food-1.png" id="1_7k2rn"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_6wnyc"]
 
 [node name="food" type="HBoxContainer"]
@@ -10,7 +10,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_ci6b6")
+texture = ExtResource("1_7k2rn")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

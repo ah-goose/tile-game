@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/interface/menu_items/select.gd" id="1_6cyx7"]
 [ext_resource type="Texture2D" uid="uid://c0m2co71abtat" path="res://assets/GUI/menu_items/frame.png" id="2_4qs0c"]
-[ext_resource type="Texture2D" uid="uid://dwjk06oybuse5" path="res://assets/buildings/tree-1.png" id="3_p5g0w"]
+[ext_resource type="Texture2D" uid="uid://da1xan0sfm5d7" path="res://assets/buildings/tree-4.png" id="3_ctrma"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="4_j5g4a"]
 
 [node name="select_tree" type="TextureRect"]
@@ -21,7 +21,7 @@ resource = "trees"
 
 [node name="resource" type="Sprite2D" parent="."]
 position = Vector2(12, 12)
-texture = ExtResource("3_p5g0w")
+texture = ExtResource("3_ctrma")
 
 [node name="equiped" type="Label" parent="."]
 visible = false

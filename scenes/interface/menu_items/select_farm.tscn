@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0m2co71abtat" path="res://assets/GUI/menu_items/frame.png" id="1_ufsgt"]
 [ext_resource type="Script" path="res://scenes/interface/menu_items/select.gd" id="2_2fln2"]
-[ext_resource type="Texture2D" uid="uid://dihsljuw1olne" path="res://assets/buildings/farm-1.png" id="3_mgb53"]
+[ext_resource type="Texture2D" uid="uid://cr8l3r3275ap1" path="res://assets/buildings/farm-2.png" id="3_rgqth"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="4_d6fa6"]
 
 [node name="select_farm" type="TextureRect"]
@@ -21,7 +21,7 @@ resource = "farm"
 
 [node name="resource" type="Sprite2D" parent="."]
 position = Vector2(12, 12)
-texture = ExtResource("3_mgb53")
+texture = ExtResource("3_rgqth")
 
 [node name="equiped" type="Label" parent="."]
 visible = false
