@@ -18,7 +18,7 @@ shape = SubResource("1")
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["character"]]
 texture = ExtResource("2_fr5rt")
 
-[node name="to_Enter" type="Label" parent="."]
+[node name="to_enter" type="Label" parent="."]
 z_index = 10
 anchors_preset = 2
 anchor_top = 1.0
