@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/interface/menu_items/select.gd" id="1_b00xn"]
 [ext_resource type="Texture2D" uid="uid://c0m2co71abtat" path="res://assets/GUI/menu_items/frame.png" id="2_4e8rs"]
-[ext_resource type="Texture2D" uid="uid://cqy8o6na666r0" path="res://assets/buildings/mountain-1.png" id="3_1pe32"]
+[ext_resource type="Texture2D" uid="uid://cmwa1vc6vy04b" path="res://assets/buildings/mountain-4.png" id="3_7gyxk"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="4_13gh3"]
 
 [node name="select_mountain" type="TextureRect"]
@@ -20,7 +20,7 @@ script = ExtResource("1_b00xn")
 
 [node name="resource" type="Sprite2D" parent="."]
 position = Vector2(12, 12)
-texture = ExtResource("3_1pe32")
+texture = ExtResource("3_7gyxk")
 
 [node name="equiped" type="Label" parent="."]
 visible = false

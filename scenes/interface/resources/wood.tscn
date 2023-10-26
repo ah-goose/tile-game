@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqem6xrvsfbm"]
 
-[ext_resource type="Texture2D" uid="uid://bb2emdi3kk7m4" path="res://assets/GUI/resources/wood.png" id="1_t7ieo"]
+[ext_resource type="Texture2D" uid="uid://ck83a0l20qu55" path="res://assets/GUI/resources/wood-1.png" id="1_j73od"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_njisl"]
 
 [node name="wood" type="HBoxContainer"]
@@ -10,7 +10,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_t7ieo")
+texture = ExtResource("1_j73od")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

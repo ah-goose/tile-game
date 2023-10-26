@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ch4r2517b00r0"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bqs4pwhq81gp5" path="res://assets/character-1.png" id="2_fr5rt"]
+[ext_resource type="Texture2D" uid="uid://c0t75yu3vs5tx" path="res://assets/character-3.png" id="2_ee5ay"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_s75cx"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -16,7 +16,7 @@ script = ExtResource("1")
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["character"]]
-texture = ExtResource("2_fr5rt")
+texture = ExtResource("2_ee5ay")
 
 [node name="to_enter" type="Label" parent="."]
 z_index = 10

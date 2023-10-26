@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0m2co71abtat" path="res://assets/GUI/menu_items/frame.png" id="1_avxer"]
 [ext_resource type="Script" path="res://scenes/interface/menu_items/select.gd" id="2_bt7lh"]
-[ext_resource type="Texture2D" uid="uid://cgkdd5rm1b027" path="res://assets/buildings/wall.png" id="3_k7pcj"]
+[ext_resource type="Texture2D" uid="uid://cjl3tfdiv3nw" path="res://assets/buildings/wall-1.png" id="3_b036q"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="4_obcgh"]
 
 [node name="select_wall" type="TextureRect"]
@@ -21,7 +21,7 @@ resource = "wall"
 
 [node name="resource" type="Sprite2D" parent="."]
 position = Vector2(12, 12)
-texture = ExtResource("3_k7pcj")
+texture = ExtResource("3_b036q")
 
 [node name="equiped" type="Label" parent="."]
 visible = false

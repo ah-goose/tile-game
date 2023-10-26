@@ -117,7 +117,7 @@ var tile_functionality = {
 		'action': 'AddResource',
 		'params': 'rock',
 		'setup': null,
-		'coords': Vector2i(3, 1),
+		'coords': Vector2i(3, 3),
 		'group': 'building',
 		'max_increase': 200,
 		'collider': true
@@ -137,7 +137,7 @@ var tile_functionality = {
 		'action': 'AddResource',
 		'params': 'food', 
 		'setup': null, 
-		'coords': Vector2i(6, 6),
+		'coords': Vector2i(4, 3),
 		'group': 'building',
 		'max_increase': 200,
 		'collider': true
@@ -147,7 +147,7 @@ var tile_functionality = {
 		'action': null,
 		'params': 'workers', 
 		'setup': 'AddResource', 
-		'coords': Vector2i(2, 1),
+		'coords': Vector2i(5, 3),
 		'group': 'building',
 		'collider': true
 	},
@@ -165,7 +165,7 @@ var tile_functionality = {
 		'action': null,
 		'params': null,
 		'setup': 'WallSetup', 
-		'coords': Vector2i(1, 3),
+		'coords': Vector2i(1, 2),
 		'group': 'building',
 		'collider': true
 	},
@@ -174,7 +174,7 @@ var tile_functionality = {
 		'action': null,
 		'params': null,
 		'setup': 'DoorSetup',
-		'coords': Vector2i(1, 4),
+		'coords': Vector2i(3, 2),
 		'group': 'building',
 		'collider': true
 	},	# create function to handle this
