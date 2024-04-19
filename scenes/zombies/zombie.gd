@@ -11,6 +11,7 @@ var steps_to_destination = 0
 
 func _ready():
 	self.connect('area_entered', Callable(self, '_on_zombie_body_entered'))
+	print(hp)
 
 func _process(delta):
 	if Global.game_over:
@@ -23,7 +24,7 @@ func _process(delta):
 		queue_free()
 
 func Move():
-#	line_path.clear_points()
+	line_path.clear_points()
 	var x = path[(steps_to_destination * $'/root/Global'.grid_cell_size)].x - path[(steps_to_destination * $'/root/Global'.grid_cell_size) + 1].x
 	var y = path[(steps_to_destination * $'/root/Global'.grid_cell_size)].y - path[(steps_to_destination * $'/root/Global'.grid_cell_size) + 1].y
 	if x > 0:
@@ -42,16 +43,16 @@ func Move():
 		target = null
 		GetTarget()
 	
-#	var path2 = $'/root/Global'.astar_grid.get_id_path(global_position, target.global_position)
-#
-#	for p in path2:
-#		line_path.add_point(Vector2i(p.x - position.x, p.y - position.y))
+	var path2 = $'/root/Global'.astar_grid.get_id_path(global_position, target.global_position)
+
+	for p in path2:
+		line_path.add_point(Vector2i(p.x - position.x, p.y - position.y))
 
 func MoveToTile(tile):
 	if active_tile[tile]:
 		var tween = create_tween()
 		tween.tween_property(self, 'global_position', active_tile[tile].global_position, 0.25)
-#		global_position = active_tile[tile].global_position
+		global_position = active_tile[tile].global_position
 		active_tile = active_tile[tile]
 	else:
 		return
@@ -64,7 +65,7 @@ func GetTarget():
 	if target and target.hp <= 0:
 		buildings.erase(target)
 		target = null
-	if !target:
+	if !target and buildings.length > 0:
 		for build in buildings:
 			if target:
 				var a = $'/root/Global'.astar_grid.get_id_path(global_position, target.global_position).size()
@@ -82,16 +83,18 @@ func TakeDamage(dmg):
 	hp -= dmg
 
 func _on_Character_move():
+	print('character moved so zombie moves')
 	if Global.game_over:
 		return
 	if hp > 0:
-#		GetTarget()
+		GetTarget()
 		Move()
 
 func _on_zombie_body_entered(body):
-	print(body)
+	print(body.get_groups())
 	if 'main_base' in body.get_groups():
-		body.GetHit(hp)
+		print('is main base hit')
+		base.GetHit(hp)
 		queue_free()
 	elif 'bullet' in body.get_groups():
 		TakeDamage(body.damage)

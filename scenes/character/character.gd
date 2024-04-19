@@ -9,6 +9,7 @@ var is_going_to_use_tile = false
 var is_moving = false
 var action_tile_use = 'add'
 var tile_resource = null
+var last_tile_resource_selected = null
 
 var last_location : Vector2i
 var can_enter_base = false
@@ -30,6 +31,7 @@ func _process(delta):
 		$to_enter.visible = true
 		if Input.is_action_just_pressed("use_action"):
 			Global.is_inside_base = true
+			$to_enter.visible = false
 	else:
 		$to_enter.visible = false
 	
@@ -62,6 +64,12 @@ func _process(delta):
 	if Input.is_action_just_pressed('other_action'):
 		is_going_to_use_tile = !is_going_to_use_tile
 		action_tile_use = 'remove'
+	if Input.is_action_just_pressed("get_last_resource"):
+		print('getting last resource')
+		if tile_resource == null:
+			EquipStoredResource()
+		else:
+			tile_resource = null
 	
 func Movement():
 	if is_moving:
@@ -139,4 +147,18 @@ func ActivateRemoveTile(tile):
 		emit_signal("CharacterMoved")
 	else:
 		return
-	
+
+func EquipResource(res, equip):
+	if equip:
+		tile_resource = res
+		last_tile_resource_selected = res
+	else:
+		tile_resource = null
+
+func EquipStoredResource():
+	if last_tile_resource_selected == null:
+		return
+	else:
+		var available_resource = Global.CheckResources(last_tile_resource_selected)
+		if available_resource:
+			tile_resource = last_tile_resource_selected

@@ -227,10 +227,10 @@ func _character_moved():
 	if !is_invading and to_next_invasion_count >= to_next_invasion:
 		StartInvasion()
 		
-#	if is_invading and number_of_invaders <= 0:
-#		var all_zombies = get_tree().get_nodes_in_group('zombie')
-#		if len(all_zombies) == 0:
-#			SetUpNextInvasion()
+	if is_invading and number_of_invaders <= 0:
+		var all_zombies = get_tree().get_nodes_in_group('zombie')
+		if len(all_zombies) == 0:
+			SetUpNextInvasion()
 
 
 #func _on_first_invasion_start_timeout():
@@ -247,7 +247,7 @@ func _on_invasion_duration_timeout():
 func _on_spawn_invader_timeout():
 	if !Global.is_invasion_phase:
 		return
-	AddInvader()
+#	AddInvader()
 
 
 func _on_prep_phase_timeout():

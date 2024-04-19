@@ -32,13 +32,13 @@ func _physics_process(delta):
 	if is_preping:
 		is_preping = false
 		var prep_tween = create_tween()
-		prep_tween.tween_property(prep_invasion, 'value', 160, 60*3)
+		prep_tween.tween_property(prep_invasion, 'value', 160, 60)
 		prep_tween.tween_callback(self.FinishPreping)
 		
 	if Global.is_invasion_phase and is_invading:
 		is_invading = false
 		var invasion_tween = create_tween()
-		invasion_tween.tween_property(prep_invasion, 'value', 0, 60*3)
+		invasion_tween.tween_property(prep_invasion, 'value', 0, 60)
 		invasion_tween.tween_callback(self.FinishInvasion)
 		
 

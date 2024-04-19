@@ -96,3 +96,12 @@ func RandomizeTilemapSize():
 func ChangeScene(scene):
 	var remove_scene = get_tree().get_root().get_child(0)
 	get_tree().change_scene_to_file(scene)
+
+func CheckResources(resource):
+	var is_available = true
+	for n in resource_cost[resource]:
+		if not is_available:
+			continue
+		else:
+			is_available = resources[n] >=  resource_cost[resource][n]
+	return is_available

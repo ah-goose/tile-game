@@ -34,23 +34,14 @@ func GetCharacter():
 
 func EquipItem():
 	equipped = not equipped
-	if equipped:
-		character.tile_resource = resource
-	else:
-		character.tile_resource = null
+	character.EquipResource(resource, equipped)
 	$equiped.visible = equipped
 
 func EquipStatus():
 	$equiped.visible = equipped
 
 func CheckAvailability():
-	var is_available = true
-	for n in resource_needs:
-		if not is_available:
-			continue
-		else:
-			is_available = Global.resources[n] >= resource_needs[n]
-	resource_available = is_available
+	resource_available = Global.CheckResources(resource)
 	if resource_available:
 		modulate.a = 1
 	else:
