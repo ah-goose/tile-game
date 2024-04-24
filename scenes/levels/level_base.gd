@@ -141,7 +141,7 @@ func SetUpZombie():
 	add_child(new_zom)
 	active_zombie = new_zom
 
-func SetUpNextInvasion():
+func NextInvasionTile():
 	var available_tiles = []
 	for t in all_tiles:
 		if !t.is_active:
@@ -154,9 +154,12 @@ func SetUpNextInvasion():
 		tile_choosen_coords = rnd.randi_range(0, (len(available_tiles) - 1))
 		tile_choosen = available_tiles[tile_choosen_coords]
 	target_invasion = tile_choosen
+	target_invasion_indicator.position = target_invasion.position
+
+func SetUpNextInvasion():
+	NextInvasionTile()
 	to_next_invasion = 10
 	to_next_invasion_count = 0
-	target_invasion
 	number_of_invaders = 5 * invasion_wave
 	is_invading = false
 	target_invasion_indicator.position = target_invasion.position
@@ -183,6 +186,7 @@ func AddNewInvader():
 	self.connect("CharacterMovedOverview", Callable(new_zom, '_on_Character_move'))
 	add_child(new_zom)
 	number_of_invaders -= 1
+	
 
 func _character_moved():
 	emit_signal("CharacterMovedOverview")
@@ -199,8 +203,10 @@ func _character_moved():
 		invasion_duration.start()
 	if is_invading and number_of_invaders >= 0:
 		AddNewInvader()
-		SetUpNextInvasion()
+		NextInvasionTile()
 	if is_invading and number_of_invaders <= 0:
+		if target_invasion_indicator.visible:
+			target_invasion_indicator.visible = false
 		var all_zombies = get_tree().get_nodes_in_group('zombie')
 		if len(all_zombies) == 0:
 			SetUpNextInvasion()
