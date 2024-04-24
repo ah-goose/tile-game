@@ -55,7 +55,7 @@ func _ready():
 	SetUpTile()
 	SetUpCharacter()
 	SetUpBase()
-	SetUpNextInvasion()
+#	SetUpNextInvasion()
 	SetUpZombie()
 
 	target_invasion_indicator.get_node('AnimationPlayer').play('pulse')
@@ -154,7 +154,7 @@ func SetUpNextInvasion():
 		tile_choosen_coords = rnd.randi_range(0, (len(available_tiles) - 1))
 		tile_choosen = available_tiles[tile_choosen_coords]
 	target_invasion = tile_choosen
-	to_next_invasion = 50
+	to_next_invasion = 10
 	to_next_invasion_count = 0
 	target_invasion
 	number_of_invaders = 5 * invasion_wave
@@ -165,6 +165,7 @@ func SetUpNextInvasion():
 	emit_signal("ResetCountdown")
 
 func StartInvasion():
+	print('starting invading')
 	invasion_duration.start()
 	number_of_invaders = 5
 	is_invading = true
@@ -185,7 +186,9 @@ func AddNewInvader():
 
 func _character_moved():
 	emit_signal("CharacterMovedOverview")
+	print('to next invasion count ', to_next_invasion_count, ' next invasion ', to_next_invasion, ' is invading ', is_invading)
 	if !is_invading and to_next_invasion_count < to_next_invasion and invading_count_down:
+		print('count down')
 		to_next_invasion_count += 1
 		if to_next_invasion_count >= (to_next_invasion / 2):
 			target_invasion_indicator.visible = true
@@ -196,7 +199,29 @@ func _character_moved():
 		invasion_duration.start()
 	if is_invading and number_of_invaders >= 0:
 		AddNewInvader()
+		SetUpNextInvasion()
 	if is_invading and number_of_invaders <= 0:
 		var all_zombies = get_tree().get_nodes_in_group('zombie')
 		if len(all_zombies) == 0:
 			SetUpNextInvasion()
+			
+func _on_update_tile_map(tile_coords, map_coords):
+	tile_map.set_cell(1, tile_coords, 0, map_coords)
+
+func _on_remove_tile(tile_coords):
+	tile_map.erase_cell(1, tile_coords)
+	
+func _on_prep_phase_timeout():
+	print('countdown timeout')
+	invading_count_down = true
+	SetUpNextInvasion()
+
+
+func _on_invasion_duration_timeout():
+	is_invading = false
+	invasion_duration.stop()
+	spawn_invader.stop()
+
+
+func _on_spawn_invader_timeout():
+	AddNewInvader()

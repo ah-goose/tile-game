@@ -11,7 +11,6 @@ var steps_to_destination = 0
 
 func _ready():
 	self.connect('area_entered', Callable(self, '_on_zombie_body_entered'))
-	print(hp)
 
 func _process(delta):
 	if Global.game_over:
@@ -74,7 +73,6 @@ func GetTarget():
 					target = build
 			else:
 				target = build
-	print('from get target ', target)
 	path = Global.astar_grid.get_id_path(global_position, base.global_position)
 	
 	steps_to_destination = 0
@@ -83,7 +81,6 @@ func TakeDamage(dmg):
 	hp -= dmg
 
 func _on_Character_move():
-	print('character moved so zombie moves')
 	if Global.game_over:
 		return
 	if hp > 0:
@@ -91,9 +88,7 @@ func _on_Character_move():
 		Move()
 
 func _on_zombie_body_entered(body):
-	print(body.get_groups())
 	if 'main_base' in body.get_groups():
-		print('is main base hit')
 		base.GetHit(hp)
 		queue_free()
 	elif 'bullet' in body.get_groups():

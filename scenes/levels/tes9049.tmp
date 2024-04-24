@@ -32,12 +32,11 @@ layer_1/tile_data = PackedInt32Array()
 [node name="FirstInvasionStart" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="InvasionDuration" type="Timer" parent="."]
 wait_time = 180.0
 
 [node name="SpawnInvader" type="Timer" parent="."]
 
-[connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]
+[connection signal="timeout" from="FirstInvasionStart" to="." method="_on_first_invasion_start_timeout"]
 [connection signal="timeout" from="InvasionDuration" to="." method="_on_invasion_duration_timeout"]
