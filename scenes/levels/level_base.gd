@@ -36,8 +36,8 @@ var add_invader_frequency = 1.5
 @export_group('tile settings')
 @export var tilemap_size: Array[int] = [100, 100]
 
-
 @onready var tile_map = $TileMap
+@onready var buildings_map = $Buildings
 @onready var camera = $camera
 @onready var invasion_duration = $InvasionDuration
 @onready var spawn_invader = $SpawnInvader
@@ -213,10 +213,10 @@ func _character_moved():
 			SetUpNextInvasion()
 			
 func _on_update_tile_map(tile_coords, map_coords):
-	tile_map.set_cell(1, tile_coords, 0, map_coords)
+	buildings_map.set_cell(0, tile_coords, 0, map_coords)
 
 func _on_remove_tile(tile_coords):
-	tile_map.erase_cell(1, tile_coords)
+	buildings_map.erase_cell(0, tile_coords)
 	
 func _on_prep_phase_timeout():
 	invading_count_down = true
