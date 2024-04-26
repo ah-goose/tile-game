@@ -96,7 +96,7 @@ func SetUpTile():
 			new_tile.connect("RemoveTile", Callable(self, '_on_remove_tile'))
 			new_tile.connect("AddBuilding", Callable(self, 'AddBuildingToList'))
 			new_tile.connect("RemoveBuilding", Callable(self, 'RemoveBuildingFromList'))
-			GrassTileSetup(Vector2i(x, y))
+			#GrassTileSetup(Vector2i(x, y))
 			add_child(new_tile)
 		if x != 0:
 			for a in tiles[x].size():
@@ -135,8 +135,6 @@ func SetUpZombie():
 	var selected_tile = tiles[tilex][tiley]
 	new_zom.active_tile = selected_tile
 	new_zom.position = selected_tile.position
-	new_zom.buildings = all_buildings
-	new_zom.target = base
 	new_zom.base = base
 	self.connect("CharacterMovedOverview", Callable(new_zom, '_on_Character_move'))
 	add_child(new_zom)
@@ -192,9 +190,7 @@ func AddNewInvader():
 
 func _character_moved():
 	emit_signal("CharacterMovedOverview")
-	print('to next invasion count ', to_next_invasion_count, ' next invasion ', to_next_invasion, ' is invading ', is_invading)
 	if !is_invading and to_next_invasion_count < to_next_invasion and invading_count_down:
-		print('count down')
 		to_next_invasion_count += 1
 		if to_next_invasion_count >= (to_next_invasion / 2):
 			target_invasion_indicator.visible = true
@@ -223,7 +219,6 @@ func _on_remove_tile(tile_coords):
 	tile_map.erase_cell(1, tile_coords)
 	
 func _on_prep_phase_timeout():
-	print('countdown timeout')
 	invading_count_down = true
 	SetUpNextInvasion()
 

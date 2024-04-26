@@ -4,15 +4,18 @@ var active_tile
 var target
 var hp := 3
 var base
-var buildings
-var path
+var buildings := []
+var path : Array
 var steps_to_destination = 0
 @onready var line_path = Line2D.new()
 
 func _ready():
 	self.connect('area_entered', Callable(self, '_on_zombie_body_entered'))
+	GetTarget()
 
 func _process(delta):
+	if path.is_empty():
+		GetTarget()
 	if Global.game_over:
 		set_process(false)
 		return
@@ -23,6 +26,8 @@ func _process(delta):
 		queue_free()
 
 func Move():
+	if !path or path.is_empty():
+		return
 	line_path.clear_points()
 	var x = path[(steps_to_destination * $'/root/Global'.grid_cell_size)].x - path[(steps_to_destination * $'/root/Global'.grid_cell_size) + 1].x
 	var y = path[(steps_to_destination * $'/root/Global'.grid_cell_size)].y - path[(steps_to_destination * $'/root/Global'.grid_cell_size) + 1].y
@@ -58,8 +63,8 @@ func MoveToTile(tile):
 		return
 
 func GetBuildings():
-	buildings = get_tree().get_nodes_in_group('invader')
-	print(buildings)
+	buildings = get_tree().get_nodes_in_group('building')
+	
 func GetTarget():
 	if hp <= 0:
 		return
@@ -68,7 +73,7 @@ func GetTarget():
 	if target and target.hp <= 0:
 		buildings.erase(target)
 		target = null
-	if !target and buildings.length > 0:
+	if !target and buildings.size() > 0:
 		for build in buildings:
 			if target:
 				var a = $'/root/Global'.astar_grid.get_id_path(global_position, target.global_position).size()
