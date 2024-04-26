@@ -27,6 +27,7 @@ var invader_spawn_rate = 0.75
 var target_invasion
 var invasion_wave = 1
 var number_of_invaders = 5
+var invader_queue = 5
 var is_invading = false
 var invading_count_down = false
 var invader = preload("res://scenes/zombies/invader.tscn")
@@ -155,6 +156,7 @@ func NextInvasionTile():
 		tile_choosen = available_tiles[tile_choosen_coords]
 	target_invasion = tile_choosen
 	target_invasion_indicator.position = target_invasion.position
+	invader_queue = 5
 
 func SetUpNextInvasion():
 	NextInvasionTile()
@@ -202,8 +204,11 @@ func _character_moved():
 		spawn_invader.start()
 		invasion_duration.start()
 	if is_invading and number_of_invaders >= 0:
-		AddNewInvader()
-		NextInvasionTile()
+		if invader_queue <= 0:
+			AddNewInvader()
+			NextInvasionTile()
+		else:
+			invader_queue = invader_queue - 1
 	if is_invading and number_of_invaders <= 0:
 		if target_invasion_indicator.visible:
 			target_invasion_indicator.visible = false

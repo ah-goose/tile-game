@@ -28,7 +28,7 @@ _data = {
 "radius_spinner": SubResource("Animation_inrkx")
 }
 
-[node name="tower" type="StaticBody2D" groups=["tower"]]
+[node name="tower" type="StaticBody2D" groups=["building", "tower"]]
 input_pickable = true
 script = ExtResource("1_f3lfm")
 

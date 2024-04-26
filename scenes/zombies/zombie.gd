@@ -41,9 +41,10 @@ func Move():
 	if len(path) <= (steps_to_destination * $'/root/Global'.grid_cell_size) + $'/root/Global'.grid_cell_size:
 		target = null
 		GetTarget()
-	
+	if (target == null):
+		GetTarget()
 	var path2 = $'/root/Global'.astar_grid.get_id_path(global_position, target.global_position)
-
+	
 	for p in path2:
 		line_path.add_point(Vector2i(p.x - position.x, p.y - position.y))
 
@@ -56,11 +57,14 @@ func MoveToTile(tile):
 	else:
 		return
 
-
+func GetBuildings():
+	buildings = get_tree().get_nodes_in_group('invader')
+	print(buildings)
 func GetTarget():
 	if hp <= 0:
 		return
 	var closest_building
+	GetBuildings()
 	if target and target.hp <= 0:
 		buildings.erase(target)
 		target = null
