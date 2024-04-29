@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name HomeBase
 var hp = 500
 var max_hp = 500
 var is_active = true

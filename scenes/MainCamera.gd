@@ -6,7 +6,7 @@ var limit_l
 var limit_t
 var limit_b
 var focus_player = false
-var player
+@export var player : Character
 var mid_point : Vector2
 
 var zoom_in : int

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1x1ob6kfjj6y"]
+
+[ext_resource type="Script" path="res://scenes/components/scripts/shooter.gd" id="1_fk38l"]
+
+[node name="Shooter" type="Node2D"]
+script = ExtResource("1_fk38l")
+
+[node name="reload_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]

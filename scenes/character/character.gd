@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name Character
 signal CharacterMoved
 
 var is_active = true
@@ -17,11 +17,16 @@ var can_enter_base = false
 var gems = 0
 
 func _ready():
-	active_tile.SetHighlighted()
+#	active_tile.SetHighlighted()
 	if len(get_tree().get_nodes_in_group('camera')) > 0:
 		get_tree().get_nodes_in_group('camera')[0].player = self
 
 func _process(delta):
+	if Input.is_action_just_pressed("left_mouse_click") && $Shooter.can_shoot:
+		var targ = get_global_mouse_position()
+		$Shooter.Shoot(targ)
+		emit_signal("CharacterMoved")
+		
 	if Global.is_inside_base and $Sprite2D.visible:
 		$Sprite2D.visible = false
 	elif !Global.is_inside_base and !$Sprite2D.visible:

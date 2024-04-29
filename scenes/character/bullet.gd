@@ -4,12 +4,12 @@ var damage = 5.0
 var bullet_speed = 100.0
 var target
 var angle_dir = false
-# Called when the node enters the scene tree for the first time.
+var distance := 100
+var bull_origin : Vector2
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	bull_origin = global_position
+	
 func _process(delta):
 	move(delta)
 
@@ -21,6 +21,10 @@ func DisapearBullet():
 	queue_free()
 	
 func move(delta):
+	print(abs(global_position.distance_to(bull_origin)) >= distance)
+	if abs(global_position.distance_to(bull_origin)) >= distance:
+		DisapearBullet()
+		return
 	if !angle_dir:
 		look_at(target)
 		angle_dir = true

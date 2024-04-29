@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1oyda4qv1725" path="res://assets/bullet.png" id="2_qkhcn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbp2w"]
-radius = 9.0
+radius = 4.0
 
 [sub_resource type="Curve" id="Curve_nqmuh"]
 _data = [Vector2(0.0134228, 0.409091), 0.0, 0.0416783, 0, 0, Vector2(0.996644, 0), 0.0, 0.0, 0, 0]
@@ -55,7 +55,7 @@ texture = ExtResource("2_qkhcn")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.741176, 0, 0.0117647, 1)
 rotation = 3.1765
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.359806, 0.345763)
 texture = ExtResource("2_qkhcn")
 
 [node name="KillTimer" type="Timer" parent="."]

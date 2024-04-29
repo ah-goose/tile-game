@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch4r2517b00r0"]
+[gd_scene load_steps=6 format=3 uid="uid://ch4r2517b00r0"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c0t75yu3vs5tx" path="res://assets/character-3.png" id="2_ee5ay"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_s75cx"]
+[ext_resource type="PackedScene" uid="uid://d1x1ob6kfjj6y" path="res://scenes/components/Shooter.tscn" id="4_1tryx"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)
@@ -31,3 +32,10 @@ theme_override_fonts/font = ExtResource("3_s75cx")
 text = "E - To Enter"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="Shooter" parent="." instance=ExtResource("4_1tryx")]
+damage = 5.0
+range = 100
+reload_speed = 3
+bullet_capacity = 5
+bullet_speed = 100.0

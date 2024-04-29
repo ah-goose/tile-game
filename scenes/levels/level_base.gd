@@ -11,7 +11,8 @@ var enemy_base = preload("res://scenes/env/base/enemy_base.tscn")
 var all_buildings = []
 #var GUI_Preset = preload("res://scenes/GUI.gd").instanciate()
 var active_zombie
-var base
+@export var base : HomeBase
+@export var character_origin : Array[int] = [0, 0]
 var base_tile_x
 var base_tile_y
 
@@ -52,10 +53,12 @@ signal ResetCountdown
 func _ready():
 	Global.grid_size_x = tilemap_size[0]
 	Global.grid_size_y = tilemap_size[1]
+	character_origin[0] = base.position.x / Global.grid_cell_size
+	character_origin[1] = base.position.y / Global.grid_cell_size
 	SetUpCamera()
 	SetUpTile()
 	SetUpCharacter()
-	SetUpBase()
+#	SetUpBase()
 #	SetUpNextInvasion()
 	SetUpZombie()
 
@@ -108,8 +111,10 @@ func GrassTileSetup(coords : Vector2i):
 	tile_map.set_cell(0, coords, 0, Vector2i(tile_x, 4))
 
 func SetUpCharacter():
-	var mid_point_x = ($'/root/Global'.grid_size_x / 2) - 2
-	var mid_point_y = ($'/root/Global'.grid_size_y / 2) - 2
+	print('tiles ', tiles[8][18])
+	var mid_point_x = int(floor(base.global_position.x / Global.grid_cell_size) - 2)
+	var mid_point_y = int(floor(base.global_position.y / Global.grid_cell_size) - 2)
+	print('character mid points ', mid_point_x, ' ', mid_point_y)
 	var new_char = character.instantiate()
 	var selected_tile = tiles[mid_point_x][mid_point_y]
 	new_char.active_tile = selected_tile
