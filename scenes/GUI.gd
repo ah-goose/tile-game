@@ -5,7 +5,7 @@ extends CanvasLayer
 
 var is_preping = true
 var is_invading = false
-var base
+var base : HomeBase
 
 signal PrepDone
 signal InvasionDone
@@ -20,10 +20,10 @@ func _physics_process(delta):
 	if base == null:
 		if 'base' in get_tree().get_root().get_node('Overworld_tilemap'):
 			base = get_tree().get_root().get_node('Overworld_tilemap').base
-			UpdateBaseHP(true, base.hp)
+			UpdateBaseHP(true, base.hp_bar.hp)
 	else:
-		if base != null and base_hp.value != base.hp:
-			UpdateBaseHP(false, base.hp)
+		if base != null and base_hp.value != base.hp_bar.hp:
+			UpdateBaseHP(false, base.hp_bar.hp)
 	if Global.update_resource:
 		for r in Global.resources:
 			var resource_amount = Global.resources[r]

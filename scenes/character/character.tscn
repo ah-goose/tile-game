@@ -1,23 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch4r2517b00r0"]
+[gd_scene load_steps=9 format=3 uid="uid://ch4r2517b00r0"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c0t75yu3vs5tx" path="res://assets/character-3.png" id="2_ee5ay"]
+[ext_resource type="Texture2D" uid="uid://ckuaclwaniuk7" path="res://assets/character-3-sheet.png" id="2_w3uha"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_s75cx"]
 [ext_resource type="PackedScene" uid="uid://d1x1ob6kfjj6y" path="res://scenes/components/Shooter.tscn" id="4_1tryx"]
+[ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="5_8q6vl"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)
 
-[node name="character" type="Area2D" groups=["character"]]
+[sub_resource type="Animation" id="Animation_jxwf0"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xm5gj"]
+_data = {
+"idle": SubResource("Animation_jxwf0")
+}
+
+[node name="character" type="Area2D" node_paths=PackedStringArray("hp") groups=["character"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1")
+hp = NodePath("HP")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["character"]]
-texture = ExtResource("2_ee5ay")
+texture = ExtResource("2_w3uha")
+hframes = 2
+frame = 1
 
 [node name="to_enter" type="Label" parent="."]
 z_index = 10
@@ -39,3 +64,18 @@ range = 100
 reload_speed = 3
 bullet_capacity = 5
 bullet_speed = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_xm5gj")
+}
+
+[node name="HP" parent="." instance=ExtResource("5_8q6vl")]
+position = Vector2(-8, 9)
+max_health = 10
+
+[node name="AutoWalk" type="Timer" parent="."]
+
+[connection signal="LostAllHP" from="HP" to="." method="_LostAllHP"]
+[connection signal="timeout" from="AutoWalk" to="." method="_on_auto_walk_timeout"]

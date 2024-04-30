@@ -9,6 +9,8 @@ var bullet = preload("res://scenes/character/bullet.tscn")
 var bullet_capacity = 5
 var bullets_left = 5
 var can_fire = true
+
+@export var hp_bar : HPComponent
 @onready var reload_speed_timer = $"reloadTimer"
 
 var defending = true
@@ -20,13 +22,20 @@ func _process(delta):
 	if Input.is_action_just_pressed("left_mouse_click") and Global.is_inside_base and can_fire:
 		Shoot()
 
-func GetHit(dmg):
-	hp -= dmg
-	if hp <= 0:
-		print('GAME OVER!!!!')
-		Global.game_over = true
-#		queue_free()
-		# Game over
+func GetHit(dmg: int):
+	print('taking damage')
+	if hp_bar:
+		hp_bar.TakeDamage(dmg)
+#	hp -= dmg
+#	if hp <= 0:
+#		print('GAME OVER!!!!')
+#		Global.game_over = true
+##		queue_free()
+#		# Game over
+
+func _LoseGame():
+	print('GAME OVER!!!!')
+	Global.game_over = true
 
 func Shoot():
 	if bullets_left == 0:

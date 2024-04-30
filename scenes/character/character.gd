@@ -13,15 +13,22 @@ var last_tile_resource_selected = null
 
 var last_location : Vector2i
 var can_enter_base = false
-
+var is_dead = false
 var gems = 0
+
+@export var hp : HPComponent
+@onready var animation_player = $AnimationPlayer
+@onready var auto_walk = $AutoWalk
 
 func _ready():
 #	active_tile.SetHighlighted()
+	animation_player.play('idle')
 	if len(get_tree().get_nodes_in_group('camera')) > 0:
 		get_tree().get_nodes_in_group('camera')[0].player = self
 
 func _process(delta):
+	if is_dead:
+		return
 	if Input.is_action_just_pressed("left_mouse_click") && $Shooter.can_shoot:
 		var targ = get_global_mouse_position()
 		$Shooter.Shoot(targ)
@@ -167,3 +174,17 @@ func EquipStoredResource():
 		var available_resource = Global.CheckResources(last_tile_resource_selected)
 		if available_resource:
 			tile_resource = last_tile_resource_selected
+
+func TakeDamage(damage: int):
+	hp.TakeDamage(damage)
+	
+func _LostAllHP():
+	auto_walk.start()
+	get_node("CollisionShape2D").disabled = true
+	get_node("Sprite2D").visible = false
+	get_node("HP").visible = false
+	is_dead = true
+
+func _on_auto_walk_timeout():
+	emit_signal("CharacterMoved")
+	auto_walk.start()

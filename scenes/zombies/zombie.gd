@@ -7,6 +7,8 @@ var base
 var buildings := []
 var path : Array
 var steps_to_destination = 0
+
+@export var hp_bar : HPComponent
 @onready var line_path = Line2D.new()
 
 func _ready():
@@ -19,11 +21,13 @@ func _process(delta):
 	if Global.game_over:
 		set_process(false)
 		return
-	if hp <= 0:
-		line_path.clear_points()
-		remove_from_group('zombie')
+		
+
+func _LostAllHP():
+	line_path.clear_points()
+	remove_from_group('zombie')
 #		await get_tree().create_timer(1).timeout
-		queue_free()
+	queue_free()
 
 func Move():
 	if !path or path.is_empty():
@@ -86,8 +90,9 @@ func GetTarget():
 	
 	steps_to_destination = 0
 
-func TakeDamage(dmg):
-	hp -= dmg
+func TakeDamage(dmg: int):
+	if hp_bar:
+		hp_bar.TakeDamage(dmg)
 
 func _on_Character_move():
 	if Global.game_over:
@@ -97,6 +102,7 @@ func _on_Character_move():
 		Move()
 
 func _on_zombie_body_entered(body):
+	
 	if 'main_base' in body.get_groups():
 		base.GetHit(hp)
 		queue_free()
@@ -113,3 +119,14 @@ func _on_zombie_body_entered(body):
 				buildings.erase(target)
 				target = null
 #				GetTarget()
+
+
+func _on_area_entered(area):
+	print('zombie body enter ', area.get_groups() )
+	if 'character' in area.get_groups():
+		print('character hit')
+		if area.has_method('TakeDamage'):
+			print('character take damage')
+			var dmg = area.hp.hp
+			area.TakeDamage(hp)
+			TakeDamage(dmg)
