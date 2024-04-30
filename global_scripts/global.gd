@@ -44,7 +44,8 @@ var resource_cost = {
 	'tower': {'gems': 1},
 #	'tower': {'wood': 50, 'rock': 50, 'food': 30},
 	'wall': {'wood': 10, 'rock': 10},
-	'door': {'wood': 15, 'rock': 15}
+	'door': {'wood': 15, 'rock': 15},
+	'bullet': {'gems': 1}
 }
 
 # Tower powers

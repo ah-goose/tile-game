@@ -96,6 +96,7 @@ get_last_resource={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Bullet"
 2d_physics/layer_5="Env"
+2d_physics/layer_6="Enemy"
 
 [physics]
 

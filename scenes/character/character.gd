@@ -29,9 +29,10 @@ func _ready():
 func _process(delta):
 	if is_dead:
 		return
-	if Input.is_action_just_pressed("left_mouse_click") && $Shooter.can_shoot:
+	if Input.is_action_just_pressed("left_mouse_click") && $Shooter.can_shoot && Global.CheckResources('bullet'):
 		var targ = get_global_mouse_position()
 		$Shooter.Shoot(targ)
+		Global.UpdateEconomy('bullet')
 		emit_signal("CharacterMoved")
 		
 	if Global.is_inside_base and $Sprite2D.visible:

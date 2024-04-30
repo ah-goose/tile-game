@@ -33,7 +33,11 @@ func move(delta):
 	if collision:
 		var col = collision.get_collider()
 		print(col.get_groups())
-		if 'invader' in col.name or "invader" in collision.get_collider().get_groups():
+#		if 'invader' in col.name or "invader" in collision.get_collider().get_groups():
+#			col.TakeDamage(damage)
+#			DisapearBullet()
+#		if 'enemy_base' in col.name:
+		if col.has_method('TakeDamage'):
 			col.TakeDamage(damage)
 			DisapearBullet()
 #		if "zombie" in collision.get_collider().get_groups():

@@ -458,7 +458,7 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_gem_area_entered(area):
-	if 'building' in area.get_groups():
+	if 'building' in area.get_groups() or 'enemy_base' in area.get_groups():
 		has_gem = false
 		$Gem.disable_mode = true
 		$Gem.visible = has_gem

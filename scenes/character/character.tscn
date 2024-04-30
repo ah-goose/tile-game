@@ -61,7 +61,6 @@ vertical_alignment = 2
 [node name="Shooter" parent="." instance=ExtResource("4_1tryx")]
 damage = 5.0
 range = 100
-reload_speed = 3
 bullet_capacity = 5
 bullet_speed = 100.0
 
