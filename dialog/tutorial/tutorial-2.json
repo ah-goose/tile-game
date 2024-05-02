@@ -1,0 +1,25 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 4,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "Great! You have collected enough Gems in order to start building recource production centers."
+			},
+			{
+				"focus": "right_",
+				"text": "Select one of the Centers available from the right and place them on the tiles near you. Use \"W, A, S, D\" to place the center."
+			},
+			{
+				"focus": "right_",
+				"text": "Once you have a recource building you'll start generating recources with each action you take. With these resources, you can build walls, gates, and turrents to protect your base."
+			},
+			{
+				"focus": "right_",
+				"text": "Each building has a limit on how much of that resources can have, so in short, the more buildings you have the more resources you can have"
+			},
+		]
+	}
+}

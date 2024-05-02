@@ -1,0 +1,29 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 5,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "Welcome to your first mission!"
+			},
+			{
+				"focus": "right_",
+				"text": "I am Computer, I'm here to teach you how to do your job. Listen to me and everything will be alright."
+			},
+			{
+				"focus": "right_",
+				"text": "In this world, time passes with each action you take. An action consist of any movement \"W, A, S, D\", creating a building, wall, gate, or turrent."
+			},
+			{
+				"focus": "right_",
+				"text": "Let's start slow. You see these blue gems on the floor, they are very important to us, it's a resource that can be used to make buildings that can generate even more resources, they can also be used to generate bullets. More on that later."
+			},
+			{
+				"focus": "right_",
+				"text": "Move (W, A, S, D) to the gems to collect the gems and start."
+			}
+		]
+	}
+}

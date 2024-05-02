@@ -1,0 +1,25 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 4,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "You have collected enough resources to create a worker building."
+			},
+			{
+				"focus": "right_",
+				"text": "Workers are little robots that increase productivity. It's okay to over work them, they're robots all they need is energy and that's practically free."
+			},
+			{
+				"focus": "right_",
+				"text": "For each additional worker, you product additional resources per action."
+			},
+			{
+				"focus": "right_",
+				"text": "Don't stop moving now!"
+			},
+		]
+	}
+}

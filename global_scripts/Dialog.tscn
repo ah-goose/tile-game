@@ -4,16 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://tqdx45cjur8r" path="res://assets/character-2.png" id="2_gh5bt"]
 [ext_resource type="Texture2D" uid="uid://buhd4hn2pyo1l" path="res://assets/chinchilla_16-1.png" id="3_xuh63"]
 
-[node name="Dialog" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_v310x")
+
+[node name="Dialog" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_v310x")
 
-[node name="dialog_container" type="VBoxContainer" parent="."]
+[node name="dialog_container" type="VBoxContainer" parent="Dialog"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -23,35 +27,35 @@ offset_top = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="character_focus" type="HBoxContainer" parent="dialog_container"]
+[node name="character_focus" type="HBoxContainer" parent="Dialog/dialog_container"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.22
 
-[node name="left_" type="Control" parent="dialog_container/character_focus"]
+[node name="left_" type="Control" parent="Dialog/dialog_container/character_focus"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="character" type="Sprite2D" parent="dialog_container/character_focus/left_"]
+[node name="character" type="Sprite2D" parent="Dialog/dialog_container/character_focus/left_"]
 texture = ExtResource("2_gh5bt")
 centered = false
 
-[node name="right_" type="Control" parent="dialog_container/character_focus"]
+[node name="right_" type="Control" parent="Dialog/dialog_container/character_focus"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="character" type="Sprite2D" parent="dialog_container/character_focus/right_"]
+[node name="character" type="Sprite2D" parent="Dialog/dialog_container/character_focus/right_"]
 texture = ExtResource("3_xuh63")
 centered = false
 
-[node name="text_container" type="Control" parent="dialog_container"]
+[node name="text_container" type="Control" parent="Dialog/dialog_container"]
 custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="dialog_container/text_container"]
+[node name="ColorRect" type="ColorRect" parent="Dialog/dialog_container/text_container"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.133333, 0.133333, 0.133333, 0.886275)
 
-[node name="dialog_text" type="RichTextLabel" parent="dialog_container/text_container"]
+[node name="dialog_text" type="RichTextLabel" parent="Dialog/dialog_container/text_container"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

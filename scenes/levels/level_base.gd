@@ -34,6 +34,13 @@ var invading_count_down = false
 var invader = preload("res://scenes/zombies/invader.tscn")
 var add_invader_frequency = 1.5
 
+@export_group("Dialog Settings")
+@export var dialog_files : Array[String]
+@export var dialog_autostart : bool
+@export var autostart_delay := 0.0
+var dialog := []
+var dialog_focus := 0
+
 @export_group('tile settings')
 @export var tilemap_size: Array[int] = [100, 100]
 
@@ -61,7 +68,9 @@ func _ready():
 #	SetUpBase()
 #	SetUpNextInvasion()
 	SetUpZombie()
-
+	SetUpDialog()
+	
+	Dialog.connect("DialogComplete", Callable(self, '_dialog_completed') )
 	target_invasion_indicator.get_node('AnimationPlayer').play('pulse')
 	target_invasion_indicator.visible = false
 
@@ -145,6 +154,22 @@ func SetUpZombie():
 	add_child(new_zom)
 	active_zombie = new_zom
 
+func SetUpDialog():
+	if dialog_files.size() > 0:
+		for d in dialog_files:
+			var file = FileAccess.get_file_as_string(d)
+			var json_dict = JSON.parse_string(file)
+			if json_dict:
+				dialog.append(json_dict)
+		await get_tree().create_timer(autostart_delay).timeout
+		if dialog_autostart:
+			var dialog_dict = dialog[0].dialog
+			StartDialog(dialog_dict.dialog, dialog_dict.left_, dialog_dict.right_, dialog_dict.dialog[0].focus)
+
+func StartDialog(text_arr: Array, left_img: String, right_img: String, dialog_focus: String):
+	get_tree().paused = true
+	Dialog.StartDialog(text_arr, left_img, right_img, dialog_focus)
+
 func NextInvasionTile():
 	var available_tiles = []
 	for t in all_tiles:
@@ -214,8 +239,8 @@ func _character_moved():
 		if target_invasion_indicator.visible:
 			target_invasion_indicator.visible = false
 		var all_zombies = get_tree().get_nodes_in_group('zombie')
-		if len(all_zombies) == 0:
-			SetUpNextInvasion()
+#		if len(all_zombies) == 0:
+#			SetUpNextInvasion()
 			
 func _on_update_tile_map(tile_coords, map_coords):
 	buildings_map.set_cell(0, tile_coords, 0, map_coords)
@@ -224,8 +249,9 @@ func _on_remove_tile(tile_coords):
 	buildings_map.erase_cell(0, tile_coords)
 	
 func _on_prep_phase_timeout():
-	invading_count_down = true
-	SetUpNextInvasion()
+	if !invading_count_down:
+		invading_count_down = true
+		SetUpNextInvasion()
 
 
 func _on_invasion_duration_timeout():
@@ -236,3 +262,7 @@ func _on_invasion_duration_timeout():
 
 func _on_spawn_invader_timeout():
 	AddNewInvader()
+
+func _dialog_completed():
+	print('dialog completed')
+	get_tree().paused = false

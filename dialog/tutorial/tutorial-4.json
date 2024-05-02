@@ -1,0 +1,25 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 4,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "An invasion has started, it is time for you to defent your base!"
+			},
+			{
+				"focus": "right_",
+				"text": "The enemy will move towards your base for each action you take."
+			},
+			{
+				"focus": "right_",
+				"text": "You may not have known, but you had a shooter this whole time. It takes \"rock\" resources as bullets and all you have to do is point and shoot (point with your cursor and shoot with left clicking with your mouse). Straight foward right!?"
+			},
+			{
+				"focus": "right_",
+				"text": "I assumed you said yes. Now get there defend your base and try not to die."
+			},
+		]
+	}
+}
