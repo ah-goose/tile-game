@@ -239,9 +239,9 @@ func _character_moved():
 		if target_invasion_indicator.visible:
 			target_invasion_indicator.visible = false
 		var all_zombies = get_tree().get_nodes_in_group('zombie')
-#		if len(all_zombies) == 0:
-#			SetUpNextInvasion()
-			
+		if len(all_zombies) == 0:
+			SetUpNextInvasion()
+
 func _on_update_tile_map(tile_coords, map_coords):
 	buildings_map.set_cell(0, tile_coords, 0, map_coords)
 

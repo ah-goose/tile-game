@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvti4wwvevvmt"]
+
+[ext_resource type="FontFile" uid="uid://qf8rqahobluw" path="res://assets/themes/Kenney Mini Square.ttf" id="1_53wjx"]
+
+[resource]
+default_font = ExtResource("1_53wjx")
+default_font_size = 8
+Button/constants/h_separation = 2
+Button/font_sizes/font_size = 16
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 1
+Label/constants/outline_size = 0
+Label/font_sizes/font_size = 8

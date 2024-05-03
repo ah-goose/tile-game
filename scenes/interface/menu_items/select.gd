@@ -3,7 +3,7 @@ extends Control
 var resource_available = false
 var resource_needs = {}
 @export var resource = 'rock'
-
+@export var tooltip := ''
 var equipped = false
 var equip_available = false
 
@@ -11,6 +11,7 @@ var character
 
 func _ready():
 	resource_needs = Global.resource_cost[resource]
+	tooltip_text = tooltip
 	print(resource_needs)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,7 +27,7 @@ func _physics_process(delta):
 		equipped = false
 		EquipStatus()
 	
-	if Input.is_action_just_pressed('left_mouse_click') and equip_available and resource_available:
+	if Input.is_action_just_pressed('right_mouse_click') and equip_available and resource_available:
 		EquipItem()
 
 func GetCharacter():

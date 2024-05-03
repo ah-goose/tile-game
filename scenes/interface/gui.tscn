@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://n8unqd6bldoo"]
+[gd_scene load_steps=22 format=3 uid="uid://n8unqd6bldoo"]
 
 [ext_resource type="Script" path="res://scenes/GUI.gd" id="1_1nmvn"]
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="2_1ujc4"]
 [ext_resource type="Texture2D" uid="uid://bwuopsx64d1fl" path="res://assets/GUI/top-bar.png" id="2_hf83i"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_7yyn8"]
 [ext_resource type="PackedScene" uid="uid://c4t18kswfuf5g" path="res://scenes/interface/resources/workers.tscn" id="4_c2u74"]
@@ -31,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_1ujc4")
 
 [node name="TopBarBG" type="Sprite2D" parent="Control"]
 texture = ExtResource("2_hf83i")

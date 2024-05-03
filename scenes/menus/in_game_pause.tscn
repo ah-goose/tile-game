@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://flgba3ai02sf"]
+[gd_scene load_steps=3 format=3 uid="uid://flgba3ai02sf"]
 
 [ext_resource type="Script" path="res://scenes/menus/in_game_pause.gd" id="1_ootck"]
-[ext_resource type="Theme" uid="uid://ba1o537iqqi4k" path="res://assets/menu_theme.tres" id="2_6vg0o"]
-[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_gr3a5"]
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="2_jnkk6"]
 
 [node name="in_game_pause" type="Node2D"]
 process_mode = 3
@@ -20,28 +19,34 @@ color = Color(0.121569, 0.121569, 0.129412, 0.862745)
 visible = false
 offset_left = 71.0
 offset_top = 120.0
-offset_right = 233.0
+offset_right = 216.0
 offset_bottom = 224.0
+theme = ExtResource("2_jnkk6")
 
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6vg0o")
+theme = ExtResource("2_jnkk6")
 text = "Return To Game"
+flat = true
+alignment = 0
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-theme = ExtResource("2_6vg0o")
+theme = ExtResource("2_jnkk6")
 text = "Back To Title Screen"
+flat = true
+alignment = 0
 
 [node name="Leave" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6vg0o")
 text = "Back To Desktop"
+flat = true
+alignment = 0
 
 [node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_gr3a5")
+theme_override_font_sizes/font_size = 16
 text = "Fullscreen"
 
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]

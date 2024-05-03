@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cvq2ubl2r4cqb"]
+
+[ext_resource type="FontFile" uid="uid://ciro7fwwf5yj0" path="res://assets/themes/Kenney Blocks.ttf" id="1_58i0g"]
+
+[resource]
+base_font = ExtResource("1_58i0g")

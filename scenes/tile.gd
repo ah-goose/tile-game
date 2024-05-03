@@ -377,19 +377,19 @@ func TakeDamage(dmg):
 func CheckRiverView():
 	var wall_hits = ''
 	var walkable_hits = ''
-	if top.is_river:
+	if top and top.is_river:
 		wall_hits += 'n'
 		if walkable:
 			walkable_hits = 'n'
-	if right.is_river:
+	if right and right.is_river:
 		wall_hits += 'e'
 		if walkable:
 			walkable_hits = 'e'
-	if bottom.is_river:
+	if bottom and bottom.is_river:
 		wall_hits += 's'
 		if walkable:
 			walkable_hits = 's'
-	if left.is_river:
+	if left and left.is_river:
 		wall_hits += 'w'
 		if walkable:
 			walkable_hits = 'w'
@@ -410,19 +410,19 @@ func CheckRiverView():
 func CheckWallView():
 	var wall_hits = ''
 	var walkable_hits = ''
-	if top.is_wall:
+	if top and top.is_wall:
 		wall_hits += 'n'
 		if walkable:
 			walkable_hits = 'n'
-	if right.is_wall:
+	if right and right.is_wall:
 		wall_hits += 'e'
 		if walkable:
 			walkable_hits = 'e'
-	if bottom.is_wall:
+	if bottom and bottom.is_wall:
 		wall_hits += 's'
 		if walkable:
 			walkable_hits = 's'
-	if left.is_wall:
+	if left and left.is_wall:
 		wall_hits += 'w'
 		if walkable:
 			walkable_hits = 'w'
