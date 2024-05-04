@@ -67,7 +67,7 @@ func _ready():
 	SetUpCharacter()
 #	SetUpBase()
 #	SetUpNextInvasion()
-	SetUpZombie()
+#	SetUpZombie()
 	SetUpDialog()
 	
 	Dialog.connect("DialogComplete", Callable(self, '_dialog_completed') )
