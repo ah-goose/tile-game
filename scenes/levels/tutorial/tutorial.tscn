@@ -18,10 +18,13 @@ shader_parameter/flashState = 0.31
 script = ExtResource("1_i31am")
 base = NodePath("home_base")
 character_origin = Array[int]([80, 80])
-dialog_files = Array[String](["res://dialog/tutorial/tutorial-1.json", "res://dialog/tutorial/tutorial-2.json", "res://dialog/tutorial/tutorial-3.json", "res://dialog/tutorial/tutorial-4.json"])
+number_of_invaders = 5
+increase_invaders_by = 2
+invasion_prep_duration = 180.0
+dialog_files = Array[String](["res://dialog/tutorial/tutorial-1.json", "res://dialog/tutorial/tutorial-2.json", "res://dialog/tutorial/tutorial-3.json", "res://dialog/tutorial/tutorial-4.json", "res://dialog/tutorial/tutorial-5.json", "res://dialog/tutorial/tutorial-6.json", "res://dialog/tutorial/tutorial-7.json"])
 dialog_autostart = true
 autostart_delay = 1.0
-tilemap_size = Array[int]([19, 24])
+tilemap_size = Array[int]([20, 25])
 
 [node name="TileMap" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_vtrhp")
@@ -71,6 +74,7 @@ wait_time = 180.0
 
 [node name="SpawnInvader" type="Timer" parent="."]
 
+[connection signal="BaseDestroyed" from="enemy_base" to="." method="StartEndGame"]
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_first_invasion_start_timeout"]
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]
 [connection signal="timeout" from="InvasionDuration" to="." method="_on_invasion_duration_timeout"]

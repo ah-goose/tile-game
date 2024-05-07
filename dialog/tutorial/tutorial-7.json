@@ -1,0 +1,21 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 3,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "Mission Complete, you did great."
+			},
+			{
+				"focus": "right_",
+				"text": "Now that you know how this works, get back to HQ, get paid and get ready for your next mission."
+			},
+			{
+				"focus": "right_",
+				"text": "Until next time!"
+			}
+		]
+	}
+}

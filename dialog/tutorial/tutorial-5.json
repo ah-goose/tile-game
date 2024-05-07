@@ -1,0 +1,21 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 4,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "One last thing to do."
+			},
+			{
+				"focus": "right_",
+				"text": "Look for the enemy base and destoy it."
+			},
+			{
+				"focus": "right_",
+				"text": "Be careful now, make sure you have enough walls and turrets to protect your base, bacause after you destroy the enemy's base the final invasion will start."
+			}
+		]
+	}
+}

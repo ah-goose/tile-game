@@ -10,7 +10,12 @@ var update_resource = true
 var is_invasion_phase = false
 var is_prep_phase = true
 var is_inside_base = false
-
+var is_final_invasion = false
+var resources_translation = {
+	'rock': 'Terraverite',
+	'wood': 'Aetherium',
+	'food': 'Emberstone'
+}
 var resources = {
 	'rock': 0,
 	'wood': 0,

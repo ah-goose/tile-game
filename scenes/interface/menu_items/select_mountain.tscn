@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bablwtguvji1h"]
+[gd_scene load_steps=5 format=3 uid="uid://bablwtguvji1h"]
 
 [ext_resource type="Script" path="res://scenes/interface/menu_items/select.gd" id="1_b00xn"]
 [ext_resource type="Texture2D" uid="uid://c0m2co71abtat" path="res://assets/GUI/menu_items/frame.png" id="2_4e8rs"]
 [ext_resource type="Texture2D" uid="uid://cmwa1vc6vy04b" path="res://assets/buildings/mountain-4.png" id="3_7gyxk"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="4_13gh3"]
-
-[sub_resource type="Theme" id="Theme_qehak"]
-TooltipLabel/font_sizes/font_size = 10
-TooltipLabel/fonts/font = ExtResource("4_13gh3")
 
 [node name="select_mountain" type="TextureRect"]
 anchors_preset = 1
@@ -18,7 +14,6 @@ offset_bottom = 24.0
 grow_horizontal = 0
 focus_mode = 1
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_qehak")
 texture = ExtResource("2_4e8rs")
 stretch_mode = 2
 script = ExtResource("1_b00xn")

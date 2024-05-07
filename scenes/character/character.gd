@@ -29,11 +29,14 @@ func _ready():
 func _process(delta):
 	if is_dead:
 		return
+	if Global.is_final_invasion and auto_walk.is_stopped():
+		auto_walk.start()
 	if Input.is_action_just_pressed("left_mouse_click") && $Shooter.can_shoot && Global.CheckResources('bullet'):
 		var targ = get_global_mouse_position()
 		$Shooter.Shoot(targ)
 		Global.UpdateEconomy('bullet')
-		emit_signal("CharacterMoved")
+		if !Global.is_final_invasion:
+			emit_signal("CharacterMoved")
 		
 	if Global.is_inside_base and $Sprite2D.visible:
 		$Sprite2D.visible = false
@@ -111,7 +114,9 @@ func MoveToTile(tile):
 #		(self, global_position, 100, 200, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 #		global_position = active_tile[tile].global_position
 		active_tile = active_tile[tile]
-		emit_signal("CharacterMoved")
+		
+		if !Global.is_final_invasion:
+			emit_signal("CharacterMoved")
 	else:
 		return
 
@@ -138,7 +143,9 @@ func ActivateUseTile(tile):
 	is_going_to_use_tile = false
 	if active_tile[tile] and !active_tile[tile].is_active and tile_resource:
 		active_tile[tile].UseTile(tile_resource, true)
-		emit_signal("CharacterMoved")
+		
+		if !Global.is_final_invasion:
+			emit_signal("CharacterMoved")
 		tile_resource = null
 	else:
 		return
@@ -157,7 +164,9 @@ func ActivateRemoveTile(tile):
 	is_going_to_use_tile = false
 	if active_tile[tile] and active_tile[tile].is_active:
 		active_tile[tile].UseTile('default', false)
-		emit_signal("CharacterMoved")
+		
+		if !Global.is_final_invasion:
+			emit_signal("CharacterMoved")
 	else:
 		return
 

@@ -52,13 +52,15 @@ func StartText():
 	CharacterFocus(dialog_text_array[text_index].focus)
 	var t = 0
 	while displaying_text:
-		dialog_text.text += text_to_show[t]
+		if t >= text_to_show.length():
+			dialog_text.text = text_to_show
+		else:
+			dialog_text.text += text_to_show[t]
 		t += 1
 		displaying_text = dialog_text.text != text_to_show
 		await get_tree().create_timer(dialog_speed).timeout
 
 func StartDialog(text: Array, left: String, right: String, focus: String):
-	print('dialog started')
 	left_img_string = left
 	right_img_string = right
 	dialog_text_array = text

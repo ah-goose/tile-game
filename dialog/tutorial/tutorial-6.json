@@ -1,0 +1,25 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 4,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "Nice Work! Now get ready for the final invasion."
+			},
+			{
+				"focus": "right_",
+				"text": "The enemy will be here with their full force, your job is to defend and hold out as much as you can until reinforces get you out of here."
+			},
+			{
+				"focus": "right_",
+				"text": "Hopefully you created enough turrets to help you out."
+			},
+			{
+				"focus": "right_",
+				"text": "Good luck, I'm counting on you."
+			},
+		]
+	}
+}

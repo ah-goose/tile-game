@@ -13,12 +13,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.is_final_invasion and deleting:
+		RemoveCountDown()
 	if !tileMap:
 		var tile_map = get_tree().get_root().get_node('Overworld_tilemap')
 		if tile_map:
 			tileMap = tile_map
 			tileMap.connect("CharacterMovedOverview", Callable(self, "CountDown"))
 			tileMap.connect("ResetCountdown", Callable(self, "SetUpIndicators"))
+			tileMap.connect("LIStarted", Callable(self, "RemoveCountDown"))
 			SetUpIndicators()
 			set_process(false)
 
@@ -68,3 +71,10 @@ func CountDown():
 		Hbox.erase(to_del)
 		to_del.queue_free()
 		$bg.scale.y -= 1.75
+
+func RemoveCountDown():
+	deleting = false
+	if len(indicators) > 0:
+		for i in indicators:
+			indicators.erase(i)
+			i.queue_free()

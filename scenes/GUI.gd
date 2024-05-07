@@ -3,16 +3,18 @@ extends CanvasLayer
 @onready var base_hp = $Control/HBoxContainer/Container/BaseHP
 @onready var prep_invasion = $Control/HBoxContainer/Container/PrepInvasion
 
-var is_preping = true
+var is_preping = false
 var is_invading = false
 var base : HomeBase
+var final_invasion_duration : int
 
 signal PrepDone
 signal InvasionDone
 
 func _ready():
 	var overworld = get_tree().get_root().get_node('Overworld_tilemap')
-	connect("PrepDone", Callable(overworld, '_on_prep_phase_timeout'))
+	final_invasion_duration = overworld.final_duration
+	connect("PrepDone", Callable(overworld, 'CompleteLevel'))
 	connect("InvasionDone", Callable(overworld, '_on_invasion_duration_timeout'))
 
 func _physics_process(delta):
@@ -32,14 +34,14 @@ func _physics_process(delta):
 	if is_preping:
 		is_preping = false
 		var prep_tween = create_tween()
-		prep_tween.tween_property(prep_invasion, 'value', 160, 60)
+		prep_tween.tween_property(prep_invasion, 'value', 160, final_invasion_duration)
 		prep_tween.tween_callback(self.FinishPreping)
-		
-	if Global.is_invasion_phase and is_invading:
-		is_invading = false
-		var invasion_tween = create_tween()
-		invasion_tween.tween_property(prep_invasion, 'value', 0, 60)
-		invasion_tween.tween_callback(self.FinishInvasion)
+	
+#	if Global.is_invasion_phase and is_invading:
+#		is_invading = false
+#		var invasion_tween = create_tween()
+#		invasion_tween.tween_property(prep_invasion, 'value', 0, 60)
+#		invasion_tween.tween_callback(self.FinishInvasion)
 		
 
 func UpdateResource(resource, amount, max):

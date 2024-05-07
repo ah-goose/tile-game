@@ -21,18 +21,27 @@ var eb_tile_x
 var eb_tile_y
 
 var total_invasions = 5
-var to_next_invasion = 0
+
 var to_next_invasion_count = -1
 
 var invader_spawn_rate = 0.75
 var target_invasion
-var invasion_wave = 1
-var number_of_invaders = 5
+
 var invader_queue = 5
 var is_invading = false
 var invading_count_down = false
 var invader = preload("res://scenes/zombies/invader.tscn")
 var add_invader_frequency = 1.5
+var level_completed = false
+
+@export_group("invasion_details")
+@export var number_of_invaders : int
+@export var next_invasion_steps : int
+@export var increase_invaders_by : int
+@export var invasion_prep_duration : float
+@export var final_duration := 60
+var invasion_wave = 1
+var to_next_invasion := 0
 
 @export_group("Dialog Settings")
 @export var dialog_files : Array[String]
@@ -51,11 +60,12 @@ var dialog_focus := 0
 @onready var spawn_invader = $SpawnInvader
 @onready var prep_phase = $PrepPhase
 @onready var target_invasion_indicator = $target_invasion
-
+@onready var first_invasion_start = $FirstInvasionStart
 
 var rnd = RandomNumberGenerator.new()
 signal CharacterMovedOverview
 signal ResetCountdown
+signal LIStarted
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.grid_size_x = tilemap_size[0]
@@ -69,7 +79,8 @@ func _ready():
 #	SetUpNextInvasion()
 #	SetUpZombie()
 	SetUpDialog()
-	
+	first_invasion_start.wait_time = invasion_prep_duration
+	first_invasion_start.start()
 	Dialog.connect("DialogComplete", Callable(self, '_dialog_completed') )
 	target_invasion_indicator.get_node('AnimationPlayer').play('pulse')
 	target_invasion_indicator.visible = false
@@ -184,18 +195,29 @@ func NextInvasionTile():
 		tile_choosen = available_tiles[tile_choosen_coords]
 	target_invasion = tile_choosen
 	target_invasion_indicator.position = target_invasion.position
-	invader_queue = 5
+	invader_queue = 2 if Global.is_final_invasion else 5
 
 func SetUpNextInvasion():
 	NextInvasionTile()
-	to_next_invasion = 10
+	to_next_invasion = 30
 	to_next_invasion_count = 0
-	number_of_invaders = 5 * invasion_wave
+	number_of_invaders = ceil(number_of_invaders * increase_invaders_by)
 	is_invading = false
 	target_invasion_indicator.position = target_invasion.position
 	target_invasion_indicator.visible = false
 	invasion_wave += 1
 	emit_signal("ResetCountdown")
+
+func SetUpFinalInvasion():
+	NextInvasionTile()
+	to_next_invasion = 0
+	to_next_invasion_count = 0
+	number_of_invaders = 100000
+	invader_queue = 2
+	is_invading = true
+	target_invasion_indicator.position = target_invasion.position
+	target_invasion_indicator.visible = true
+	emit_signal("LIStarted")
 
 func StartInvasion():
 	print('starting invading')
@@ -266,3 +288,5 @@ func _on_spawn_invader_timeout():
 func _dialog_completed():
 	print('dialog completed')
 	get_tree().paused = false
+	if level_completed:
+		pass

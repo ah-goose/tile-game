@@ -77,7 +77,6 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "cvxcvdfsdfcvxcvx"
 fit_content = true
 scroll_following = true
 tab_size = 2
