@@ -18,6 +18,7 @@ shader_parameter/flashState = 0.31
 script = ExtResource("1_i31am")
 base = NodePath("home_base")
 character_origin = Array[int]([80, 80])
+earnings = 300
 number_of_invaders = 5
 increase_invaders_by = 2
 invasion_prep_duration = 180.0

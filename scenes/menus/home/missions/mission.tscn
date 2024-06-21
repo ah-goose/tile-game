@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://4dhtlo7cwuta"]
+
+[ext_resource type="Script" path="res://scenes/menus/home/missions/mission.gd" id="1_njvk8"]
+
+[node name="mission" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_njvk8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="mission_name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
+text = "MISSION 1"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="mission_description" type="Label" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Difficulty: *
+Reward: $3000"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Start mission"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_select_mission"]

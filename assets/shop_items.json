@@ -1,0 +1,11 @@
+[
+	{"cost": 1000, "item_name": "Terraverite Facility Lvl. 2", "item_description": "Lower the cost of a Terraverite facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "rock", "material": ["gems"], "amount": 2}, "owned": true},
+	{"cost": 1000, "item_name": "Aetherium Facility Lvl. 2", "item_description": "Lower the cost of a Aetherium facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "trees", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 1000, "item_name": "Emberstone Facility Lvl. 2", "item_description": "Lower the cost of a Emberstone facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "farm", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 2000, "item_name": "Terraverite Facility Lvl. 3", "item_description": "Lower the cost of a Terraverite facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "rock", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 2000, "item_name": "Aetherium Facility Lvl. 3", "item_description": "Lower the cost of a Aetherium facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "trees", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 2000, "item_name": "Emberstone Facility Lvl. 3", "item_description": "Lower the cost of a Emberstone facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "farm", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 3000, "item_name": "Terraverite Facility Lvl. 4", "item_description": "Lower the cost of a Terraverite facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "rock", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 3000, "item_name": "Aetherium Facility Lvl. 4", "item_description": "Lower the cost of a Aetherium facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "trees", "material": ["gems"], "amount": 2}, "owned": false},
+	{"cost": 3000, "item_name": "Emberstone Facility Lvl. 4", "item_description": "Lower the cost of a Emberstone facility by 2 gems", "action": "ReduceResourceCost", "params": {"resource": "farm", "material": ["gems"], "amount": 2}, "owned": false}
+]

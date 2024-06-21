@@ -35,9 +35,9 @@ func MoveCamera(delta):
 	var center_point = get_screen_center_position()
 	var mouse_pos = get_global_mouse_position() - center_point
 	if mouse_pos:
-		if mouse_pos.x < -(screen_x/(zoom_in * 2)) and abs(mouse_pos.x) > (screen_x/(zoom_in * 2)) - 8:
+		if mouse_pos.x <= -(screen_x/(zoom_in * 2)) and abs(mouse_pos.x) < (screen_x/(zoom_in * 2)) + 8:
 			position.x -= ceil(1 * 160 * delta)
-		if mouse_pos.x > (screen_x/(zoom_in * 2))  and abs(mouse_pos.x) > (screen_x/(zoom_in * 2)) - 8:
+		if mouse_pos.x >= (screen_x/(zoom_in * 2))  and abs(mouse_pos.x) < (screen_x/(zoom_in * 2)) + 8:
 			position.x += ceil(1 * 160 * delta)
 		if mouse_pos.y <= -(screen_y/(zoom_in * 2)) and abs(mouse_pos.y) > (screen_y/(zoom_in * 2)) - 8:
 			position.y -= ceil(1 * 160 * delta)

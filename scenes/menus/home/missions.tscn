@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvdknbl4d3yju"]
+
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="1_1kkpa"]
+[ext_resource type="Script" path="res://scenes/menus/home/missions.gd" id="1_vaukf"]
+[ext_resource type="PackedScene" uid="uid://4dhtlo7cwuta" path="res://scenes/menus/home/missions/mission.tscn" id="3_1o5np"]
+
+[node name="Missions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1kkpa")
+script = ExtResource("1_vaukf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="mission" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
+layout_mode = 2
+size_flags_vertical = 3
+mission_name = "Mission 1"
+mission_description = "Difficulty: * 
+Reward: $3000"
+mission_scene = "res://scenes/levels/low_level/low_level.tscn"
+
+[node name="mission2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
+layout_mode = 2
+size_flags_vertical = 3
+mission_name = "Mission 2"
+mission_description = "Difficulty: **
+Reward: $6000"
+mission_scene = "res://scenes/levels/mid_level/mid_level.tscn"

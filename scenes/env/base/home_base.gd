@@ -27,14 +27,14 @@ func GetHit(dmg: int):
 	if hp_bar:
 		hp_bar.TakeDamage(dmg)
 #	hp -= dmg
-#	if hp <= 0:
-#		print('GAME OVER!!!!')
-#		Global.game_over = true
-##		queue_free()
-#		# Game over
+	if hp <= 0:
+		print('GAME OVER!!!!')
+		Global.game_over = true
+		Global.mission_complete = false
+#		queue_free()
+		# Game over
 
 func _LoseGame():
-	print('GAME OVER!!!!')
 	Global.game_over = true
 
 func Shoot():

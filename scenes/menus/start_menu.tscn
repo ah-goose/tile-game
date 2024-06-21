@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck8b4s84vo1kl"]
 
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_l0twi"]
-[ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="2_1yvkq"]
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="1_t831s"]
 
 [node name="start_menu" type="Control"]
 layout_mode = 3
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_t831s")
 script = ExtResource("1_l0twi")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -24,17 +25,17 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_1yvkq")
+theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_1yvkq")
+theme_override_font_sizes/font_size = 24
 text = "Exit Game"
 
 [node name="FullScreen" type="CheckButton" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_1yvkq")
+theme_override_font_sizes/font_size = 16
 text = "Set To Fullscreen"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

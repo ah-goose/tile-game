@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://pdovrpdo7kq3"]
+
+[ext_resource type="Script" path="res://scenes/menus/items/item.gd" id="1_l0pps"]
+
+[node name="Item" type="PanelContainer"]
+offset_right = 642.0
+offset_bottom = 56.0
+size_flags_horizontal = 3
+script = ExtResource("1_l0pps")
+
+[node name="Sections" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Sections"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
+text = "Facilities"
+autowrap_mode = 2
+
+[node name="Cost Panel" type="PanelContainer" parent="Sections"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sections/Cost Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Sections/Cost Panel/VBoxContainer"]
+layout_mode = 2
+text = "cost"
+
+[node name="Cost" type="Label" parent="Sections/Cost Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "$2000"
+
+[node name="Control" type="PanelContainer" parent="Sections"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Description" type="Label" parent="Sections/Control"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Lower the cost on creating a facility by 2 gems."
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Sections"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "buy"
+
+[connection signal="pressed" from="Sections/Button" to="." method="_on_buy_item"]

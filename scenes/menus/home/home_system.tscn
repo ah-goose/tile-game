@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt6kuu4ogpth2"]
+
+[ext_resource type="Script" path="res://scenes/menus/home/home_system.gd" id="1_flwu3"]
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="2_2vjdr"]
+
+[node name="System" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flwu3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -62.0
+offset_right = 88.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2vjdr")
+
+[node name="Return" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_2vjdr")
+text = "Return To Game"
+flat = true
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("2_2vjdr")
+text = "Back To Title Screen"
+flat = true
+
+[node name="Leave" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back To Desktop"
+flat = true
+
+[node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Fullscreen"
+
+[connection signal="pressed" from="VBoxContainer/Leave" to="." method="_on_leave_pressed"]

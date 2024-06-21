@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://cid27gvrg5qoj"]
+
+[ext_resource type="Script" path="res://scenes/menus/home/shop.gd" id="1_w2q18"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w2q18")
+
+[node name="Items" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = -12.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Currency" type="HBoxContainer" parent="Items"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Items/Currency"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Currency: "
+
+[node name="amount" type="Label" parent="Items/Currency"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "$1000"
+
+[node name="Items Container" type="ScrollContainer" parent="Items"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Item List" type="VBoxContainer" parent="Items/Items Container"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3

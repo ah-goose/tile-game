@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://toxlugnbjw5w"]
+
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="1_gtp6v"]
+[ext_resource type="PackedScene" uid="uid://cid27gvrg5qoj" path="res://scenes/menus/home/shop.tscn" id="1_lo7i6"]
+[ext_resource type="PackedScene" uid="uid://cvdknbl4d3yju" path="res://scenes/menus/home/missions.tscn" id="2_arce7"]
+[ext_resource type="PackedScene" uid="uid://dt6kuu4ogpth2" path="res://scenes/menus/home/home_system.tscn" id="3_t7343"]
+
+[node name="home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gtp6v")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = -16.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+all_tabs_in_front = true
+
+[node name="Missions" parent="TabContainer" instance=ExtResource("2_arce7")]
+layout_mode = 2
+
+[node name="Shop" parent="TabContainer" instance=ExtResource("1_lo7i6")]
+visible = false
+layout_mode = 2
+
+[node name="System" parent="TabContainer" instance=ExtResource("3_t7343")]
+visible = false
+layout_mode = 2

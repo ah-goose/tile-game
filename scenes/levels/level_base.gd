@@ -1,5 +1,6 @@
 extends Node2D
 
+var finished_screen = preload('res://scenes/menus/level_done/level_done.tscn')
 var tile = preload("res://scenes/tile.tscn")
 var tiles = {}
 var all_tiles = []
@@ -13,6 +14,7 @@ var all_buildings = []
 var active_zombie
 @export var base : HomeBase
 @export var character_origin : Array[int] = [0, 0]
+@export var earnings : int
 var base_tile_x
 var base_tile_y
 
@@ -85,6 +87,10 @@ func _ready():
 	target_invasion_indicator.get_node('AnimationPlayer').play('pulse')
 	target_invasion_indicator.visible = false
 
+func _process(delta):
+	if Global.game_over:
+		LevelFinished()
+		
 func SetUpCamera():
 	camera.enabled = true
 	camera.limit_top = -100
@@ -131,7 +137,7 @@ func GrassTileSetup(coords : Vector2i):
 	tile_map.set_cell(0, coords, 0, Vector2i(tile_x, 4))
 
 func SetUpCharacter():
-	print('tiles ', tiles[8][18])
+	print('setting up character')
 	var mid_point_x = int(floor(base.global_position.x / Global.grid_cell_size) - 2)
 	var mid_point_y = int(floor(base.global_position.y / Global.grid_cell_size) - 2)
 	print('character mid points ', mid_point_x, ' ', mid_point_y)
@@ -239,7 +245,12 @@ func AddNewInvader():
 	add_child(new_zom)
 	number_of_invaders -= 1
 	
-
+func LevelFinished():
+	get_tree().paused = true
+	var screen = finished_screen.instantiate()
+	screen.mission_earnings = earnings if Global.mission_complete else 0
+	get_tree().root.add_child(screen)
+	
 func _character_moved():
 	emit_signal("CharacterMovedOverview")
 	if !is_invading and to_next_invasion_count < to_next_invasion and invading_count_down:
@@ -289,4 +300,4 @@ func _dialog_completed():
 	print('dialog completed')
 	get_tree().paused = false
 	if level_completed:
-		pass
+		LevelFinished()

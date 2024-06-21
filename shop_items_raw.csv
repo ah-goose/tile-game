@@ -1,0 +1,10 @@
+﻿Item Name,Cost,Description,Function Name,Params
+Terraverite Facility Lvl. 2,1000,Lower the cost of a Terraverite facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Aetherium Facility Lvl. 2,1000,Lower the cost of a Aetherium facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Emberstone Facility Lvl. 2,1000,Lower the cost of a Emberstone facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Terraverite Facility Lvl. 3,2000,Lower the cost of a Terraverite facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Aetherium Facility Lvl. 3,2000,Lower the cost of a Aetherium facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Emberstone Facility Lvl. 3,2000,Lower the cost of a Emberstone facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Terraverite Facility Lvl. 4,3000,Lower the cost of a Terraverite facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Aetherium Facility Lvl. 4,3000,Lower the cost of a Aetherium facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"
+Emberstone Facility Lvl. 4,3000,Lower the cost of a Emberstone facility by 2 gems,ReduceResourceCost,"{""resource"": ""rock"", ""material"": [""gems""], ""amount"": 2}, ""owned"": false}"

@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5dosxw8kqqt3"]
+
+[ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="1_43hgd"]
+[ext_resource type="Script" path="res://scenes/menus/level_done/level_done.gd" id="2_yq0ek"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("2_yq0ek")
+
+[node name="level_done" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_43hgd")
+
+[node name="ColorRect" type="ColorRect" parent="level_done"]
+process_mode = 3
+modulate = Color(0.0431373, 0.0588235, 0.137255, 0.462745)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="level_done"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level_done/CenterContainer"]
+layout_mode = 2
+
+[node name="Earnings" type="VBoxContainer" parent="level_done/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TerraveriteContainer" type="HBoxContainer" parent="level_done/CenterContainer/VBoxContainer/Earnings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/TerraveriteContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Terraverite"
+
+[node name="amount" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/TerraveriteContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="AetheriumContainer" type="HBoxContainer" parent="level_done/CenterContainer/VBoxContainer/Earnings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/AetheriumContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Aetherium"
+
+[node name="amount" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/AetheriumContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="EmberstoneContainer" type="HBoxContainer" parent="level_done/CenterContainer/VBoxContainer/Earnings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/EmberstoneContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Emberstone"
+
+[node name="amount" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/EmberstoneContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="MissionComplete" type="HBoxContainer" parent="level_done/CenterContainer/VBoxContainer/Earnings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/MissionComplete"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+
+[node name="amount" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/MissionComplete"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="TotalContainer" type="HBoxContainer" parent="level_done/CenterContainer/VBoxContainer/Earnings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/TotalContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Total"
+
+[node name="amount" type="Label" parent="level_done/CenterContainer/VBoxContainer/Earnings/TotalContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="Buttons" type="HBoxContainer" parent="level_done/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoHome" type="Button" parent="level_done/CenterContainer/VBoxContainer/Buttons"]
+process_mode = 3
+layout_mode = 2
+text = "Save & Go home"
+
+[connection signal="pressed" from="level_done/CenterContainer/VBoxContainer/Buttons/GoHome" to="." method="_on_go_home_pressed"]

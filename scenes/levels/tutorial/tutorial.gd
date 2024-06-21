@@ -23,7 +23,7 @@ var dialog_triggers = {
 	},
 	'complete': {
 		'complete': false,
-		'diallog_index': 6
+		'dialog_index': 6
 	}
 }
 @onready var gui = $GUI
@@ -64,6 +64,7 @@ func StartEndGame():
 func CompleteLevel():
 	print('completed game')
 	level_completed = true
+	Global.tutorial_complete = true
 	TriggerTutorial("complete")
 
 func _on_first_invasion_start_timeout():

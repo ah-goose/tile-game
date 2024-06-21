@@ -1,7 +1,10 @@
 extends Node
 
+signal EarningChange
+
 @onready var astar_grid = AStarGrid2D.new()
 var rand = RandomNumberGenerator.new()
+var file_name = 'user://saved_game.dat'
 var number_of_gems = 0
 var grid_size_x = 30
 var grid_size_y = 20
@@ -11,10 +14,42 @@ var is_invasion_phase = false
 var is_prep_phase = true
 var is_inside_base = false
 var is_final_invasion = false
+
+var default_resources = {
+	'resources': {
+		'rock': 0,
+		'wood': 0,
+	#	'water': 0,
+		'food': 0,
+		'workers': 1,
+		'gems': 0
+	},
+	'resources_max': {
+		'rock': 0,
+		'wood': 0,
+	#	'water': 0,
+		'food': 0,
+		'workers': 1000,
+		'gems': 0
+	},
+	'resources_aquire_rate': {
+		'rock': 1,
+		'wood': 1,
+		'water': 1,
+		'food': 1,
+		'gems': 1,
+		'workers': 1
+	}
+}
 var resources_translation = {
 	'rock': 'Terraverite',
 	'wood': 'Aetherium',
 	'food': 'Emberstone'
+}
+var resources_translation_rev = {
+	'Terraverite': 'rock',
+	'Aetherium': 'wood',
+	'Emberstone': 'food'
 }
 var resources = {
 	'rock': 0,
@@ -46,7 +81,7 @@ var resource_cost = {
 	'trees': {'gems': 25},
 	'house': {'gems': 25, 'food': 50},
 	'farm': {'gems': 25},
-	'tower': {'gems': 1},
+	'tower': {'gems': 20},
 #	'tower': {'wood': 50, 'rock': 50, 'food': 30},
 	'wall': {'wood': 10, 'rock': 10},
 	'door': {'wood': 15, 'rock': 15},
@@ -61,6 +96,14 @@ var tower_amo = 5
 
 var key_resource_focus = null
 var game_over = false
+
+# Important game mechanics
+var total_earnings := 1000
+
+var store_items = []
+var tutorial_complete = false
+var mission_complete = false
+
 func _ready():
 	RandomizeTilemapSize()
 	astar_grid.size = Vector2i((grid_cell_size * grid_size_x), (grid_cell_size * grid_size_y))
@@ -70,6 +113,40 @@ func _ready():
 	astar_grid.default_estimate_heuristic = 3
 	astar_grid.diagonal_mode = 1
 	astar_grid.update()
+	var file = FileAccess.get_file_as_string("res://assets/shop_items.json")
+	store_items = JSON.parse_string(file)
+	LoadData()
+
+func LoadData():
+	if FileAccess.file_exists(file_name):
+		var file = FileAccess.open(file_name, FileAccess.READ)
+		var data = file.get_var()
+		if data:
+			resource_cost = data.resource_cost
+			tower_dmg = data.tower_dmg
+			tower_radius = data.tower_radius
+			tower_max_amo = data.tower_max_amo
+			tower_amo = data.tower_amo
+			total_earnings = data.total_earnings
+			store_items = data.store_items
+			tutorial_complete = data.tutorial_complete
+		file.close()
+
+func SaveData():
+	var to_save = {
+		'resource_cost': resource_cost,
+		'tower_dmg': tower_dmg,
+		'tower_radius': tower_radius,
+		'tower_max_amo': tower_max_amo,
+		'tower_amo': tower_amo,
+		'total_earnings': total_earnings,
+		'store_items': store_items,
+		'tutorial_complete': tutorial_complete
+	}
+	var file = FileAccess.open(file_name, FileAccess.WRITE)
+	file.store_var(to_save)
+	file.close()
+
 
 func UpdateTileGrid(grid_id, is_active):
 	var from_grid = Vector2i(grid_id.x - grid_cell_size/2, grid_id.y - grid_cell_size/2)
@@ -99,6 +176,11 @@ func RandomizeTilemapSize():
 	grid_size_x = rand.randi_range(30, 60)
 	grid_size_y = rand.randi_range(30, 60)
 
+func ResetResources():
+	resources = default_resources['resources']
+	resources_max = default_resources['resources_max']
+	resources_aquire_rate = default_resources['resources_aquire_rate']
+
 func ChangeScene(scene):
 	var remove_scene = get_tree().get_root().get_child(0)
 	get_tree().change_scene_to_file(scene)
@@ -111,3 +193,12 @@ func CheckResources(resource):
 		else:
 			is_available = resources[n] >=  resource_cost[resource][n]
 	return is_available
+
+func ReduceResourceCost(bus):
+	var resource = bus.resource 
+	var material = bus.material
+	var amount = bus.amount
+	for m in material:
+		resource_cost[resource][m] -= amount
+	emit_signal('EarningChange')
+	SaveData()

@@ -12,7 +12,10 @@ func _process(delta):
 
 
 func _on_start_pressed():
-	Global.ChangeScene("res://scenes/invasions.tscn")
+	if !Global.tutorial_complete:
+		Global.ChangeScene("res://scenes/levels/tutorial/tutorial.tscn")
+	else:
+		Global.ChangeScene("res://scenes/menus/home.tscn")
 	
 
 

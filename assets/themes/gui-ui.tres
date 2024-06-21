@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cvti4wwvevvmt"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cvti4wwvevvmt"]
 
 [ext_resource type="FontFile" uid="uid://qf8rqahobluw" path="res://assets/themes/Kenney Mini Square.ttf" id="1_53wjx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cek6q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tmen"]
 bg_color = Color(0.0980392, 0.113725, 0.121569, 1)
@@ -18,8 +21,10 @@ Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/line_spacing = 1
 Label/constants/outline_size = 0
 Label/font_sizes/font_size = 8
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_cek6q")
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
 ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_3tmen")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_5qki0")
+TabContainer/font_sizes/font_size = 16
