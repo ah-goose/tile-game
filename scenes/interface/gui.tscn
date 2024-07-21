@@ -244,4 +244,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="in_game_pause" parent="Control" instance=ExtResource("19_k2tf4")]
+[node name="in_game_pause" parent="Control" node_paths=PackedStringArray("gui") instance=ExtResource("19_k2tf4")]
+gui = NodePath("../..")

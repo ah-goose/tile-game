@@ -1,4 +1,5 @@
 extends Node2D
+@export var gui : CanvasLayer
 
 func _start():
 	print('Is full screen', Settings.fullscreen)
@@ -18,10 +19,12 @@ func ShowMenu():
 	$VBoxContainer/Fullscreen.set_pressed_no_signal(Settings.fullscreen)
 	$ColorRect.visible = true
 	$VBoxContainer.visible = true
+	gui.layer = 5
 
 func HideMenu():
 	$ColorRect.visible = false
 	$VBoxContainer.visible = false
+	gui.layer = 1
 
 func _on_return_pressed():
 	print('return')

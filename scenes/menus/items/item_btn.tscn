@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c37a6bojqgcco"]
+
+[ext_resource type="Texture2D" uid="uid://ocvb7newbhdj" path="res://assets/GUI/resources/btn-bg3.png" id="1_leu4t"]
+[ext_resource type="Texture2D" uid="uid://43v5g4ql6c67" path="res://assets/GUI/resources/btn-bg3-hover.png" id="2_iaxep"]
+[ext_resource type="Script" path="res://scenes/menus/items/item_btn.gd" id="3_6wl0p"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 96.0
+offset_bottom = 96.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_leu4t")
+texture_hover = ExtResource("2_iaxep")
+script = ExtResource("3_6wl0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(48, 48)
+scale = Vector2(4.5, 4.5)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

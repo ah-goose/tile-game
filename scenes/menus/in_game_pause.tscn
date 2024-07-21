@@ -5,13 +5,17 @@
 
 [node name="in_game_pause" type="Node2D"]
 process_mode = 3
+process_priority = 5
+process_physics_priority = 5
+z_index = 1000
+z_as_relative = false
 script = ExtResource("1_ootck")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 custom_minimum_size = Vector2(300, 0)
 offset_right = 304.0
-offset_bottom = 360.0
+offset_bottom = 384.0
 size_flags_vertical = 3
 color = Color(0.121569, 0.121569, 0.129412, 0.862745)
 

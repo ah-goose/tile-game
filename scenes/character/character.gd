@@ -1,7 +1,8 @@
 extends Area2D
 class_name Character
 signal CharacterMoved
-
+signal view_options
+signal hide_options
 var is_active = true
 var active_tile
 
@@ -10,6 +11,7 @@ var is_moving = false
 var action_tile_use = 'add'
 var tile_resource = null
 var last_tile_resource_selected = null
+var res_options = false
 
 var last_location : Vector2i
 var can_enter_base = false
@@ -45,9 +47,9 @@ func _process(delta):
 	
 	if can_enter_base and Global.is_invasion_phase:
 		$to_enter.visible = true
-		if Input.is_action_just_pressed("use_action"):
-			Global.is_inside_base = true
-			$to_enter.visible = false
+		#if Input.is_action_just_pressed("use_action"):
+		#	Global.is_inside_base = true
+		#	$to_enter.visible = false
 	else:
 		$to_enter.visible = false
 	
@@ -75,7 +77,11 @@ func _process(delta):
 	else:
 		HighlightTiles('remove')
 	if Input.is_action_just_pressed("use_action"):
-		is_going_to_use_tile = !is_going_to_use_tile
+		res_options = !res_options
+		if res_options:
+			emit_signal('view_options')
+		else:
+			emit_signal('hide_options')
 		action_tile_use = 'add'
 	if Input.is_action_just_pressed('other_action'):
 		is_going_to_use_tile = !is_going_to_use_tile
@@ -176,6 +182,8 @@ func EquipResource(res, equip):
 		last_tile_resource_selected = res
 	else:
 		tile_resource = null
+	res_options = false
+	emit_signal('hide_options')
 
 func EquipStoredResource():
 	if last_tile_resource_selected == null:

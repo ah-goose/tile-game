@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="1_mesvn"]
 [ext_resource type="Script" path="res://scenes/menus/items/item_selection.gd" id="2_005b7"]
-[ext_resource type="Texture2D" uid="uid://cr8l3r3275ap1" path="res://assets/buildings/farm-2.png" id="3_714p0"]
+[ext_resource type="PackedScene" uid="uid://c37a6bojqgcco" path="res://scenes/menus/items/item_btn.tscn" id="3_hhwq1"]
 
 [node name="item_selection" type="Control"]
 layout_mode = 3
@@ -22,14 +22,164 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="build_description" type="Label" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-text = "this is a sample text"
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="build_description" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
-offset_left = 220.0
-offset_top = 152.0
-offset_right = 236.0
-offset_bottom = 168.0
-texture_normal = ExtResource("3_714p0")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "this is a sample text"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="btn_list" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FarmBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -164.0
+offset_right = 64.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/farm-2.png"
+value = "farm"
+short_description = "This will generate Emberstone which is a resource to help create more robots."
+resource_name = "Emberstone"
+
+[node name="RockBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = -138.0
+offset_right = 200.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/mountain-4.png"
+value = "rock"
+short_description = "This will generate Terraverite which is a resource that is used for bullets for your weapon."
+resource_name = "Terraverite"
+
+[node name="TreeBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -138.0
+offset_right = -72.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/tree-4.png"
+value = "trees"
+short_description = "This will generate Aetherium which is a resource that is used for creating walls, doors and towers."
+resource_name = "Terraverite"
+
+[node name="HouseBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 144.0
+offset_top = -34.0
+offset_right = 240.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/house-3.png"
+value = "house"
+short_description = "This building will have add a new worker and will generate more resources per action."
+resource_name = "Robot Worker Housing"
+
+[node name="WallBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -34.0
+offset_right = -104.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/wall-1.png"
+value = "wall"
+short_description = "Walls will help protect your buildings, when the enemy crashes into a wall, the enemy will take damage as well. You cannot walk through walls"
+resource_name = "Wall"
+
+[node name="DoorBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 70.0
+offset_right = -72.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/wall-door-1.png"
+value = "door"
+short_description = "Door is a wall that you can walk through."
+resource_name = "Gate"
+
+[node name="TowerBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = 70.0
+offset_right = 200.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+image_src = "res://assets/buildings/tower-2.png"
+value = "tower"
+short_description = "This Turrent has a radius that will shoot any enemy that comes inside the radius."
+resource_name = "Turrent"
+
+[node name="CancelBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 100.0
+offset_right = 64.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+value = "unequip"
+short_description = "Unequip"
