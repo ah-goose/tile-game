@@ -93,10 +93,10 @@ func _process(delta):
 		
 func SetUpCamera():
 	camera.enabled = true
-	camera.limit_top = -100
-	camera.limit_left = -100
-	camera.limit_right = get_viewport_rect().size.x if get_viewport_rect().size.x > ($'/root/Global'.grid_size_x * $'/root/Global'.grid_cell_size) else ($'/root/Global'.grid_size_x * $'/root/Global'.grid_cell_size) + 50
-	camera.limit_bottom = get_viewport_rect().size.y if get_viewport_rect().size.y > ($'/root/Global'.grid_size_y * $'/root/Global'.grid_cell_size) else ($'/root/Global'.grid_size_y * $'/root/Global'.grid_cell_size) + 50
+	camera.limit_top = -150
+	camera.limit_left = -150
+	camera.limit_right = get_viewport_rect().size.x if get_viewport_rect().size.x > ($'/root/Global'.grid_size_x * $'/root/Global'.grid_cell_size) else ($'/root/Global'.grid_size_x * $'/root/Global'.grid_cell_size) + 100
+	camera.limit_bottom = get_viewport_rect().size.y if get_viewport_rect().size.y > ($'/root/Global'.grid_size_y * $'/root/Global'.grid_cell_size) else ($'/root/Global'.grid_size_y * $'/root/Global'.grid_cell_size) + 100
 #	camera.zoom = Vector2(2, 2)
 	camera.make_current()
 

@@ -135,16 +135,19 @@ size_flags_vertical = 0
 theme_override_constants/separation = 0
 
 [node name="bg" type="Sprite2D" parent="Control/right_menu/rows"]
+visible = false
 position = Vector2(0, 5)
 scale = Vector2(1, 18)
 texture = ExtResource("8_iai35")
 centered = false
 
 [node name="top_frame" type="TextureRect" parent="Control/right_menu/rows"]
+visible = false
 layout_mode = 2
 texture = ExtResource("8_k1826")
 
 [node name="row1" type="HBoxContainer" parent="Control/right_menu/rows"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 2
@@ -162,6 +165,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 
 [node name="row2" type="HBoxContainer" parent="Control/right_menu/rows"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 2
@@ -171,6 +175,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 
 [node name="row3" type="HBoxContainer" parent="Control/right_menu/rows"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 2
@@ -188,6 +193,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Control/right_menu/rows"]
+visible = false
 layout_mode = 2
 texture = ExtResource("16_kkplk")
 

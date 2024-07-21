@@ -25,7 +25,7 @@ func _process(delta):
 func set_movement_limits():
 	screen_x = get_viewport_rect().size.x
 	screen_y = get_viewport_rect().size.y
-	limit_r = get_limit(limit_right) - (screen_x / 2)
+	limit_r = get_limit(limit_right) - (screen_x / 2) 
 	limit_l = get_limit(limit_left) + (screen_x / 2)
 	limit_t = get_limit(limit_top) + (screen_y / 2)
 	limit_b = get_limit(limit_bottom) - (screen_y / 2)
@@ -35,14 +35,22 @@ func MoveCamera(delta):
 	var center_point = get_screen_center_position()
 	var mouse_pos = get_global_mouse_position() - center_point
 	if mouse_pos:
-		if mouse_pos.x <= -(screen_x/(zoom_in * 2)) and abs(mouse_pos.x) < (screen_x/(zoom_in * 2)) + 8:
-			position.x -= ceil(1 * 160 * delta)
-		if mouse_pos.x >= (screen_x/(zoom_in * 2))  and abs(mouse_pos.x) < (screen_x/(zoom_in * 2)) + 8:
-			position.x += ceil(1 * 160 * delta)
-		if mouse_pos.y <= -(screen_y/(zoom_in * 2)) and abs(mouse_pos.y) > (screen_y/(zoom_in * 2)) - 8:
-			position.y -= ceil(1 * 160 * delta)
-		if mouse_pos.y >= (screen_y/(zoom_in * 2)) and abs(mouse_pos.y) > (screen_y/(zoom_in * 2)) - 8:
-			position.y += ceil(1 * 160 * delta)
+		if mouse_pos.x <= -(screen_x/2 - 16):
+			position.x -= ceil(160 * delta)
+		if mouse_pos.x >= (screen_x/2 - 16):
+			position.x += ceil(160 * delta)
+		if mouse_pos.y <= -(screen_y/2 - 16):
+			position.y -= ceil(160 * delta)
+		if mouse_pos.y >= (screen_y/2 - 16):
+			position.y += ceil(160 * delta)
+#		if mouse_pos.x <= -(screen_x/(zoom_in * 2)) and abs(mouse_pos.x) < (screen_x/(zoom_in * 2)) + 16:
+#			position.x -= ceil(1 * 160 * delta)
+#		if mouse_pos.x >= (screen_x/(zoom_in * 2))  and abs(mouse_pos.x) < (screen_x/(zoom_in * 2)) + 16:
+#			position.x -= ceil(1 * 160 * delta)
+#		if mouse_pos.y <= -(screen_y/(zoom_in * 2)) and abs(mouse_pos.y) > (screen_y/(zoom_in * 2)) - 16:
+#			position.y -= ceil(1 * 160 * delta)
+#		if mouse_pos.y >= (screen_y/(zoom_in * 2)) and abs(mouse_pos.y) > (screen_y/(zoom_in * 2)) - 16:
+#			position.y += ceil(1 * 160 * delta)
 
 func CenterOnCharacter(delta):
 	if Global.is_inside_base:
