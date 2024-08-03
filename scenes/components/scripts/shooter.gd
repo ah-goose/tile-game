@@ -22,7 +22,8 @@ func Shoot(target: Vector2):
 	bull.target = target
 	bull.damage = damage
 	bull.bullet_speed = bullet_speed
-	add_child(bull)
+	bull.global_position = global_position
+	get_tree().root.add_child(bull)
 	
 	bullet_count -= 1
 	if bullet_count <= 0:

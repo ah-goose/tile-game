@@ -4,8 +4,10 @@ signal construct_selection
 @export var player : Area2D
 
 var options_disabled := true
+var is_showing = false
 
 @onready var build_desc = $CenterContainer/VBoxContainer/build_description
+var btn_list = []
 
 var sample_text = 'This is a description\nthis is second line\nanother line'
 func _ready():
@@ -16,7 +18,7 @@ func _ready():
 	for btn in $btn_list.get_children():
 		btn.connect("show_description", Callable(self, '_on_show_description'))
 		btn.connect('hide_description', Callable(self, '_on_hide_description'))
-	
+	btn_list = get_node("btn_list").get_children()
 	HideOptions()
 
 func _process(delta):
@@ -40,13 +42,28 @@ func RemoveLabel():
 	get_tree().call_group('available_resources', 'queue_free')
 	
 func ShowOptions():
+	player.set_process(false)
 	self.modulate.a = 1
 	options_disabled = false
+	EnableBtn()
+	await get_tree().create_timer(1)
+	is_showing = true
+	
 
 func HideOptions():
 	self.modulate.a = 0
 	options_disabled = true
+	DisableBtn()
+	player.set_process(true)
+	is_showing = false
 
+func DisableBtn():
+	for b in btn_list:
+		b.disabled = true
+
+func EnableBtn():
+	for b in btn_list:
+		b.disabled = false
 
 
 func _on_show_description(short_description, res_out):
