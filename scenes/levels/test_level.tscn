@@ -54,7 +54,7 @@ layer_1/tile_data = PackedInt32Array()
 position = Vector2(128, 296)
 
 [node name="enemy_base" parent="." instance=ExtResource("8_5tyk4")]
-position = Vector2(192, 256)
+position = Vector2(288, 223)
 
 [node name="camera" parent="." instance=ExtResource("3_g1813")]
 

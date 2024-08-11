@@ -18,6 +18,7 @@ func _ready():
 	if image_src:
 		sprite_2d.texture = load(image_src)
 	if value and value != 'unequip':
+		print(Global.resource_cost)
 		resource_needs = Global.resource_cost[value]
 	print('just checking %s' % ['somthing'])
 	print(resource_needs.keys())

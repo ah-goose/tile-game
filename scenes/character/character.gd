@@ -87,7 +87,6 @@ func _process(delta):
 		is_going_to_use_tile = !is_going_to_use_tile
 		action_tile_use = 'remove'
 	if Input.is_action_just_pressed("get_last_resource"):
-		print('getting last resource')
 		if tile_resource == null:
 			EquipStoredResource()
 		else:

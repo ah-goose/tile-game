@@ -13,6 +13,7 @@ var steps_to_destination = 0
 
 func _ready():
 	self.connect('area_entered', Callable(self, '_on_zombie_body_entered'))
+	$AnimationPlayer.play("walking")
 	GetTarget()
 
 func _process(delta):
@@ -21,6 +22,8 @@ func _process(delta):
 	if Global.game_over:
 		set_process(false)
 		return
+	if not target:
+		GetTarget()
 		
 
 func _LostAllHP():
@@ -86,7 +89,7 @@ func GetTarget():
 					target = build
 			else:
 				target = build
-	path = Global.astar_grid.get_id_path(global_position, base.global_position)
+	path = Global.astar_grid.get_id_path(global_position, target.global_position)
 	
 	steps_to_destination = 0
 
@@ -118,7 +121,7 @@ func _on_zombie_body_entered(body):
 			if hp > 0 and body.hp <= 0:
 				buildings.erase(target)
 				target = null
-#				GetTarget()
+				GetTarget()
 
 
 func _on_area_entered(area):

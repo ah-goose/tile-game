@@ -1,16 +1,19 @@
 extends StaticBody2D
 
-var hp := 10
-var max_hp := 10
+signal TowerDestroyed
+var hp := 3
+var max_hp := 3
 var fire_frequency : float
 var target = null
 var target_options = []
 var bullet = preload("res://scenes/character/bullet.tscn")
-var bullet_capacity = 5.0
+var bullet_capacity = 0.0
 var bullets_left = 5.0
-var bullet_damage = 5.0
+var bullet_damage = 0.0
 var can_fire = true
 var radius := 10.0
+
+@export var hp_c : HPComponent
 
 @onready var reload_speed_timer = $reload_speed_timer
 @onready var fire_rate_timer = $fire_rate_timer
@@ -28,17 +31,21 @@ func _ready():
 func _process(delta):
 	if can_fire:
 		CheckTarget()
+	if hp_c.max_health != max_hp:
+		hp_c.hp = hp
+		hp_c.max_health = max_hp
 #	tower_1.visible = Global.is_invasion_phase
 		
 func TakeDamage(dmg):
-	hp -= dmg
-	if hp <= 0:
-		queue_free()
-		
+	print('taking damage in tower ', dmg)
+	hp_c.TakeDamage(dmg)
+
+func RecoverAid(aid: int):
+	hp_c.Recover(aid)
+
 func CheckTarget():
 	target_options = get_tree().get_nodes_in_group('invader')
 	for t in target_options:
-		print(abs(global_position.distance_to(t.global_position)), ' ', radius)
 		if abs(global_position.distance_to(t.global_position)) <= radius:
 			target = t
 			break
@@ -73,3 +80,8 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	tower_1.visible = false
+
+
+func _on_hp_lost_all_hp():
+	emit_signal('TowerDestroyed')
+#	queue_free()

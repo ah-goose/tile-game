@@ -73,6 +73,6 @@ wait_time = 180.0
 [node name="SpawnInvader" type="Timer" parent="."]
 
 [connection signal="BaseDestroyed" from="enemy_base" to="." method="StartEndGame"]
-[connection signal="timeout" from="FirstInvasionStart" to="." method="_on_first_invasion_start_timeout"]
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]
+[connection signal="timeout" from="FirstInvasionStart" to="." method="_on_first_invasion_start_timeout"]
 [connection signal="timeout" from="InvasionDuration" to="." method="_on_invasion_duration_timeout"]

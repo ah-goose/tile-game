@@ -33,6 +33,9 @@ func GetHit(dmg: int):
 		Global.mission_complete = false
 #		queue_free()
 		# Game over
+func RecoverAid(aid: int):
+	if hp_bar:
+		hp_bar.Recover(aid)
 
 func _LoseGame():
 	Global.game_over = true

@@ -146,9 +146,9 @@ offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
 image_src = "res://assets/buildings/wall-door-1.png"
-value = "door"
-short_description = "Door is a wall that you can walk through."
-resource_name = "Gate"
+value = "aid"
+short_description = "Restores HP to near by  buildings that have taken damage"
+resource_name = "Aid Tower"
 
 [node name="TowerBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
 layout_mode = 1

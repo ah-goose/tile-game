@@ -82,6 +82,9 @@ var resource_cost = {
 	'house': {'gems': 25, 'food': 50},
 	'farm': {'gems': 25},
 	'tower': {'gems': 20},
+	'chasers': {'rock': 30, 'wood': 30, 'food': 30},
+	'aid': {'gems': 20},
+#	'aid': {'rock': 35, 'wood': 35, 'food': 35},
 #	'tower': {'wood': 50, 'rock': 50, 'food': 30},
 	'wall': {'wood': 10, 'rock': 10},
 	'door': {'wood': 15, 'rock': 15},
@@ -122,7 +125,7 @@ func LoadData():
 		var file = FileAccess.open(file_name, FileAccess.READ)
 		var data = file.get_var()
 		if data:
-			resource_cost = data.resource_cost
+#			resource_cost = data.resource_cost
 			tower_dmg = data.tower_dmg
 			tower_radius = data.tower_radius
 			tower_max_amo = data.tower_max_amo

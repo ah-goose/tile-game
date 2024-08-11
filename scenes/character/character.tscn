@@ -43,7 +43,6 @@ shape = SubResource("1")
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["character"]]
 texture = ExtResource("2_w3uha")
 hframes = 2
-frame = 1
 
 [node name="to_enter" type="Label" parent="."]
 z_index = 10

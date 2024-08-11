@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc4bw80i0b574"]
+[gd_scene load_steps=7 format=3 uid="uid://cc4bw80i0b574"]
 
 [ext_resource type="Script" path="res://scenes/env/towers/tower.gd" id="1_f3lfm"]
 [ext_resource type="Texture2D" uid="uid://dlkqawm46hv57" path="res://assets/buildings/tower_radius.png" id="2_vptci"]
+[ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_nuh1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04gwd"]
 size = Vector2(16, 16)
@@ -28,9 +29,10 @@ _data = {
 "radius_spinner": SubResource("Animation_inrkx")
 }
 
-[node name="tower" type="StaticBody2D" groups=["building", "tower"]]
+[node name="tower" type="StaticBody2D" node_paths=PackedStringArray("hp_c") groups=["building", "tower"]]
 input_pickable = true
 script = ExtResource("1_f3lfm")
+hp_c = NodePath("HP")
 
 [node name="tower_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_04gwd")
@@ -50,6 +52,11 @@ libraries = {
 "": SubResource("AnimationLibrary_if7p2")
 }
 
+[node name="HP" parent="." instance=ExtResource("3_nuh1t")]
+position = Vector2(-8, 8)
+max_health = 5
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="fire_rate_timer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="LostAllHP" from="HP" to="." method="_on_hp_lost_all_hp"]

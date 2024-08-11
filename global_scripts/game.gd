@@ -23,7 +23,7 @@ var tower_stats = {
 	'tower_dmg': 5, 
 	'tower_radius': 32.0, 
 	'tower_max_amo': 5, 
-	'tower_hp': 5,
+	'tower_hp': 15,
 	'tower_fire_rate': 0.75
 }
 var tower_max_stats = {
@@ -34,6 +34,21 @@ var tower_max_stats = {
 	'tower_fire_rate': 0.75
 }
 
+var aid_base_stats = {
+	'aid': 1,
+	'aid_radius': 32.0,
+	'aid_hp': 5
+}
+var aid_stats = {
+	'aid': 5,
+	'aid_radius': 32.0,
+	'aid_hp': 5
+}
+var aid_max_stats = {
+	'aid': 5,
+	'aid_radius': 32.0,
+	'aid_hp': 5
+}
 var wall_stats = {'hp': 2}
 
 var resource_cost = {

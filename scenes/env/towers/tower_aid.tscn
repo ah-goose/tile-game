@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0ok0tqah4sb1"]
+
+[ext_resource type="Script" path="res://scenes/env/towers/tower_aid.gd" id="1_4yfbw"]
+[ext_resource type="Texture2D" uid="uid://cgcjka6mcv3nm" path="res://assets/buildings/tower-1.png" id="2_071rh"]
+[ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_giavr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y74ym"]
+size = Vector2(16, 16)
+
+[node name="tower_aid" type="StaticBody2D" node_paths=PackedStringArray("hp_c") groups=["aid"]]
+script = ExtResource("1_4yfbw")
+hp_c = NodePath("HP")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y74ym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_071rh")
+
+[node name="HP" parent="." instance=ExtResource("3_giavr")]
+position = Vector2(-8, 8)

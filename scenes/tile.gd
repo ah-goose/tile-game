@@ -29,6 +29,7 @@ var hp = 0
 var is_wall = false
 
 var tower = preload("res://scenes/env/towers/tower.tscn")
+var aid = preload("res://scenes/env/towers/tower_aid.tscn")
 var tower_dmg = 1
 var tower_radius = 64
 var tower_max_amo = 5
@@ -160,6 +161,24 @@ var tile_functionality = {
 		'group': 'building',
 		'collider': true
 	},
+	'chaser': {
+		'hp': 5,
+		'action': null,
+		'params': null,
+		'setup': 'ChaserSetup',
+		'coords': Vector2(0, 3),
+		'group': 'building',
+		'collider': true
+	},
+	'aid': {
+		'hp': 5,
+		'action': 'TowerAidRestore',
+		'params': null,
+		'setup': 'AidSetup',
+		'coords': Vector2(0, 3),
+		'group': 'building',
+		'collider': true
+	},
 	'wall': {
 		'hp': 5, 
 		'action': null,
@@ -259,7 +278,7 @@ func ResetTile(params = false):
 		var decrease_to = Global.resources_max[tile_functionality[prev_tile_focus].params] - tile_functionality[prev_tile_focus].max_increase
 		Global.UpdateResourceMax(tile_functionality[prev_tile_focus].params, decrease_to)
 		prev_tile_focus = 'default'
-	if tile_focus == 'tower':
+	if tile_focus in ['tower', 'aid', 'chaser']:
 		for c in get_children():
 			if 'tower' in c.get_groups():
 				c.queue_free()
@@ -315,10 +334,22 @@ func TowerSetup(params = null):
 	new_tower.radius = Game.tower_stats['tower_radius']
 	new_tower.bullet_damage = Game.tower_stats['tower_dmg']
 	new_tower.fire_rate_timer = Game.tower_stats['tower_fire_rate']
-	hp = Game.tower_stats['tower_hp']
+	new_tower.connect('TowerDestroyed', Callable(self, 'ResetTile'))
+	new_tower.max_hp = Game.tower_stats['tower_hp']
+	new_tower.hp = new_tower.max_hp
 	add_child(new_tower)
 	add_to_group('building')
 	hp = tile_functionality['tower'].hp
+	emit_signal('UpdateTile', tile_coordinates, tile_functionality['tower'].coords)
+
+func AidSetup(params = null):
+	var new_aid = aid.instantiate()
+	new_aid.radius = Game.aid_stats['aid_radius']
+	hp = Game.aid_stats['aid_hp']
+	new_aid.hp_aid = Game.aid_stats['aid']
+	new_aid.connect('TowerDestroyed', Callable(self, 'ResetTile'))
+	add_child(new_aid)
+	add_to_group('building')
 	emit_signal('UpdateTile', tile_coordinates, tile_functionality['tower'].coords)
 
 func AddResource(resource = null):
@@ -342,7 +373,12 @@ func RiverSetup(params = false):
 func BridgeSetup(params = false):
 	is_river = true
 	walkable = true
-	
+
+func TowerAidRestore(param):
+	for c in get_children():
+		if 'aid' in c.get_groups():
+			c._character_action_taken()
+
 func TowerAttack(param):
 	if tower_amo <= 0:
 		tower_amo = tower_max_amo
@@ -373,7 +409,8 @@ func TakeDamage(dmg):
 	hp -= dmg
 	if hp <= 0:
 		ResetTile()
-		
+
+
 func CheckRiverView():
 	var wall_hits = ''
 	var walkable_hits = ''
