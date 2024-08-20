@@ -36,6 +36,8 @@ var invader = preload("res://scenes/zombies/invader.tscn")
 var add_invader_frequency = 1.5
 var level_completed = false
 
+var used_terrain_tile = []
+
 @export_group("invasion_details")
 @export var number_of_invaders : int
 @export var next_invasion_steps : int
@@ -101,8 +103,10 @@ func SetUpCamera():
 	camera.make_current()
 
 func SetUpTile():
-	tile_map.add_layer(1) # Road
-	tile_map.add_layer(2) # other
+	#tile_map.add_layer(1) # Road
+	#tile_map.add_layer(2) # other
+#	var used_tiles = tile_map.layers['ENV'].get_used_cells()
+#	print(used_tiles)
 	var ts = Global.grid_cell_size
 	for x in range(Global.grid_size_x):
 		for y in range(Global.grid_size_y):
@@ -120,17 +124,22 @@ func SetUpTile():
 			all_tiles.append(new_tile)
 			new_tile.modulate.a = 0.2
 			new_tile.tile_coordinates = Vector2i(x, y)
+			
 			self.connect("CharacterMovedOverview", Callable(new_tile, '_on_Character_move'))
 			new_tile.connect("UpdateTile", Callable(self, '_on_update_tile_map'))
 			new_tile.connect("RemoveTile", Callable(self, '_on_remove_tile'))
 			new_tile.connect("AddBuilding", Callable(self, 'AddBuildingToList'))
 			new_tile.connect("RemoveBuilding", Callable(self, 'RemoveBuildingFromList'))
+			if tile_map.get_cell_tile_data(2, Vector2i(x, y)):
+				new_tile.DeactivateTile()
+				used_terrain_tile.append(Vector2i(x, y))
 			#GrassTileSetup(Vector2i(x, y))
 			add_child(new_tile)
 		if x != 0:
 			for a in tiles[x].size():
 				tiles[x][a].left = tiles[x-1][a]
 				tiles[x-1][a].right = tiles[x][a]
+	Global.UpdateNavigationGrid(used_terrain_tile)
 
 func GrassTileSetup(coords : Vector2i):
 	var tile_x = rnd.randi_range(0, 4)

@@ -175,7 +175,7 @@ var tile_functionality = {
 		'action': 'TowerAidRestore',
 		'params': null,
 		'setup': 'AidSetup',
-		'coords': Vector2(0, 3),
+		'coords': Vector2(7, 3),
 		'group': 'building',
 		'collider': true
 	},
@@ -350,7 +350,7 @@ func AidSetup(params = null):
 	new_aid.connect('TowerDestroyed', Callable(self, 'ResetTile'))
 	add_child(new_aid)
 	add_to_group('building')
-	emit_signal('UpdateTile', tile_coordinates, tile_functionality['tower'].coords)
+	emit_signal('UpdateTile', tile_coordinates, tile_functionality['aid'].coords)
 
 func AddResource(resource = null):
 	if Global.resources[resource] < Global.resources_max[resource]:
@@ -477,7 +477,13 @@ func CheckWallView():
 func _on_Character_move():
 	if tile_functionality[tile_focus].action:
 		call(tile_functionality[tile_focus].action, tile_functionality[tile_focus].params)
-
+		
+func DeactivateTile():
+	has_gem = false
+	$Gem.disable_mode = true
+	$Gem.visible = has_gem
+	is_active = true
+	
 func _on_tile_mouse_entered():
 	if !to_select_tile:
 		to_select_tile = true
@@ -496,10 +502,7 @@ func _on_Area2D_area_entered(area):
 
 func _on_gem_area_entered(area):
 	if 'building' in area.get_groups() or 'enemy_base' in area.get_groups():
-		has_gem = false
-		$Gem.disable_mode = true
-		$Gem.visible = has_gem
-		is_active = true
+		DeactivateTile()
 	
 	if 'main_base' in area.get_groups():
 		is_home_base = true

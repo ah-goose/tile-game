@@ -10,6 +10,7 @@ var steps_to_destination = 0
 
 @export var hp_bar : HPComponent
 @onready var line_path = Line2D.new()
+@onready var nav_agent := $NavigationAgent2D
 
 func _ready():
 	self.connect('area_entered', Callable(self, '_on_zombie_body_entered'))
@@ -31,11 +32,33 @@ func _LostAllHP():
 	remove_from_group('zombie')
 #		await get_tree().create_timer(1).timeout
 	queue_free()
-
 func Move():
-	if !path or path.is_empty():
+	if !target:
+		GetTarget()
+		return
+	nav_agent.target_position = target.global_position
+	var next_point = to_local(nav_agent.get_next_path_position()).normalized()
+	var x_move = abs(next_point[0]) > abs(next_point[1])
+	if x_move:
+		if next_point[0] > 0.0:
+			MoveToTile('right')
+			$Sprite2D.scale.x = 1
+		else:
+			$Sprite2D.scale.x = -1
+			MoveToTile('left')
+	else:
+		if next_point[1] < 0:
+			MoveToTile('top')
+		else:
+			MoveToTile('bottom')
+	print(to_local(nav_agent.get_next_path_position()).normalized())
+	pass
+
+func Moveold():
+	if path.is_empty():
 		return
 	line_path.clear_points()
+	nav_agent.target_position = target.global_position
 	var x = path[(steps_to_destination * $'/root/Global'.grid_cell_size)].x - path[(steps_to_destination * $'/root/Global'.grid_cell_size) + 1].x
 	var y = path[(steps_to_destination * $'/root/Global'.grid_cell_size)].y - path[(steps_to_destination * $'/root/Global'.grid_cell_size) + 1].y
 	if x > 0:
@@ -71,12 +94,13 @@ func MoveToTile(tile):
 
 func GetBuildings():
 	buildings = get_tree().get_nodes_in_group('building')
+	if buildings.size() > 0:
+		GetTarget()
 	
 func GetTarget():
 	if hp <= 0:
 		return
 	var closest_building
-	GetBuildings()
 	if target and target.hp <= 0:
 		buildings.erase(target)
 		target = null
@@ -91,6 +115,7 @@ func GetTarget():
 				target = build
 	path = Global.astar_grid.get_id_path(global_position, target.global_position)
 	
+	
 	steps_to_destination = 0
 
 func TakeDamage(dmg: int):
@@ -101,7 +126,7 @@ func _on_Character_move():
 	if Global.game_over:
 		return
 	if hp > 0:
-		GetTarget()
+		GetBuildings()
 		Move()
 
 func _on_zombie_body_entered(body):

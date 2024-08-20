@@ -158,6 +158,11 @@ func UpdateTileGrid(grid_id, is_active):
 		astar_grid.set_point_solid(g, is_active)
 #	astar_grid.set_point_solid(grid_id, true)
 
+func UpdateNavigationGrid(locations: Array):
+	print('astar locations to deactivate')
+	for l in locations:
+		astar_grid.set_point_solid(l, true)
+
 func AddResource(res : String):
 	if res in ['rock', 'wood', 'food']:
 		resources[res] += (resources_aquire_rate[res] * resources['workers'])
