@@ -82,7 +82,7 @@ var resource_cost = {
 	'house': {'gems': 25, 'food': 50},
 	'farm': {'gems': 25},
 	'tower': {'gems': 20},
-	'chasers': {'rock': 30, 'wood': 30, 'food': 30},
+	'light_tower': {'gems': 20},
 	'aid': {'gems': 20},
 #	'aid': {'rock': 35, 'wood': 35, 'food': 35},
 #	'tower': {'wood': 50, 'rock': 50, 'food': 30},
@@ -91,6 +91,8 @@ var resource_cost = {
 	'bullet': {'rock': 1}
 }
 
+# Light and dark 
+var is_level_dark := false
 # Tower powers
 var tower_dmg = 1
 var tower_radius = 64

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://diu275xpx2dhq"]
+
+[ext_resource type="Texture2D" uid="uid://bh88tltltong2" path="res://assets/misc/light.png" id="1_pdidh"]
+[ext_resource type="Script" path="res://scenes/components/scripts/light_source.gd" id="2_rf2un"]
+
+[node name="LightSource" type="PointLight2D"]
+color = Color(1, 1, 1, 0.494118)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("1_pdidh")
+script = ExtResource("2_rf2un")

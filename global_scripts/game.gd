@@ -33,7 +33,18 @@ var tower_max_stats = {
 	'tower_hp': 5,
 	'tower_fire_rate': 0.75
 }
-
+var light_base_stats = {
+	'light_radius_scale': Vector2(2.5, 2.5),
+	'light_hp': 5
+}
+var light_stats = {
+	'light_radius_scale': Vector2(2.5, 2.5),
+	'light_hp': 5
+}
+var light_max_stats = {
+	'light_radius_scale': Vector2(5, 5),
+	'light_hp': 35
+}
 var aid_base_stats = {
 	'aid': 1,
 	'aid_radius': 32.0,

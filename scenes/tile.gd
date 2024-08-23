@@ -30,6 +30,8 @@ var is_wall = false
 
 var tower = preload("res://scenes/env/towers/tower.tscn")
 var aid = preload("res://scenes/env/towers/tower_aid.tscn")
+var light = preload("res://scenes/env/towers/tower_light.tscn")
+var light_source = preload('res://scenes/components/light_source.tscn')
 var tower_dmg = 1
 var tower_radius = 64
 var tower_max_amo = 5
@@ -161,12 +163,12 @@ var tile_functionality = {
 		'group': 'building',
 		'collider': true
 	},
-	'chaser': {
+	'light_tower': {
 		'hp': 5,
 		'action': null,
 		'params': null,
-		'setup': 'ChaserSetup',
-		'coords': Vector2(0, 3),
+		'setup': 'LightTowerSetup',
+		'coords': Vector2(7, 2),
 		'group': 'building',
 		'collider': true
 	},
@@ -278,11 +280,15 @@ func ResetTile(params = false):
 		var decrease_to = Global.resources_max[tile_functionality[prev_tile_focus].params] - tile_functionality[prev_tile_focus].max_increase
 		Global.UpdateResourceMax(tile_functionality[prev_tile_focus].params, decrease_to)
 		prev_tile_focus = 'default'
-	if tile_focus in ['tower', 'aid', 'chaser']:
+	if tile_focus in ['tower', 'aid', 'light_tower']:
 		for c in get_children():
 			if 'tower' in c.get_groups():
 				c.queue_free()
 				break
+	for c in get_children():
+		if c.name == 'LightSource':
+			c.queue_free()
+			break
 	is_active = false
 	is_wall = false
 	walkable = false
@@ -311,6 +317,10 @@ func UseTile(obj, active):
 		add_to_group(tile_functionality[obj].group)
 		if tile_functionality[obj].group == 'building':
 			emit_signal("AddBuilding", self)
+			if obj not in ['tower', 'light_tower', 'aid']:
+				var ls = light_source.instantiate()
+				ls.scale = Vector2(0.5, 0.5)
+				add_child(ls)
 	if tile_functionality[obj].hp:
 		hp = tile_functionality[obj].hp
 	if tile_functionality[obj].coords:
@@ -352,6 +362,15 @@ func AidSetup(params = null):
 	add_to_group('building')
 	emit_signal('UpdateTile', tile_coordinates, tile_functionality['aid'].coords)
 
+func LightTowerSetup(params = null):
+	var ls = light.instantiate()
+	hp = Game.light_stats['light_hp']
+	ls.hp_light = Game.light_stats['light_hp']
+	ls.connect('TowerDestroyed', Callable(self, 'ResetTile'))
+	add_child(ls)
+	add_to_group('building')
+	emit_signal('UpdateTile', tile_coordinates, tile_functionality['light_tower'].coords)
+	
 func AddResource(resource = null):
 	if Global.resources[resource] < Global.resources_max[resource]:
 		Global.AddResource(resource)

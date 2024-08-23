@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch4r2517b00r0"]
+[gd_scene load_steps=11 format=3 uid="uid://ch4r2517b00r0"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://diu275xpx2dhq" path="res://scenes/components/light_source.tscn" id="2_oerrh"]
 [ext_resource type="Texture2D" uid="uid://ckuaclwaniuk7" path="res://assets/character-3-sheet.png" id="2_w3uha"]
 [ext_resource type="FontFile" uid="uid://dsn7f2g76y1vo" path="res://assets/alagard.ttf" id="3_s75cx"]
 [ext_resource type="PackedScene" uid="uid://d1x1ob6kfjj6y" path="res://scenes/components/Shooter.tscn" id="4_1tryx"]
@@ -36,6 +37,8 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1")
 hp = NodePath("HP")
+
+[node name="LightSource" parent="." instance=ExtResource("2_oerrh")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")

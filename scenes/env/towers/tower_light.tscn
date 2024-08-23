@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://86mekcas6vme"]
+
+[ext_resource type="Script" path="res://scenes/env/towers/tower_light.gd" id="1_62lu1"]
+[ext_resource type="Texture2D" uid="uid://cgcjka6mcv3nm" path="res://assets/buildings/tower-1.png" id="2_cnr6m"]
+[ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_oy8od"]
+[ext_resource type="PackedScene" uid="uid://diu275xpx2dhq" path="res://scenes/components/light_source.tscn" id="4_l170g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y74ym"]
+size = Vector2(16, 16)
+
+[node name="tower_aid" type="StaticBody2D" node_paths=PackedStringArray("hp_c") groups=["aid"]]
+script = ExtResource("1_62lu1")
+hp_c = NodePath("HP")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y74ym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_cnr6m")
+
+[node name="HP" parent="." instance=ExtResource("3_oy8od")]
+position = Vector2(-8, 8)
+
+[node name="LightSource" parent="." instance=ExtResource("4_l170g")]

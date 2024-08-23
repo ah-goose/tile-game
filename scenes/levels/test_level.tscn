@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnaork5mtp74m"]
+[gd_scene load_steps=11 format=3 uid="uid://dnaork5mtp74m"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_vb0l7"]
 [ext_resource type="TileSet" uid="uid://cruy4wbrnj8mo" path="res://assets/tilemaps/test-tilemap.tres" id="1_yc1vp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://chqxnqrccyh8v" path="res://scenes/zombies/target_invasion.tscn" id="5_11r2j"]
 [ext_resource type="PackedScene" uid="uid://qkynseolkuhi" path="res://scenes/env/base/home_base.tscn" id="7_ii2y8"]
 [ext_resource type="PackedScene" uid="uid://b2exlbcgcd6kb" path="res://scenes/env/base/enemy_base.tscn" id="8_5tyk4"]
+[ext_resource type="PackedScene" uid="uid://1ppb4ugkg0gm" path="res://scenes/env/env/day_night_cycle.tscn" id="9_ciu10"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtrhp"]
 shader = ExtResource("2_ixqk5")
@@ -77,6 +78,9 @@ one_shot = true
 wait_time = 180.0
 
 [node name="SpawnInvader" type="Timer" parent="."]
+
+[node name="CanvasModulate" parent="." instance=ExtResource("9_ciu10")]
+dark = true
 
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]
 [connection signal="timeout" from="InvasionDuration" to="." method="_on_invasion_duration_timeout"]

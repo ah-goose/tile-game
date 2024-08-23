@@ -24,6 +24,8 @@ func _ready():
 func _process(delta):
 	if get_tree().is_paused():
 		HideOptions()
+	if is_showing and Input.is_action_just_pressed('use_action'):
+		HideOptions()
 
 func UpdateDescription(description: String):
 	build_desc.text = description
@@ -48,6 +50,7 @@ func ShowOptions():
 	EnableBtn()
 	await get_tree().create_timer(1)
 	is_showing = true
+	set_process(true)
 	
 
 func HideOptions():
@@ -56,6 +59,7 @@ func HideOptions():
 	DisableBtn()
 	player.set_process(true)
 	is_showing = false
+	set_process(false)
 
 func DisableBtn():
 	for b in btn_list:

@@ -77,11 +77,7 @@ func _process(delta):
 	else:
 		HighlightTiles('remove')
 	if Input.is_action_just_pressed("use_action"):
-		res_options = !res_options
-		if res_options:
-			emit_signal('view_options')
-		else:
-			emit_signal('hide_options')
+		emit_signal('view_options')
 		action_tile_use = 'add'
 	if Input.is_action_just_pressed('other_action'):
 		is_going_to_use_tile = !is_going_to_use_tile
