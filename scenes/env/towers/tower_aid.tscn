@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ok0tqah4sb1"]
+[gd_scene load_steps=6 format=3 uid="uid://d0ok0tqah4sb1"]
 
 [ext_resource type="Script" path="res://scenes/env/towers/tower_aid.gd" id="1_4yfbw"]
 [ext_resource type="Texture2D" uid="uid://cgcjka6mcv3nm" path="res://assets/buildings/tower-1.png" id="2_071rh"]
 [ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_giavr"]
+[ext_resource type="PackedScene" uid="uid://diu275xpx2dhq" path="res://scenes/components/light_source.tscn" id="4_cnjlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y74ym"]
 size = Vector2(16, 16)
@@ -20,3 +21,5 @@ texture = ExtResource("2_071rh")
 
 [node name="HP" parent="." instance=ExtResource("3_giavr")]
 position = Vector2(-8, 8)
+
+[node name="LightSource" parent="." instance=ExtResource("4_cnjlv")]

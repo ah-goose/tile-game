@@ -10,4 +10,3 @@ func _ready():
 func _process(delta):
 	if visible != Global.is_level_dark:
 		visible = Global.is_level_dark
-		set_process(false)

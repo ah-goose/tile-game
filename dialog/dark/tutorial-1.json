@@ -1,0 +1,21 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 3,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "Looks like this area is dark, no worries, you have a light and can view area around you."
+			},
+			{
+				"focus": "right_",
+				"text": "For more illumination, collect enough resources and place a light tower."
+			},
+			{
+				"focus": "right_",
+				"text": "Light towers allow you to see in a greater radius area. Place them tactifully, light cannot traver through walls."
+			}
+		]
+	}
+}

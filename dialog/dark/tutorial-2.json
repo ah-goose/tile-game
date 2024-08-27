@@ -1,0 +1,21 @@
+{
+	"dialog": {
+		"left_": "res://assets/character-1.png",
+		"right_": "res://assets/chinchilla_16-1.png",
+		"number_of_dialog": 3,
+		"dialog": [
+			{
+				"focus": "right_",
+				"text": "This area has a day and night cycle."
+			},
+			{
+				"focus": "right_",
+				"text": "Don't worry, when it's dark you are illuminated and can view your surroundings."
+			},
+			{
+				"focus": "right_",
+				"text": "I suggest you gather enough resources to add a light tower to have more vision."
+			}
+		]
+	}
+}

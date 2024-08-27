@@ -27,7 +27,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="mission" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
+[node name="basic_mission" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
 layout_mode = 2
 size_flags_vertical = 3
 mission_name = "Mission 1"
@@ -35,10 +35,20 @@ mission_description = "Difficulty: *
 Reward: $3000"
 mission_scene = "res://scenes/levels/low_level/low_level.tscn"
 
-[node name="mission2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
+[node name="day_night_mission" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
 layout_mode = 2
 size_flags_vertical = 3
-mission_name = "Mission 2"
+mission_name = "Day and Night"
 mission_description = "Difficulty: **
-Reward: $6000"
-mission_scene = "res://scenes/levels/mid_level/mid_level.tscn"
+Reward: $6000
+This mission has a day and night cycle."
+mission_scene = "res://scenes/levels/day_night_test.tscn"
+
+[node name="night_mission" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_1o5np")]
+layout_mode = 2
+size_flags_vertical = 3
+mission_name = "Night Mission"
+mission_description = "Difficulty: **
+Reward: $8000
+You'll be alone in the dark."
+mission_scene = "res://scenes/levels/night_test.tscn"

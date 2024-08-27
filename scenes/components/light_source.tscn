@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/components/scripts/light_source.gd" id="2_rf2un"]
 
 [node name="LightSource" type="PointLight2D"]
-color = Color(1, 1, 1, 0.494118)
+color = Color(1, 1, 1, 0.698039)
 blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("1_pdidh")

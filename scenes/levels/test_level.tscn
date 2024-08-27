@@ -80,6 +80,7 @@ wait_time = 180.0
 [node name="SpawnInvader" type="Timer" parent="."]
 
 [node name="CanvasModulate" parent="." instance=ExtResource("9_ciu10")]
+day_night_cycle = true
 dark = true
 
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]

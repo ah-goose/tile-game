@@ -12,9 +12,15 @@ grow_vertical = 2
 script = ExtResource("1_njvk8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="mission_name" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -35,6 +41,7 @@ Reward: $3000"
 
 [node name="Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 text = "Start mission"
 
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_select_mission"]

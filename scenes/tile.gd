@@ -532,3 +532,8 @@ func _on_gem_area_entered(area):
 			has_gem = false
 			$Gem.disable_mode = true
 			$Gem.visible = has_gem
+
+
+func _on_input_event(viewport, event, shape_idx):
+	if is_highlighted:
+		print(event)
