@@ -10,11 +10,11 @@
 			},
 			{
 				"focus": "right_",
-				"text": "Select one of the Centers available from the right by right clicking the buttom and place them on the tiles near you. Use \"W, A, S, D\" to place the center."
+				"text": "Press E to toggle your options and choose what building to build."
 			},
 			{
 				"focus": "right_",
-				"text": "Once you have a recource building you'll start generating recources with each action you take. With these resources, you can build walls, gates, and turrets to protect your base."
+				"text": "Once you have a recource building you'll start generating recources with each action you take. With these resources, you can build different type of towers to protect your base."
 			},
 			{
 				"focus": "right_",

@@ -57,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 image_src = "res://assets/buildings/farm-2.png"
 value = "farm"
-short_description = "This will generate Emberstone which is a resource to help create more robots."
+short_description = "This will generate Emberstone (FOOD) which is a resource to help create more robots and different towers."
 resource_name = "Emberstone"
 
 [node name="RockBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
@@ -75,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 image_src = "res://assets/buildings/mountain-4.png"
 value = "rock"
-short_description = "This will generate Terraverite which is a resource that is used for bullets for your weapon."
+short_description = "This will generate Terraverite (ROCK) which is a resource that is used for bullets for your weapon."
 resource_name = "Terraverite"
 
 [node name="TreeBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
@@ -93,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 image_src = "res://assets/buildings/tree-4.png"
 value = "trees"
-short_description = "This will generate Aetherium which is a resource that is used for creating walls, doors and towers."
+short_description = "This will generate Aetherium (WOOD) which is a resource that is used for creating walls, doors and towers."
 resource_name = "Terraverite"
 
 [node name="HouseBtn" parent="btn_list" instance=ExtResource("3_hhwq1")]
