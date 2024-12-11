@@ -3,6 +3,7 @@ class_name Character
 signal CharacterMoved
 signal view_options
 signal hide_options
+signal CharacterDestroyed
 var is_active = true
 var active_tile
 
@@ -33,6 +34,7 @@ func _process(delta):
 		return
 	if Global.is_final_invasion and auto_walk.is_stopped():
 		auto_walk.start()
+		
 	if Input.is_action_just_pressed("left_mouse_click") && $Shooter.can_shoot && Global.CheckResources('bullet'):
 		var targ = get_global_mouse_position()
 		$Shooter.Shoot(targ)
@@ -192,12 +194,12 @@ func TakeDamage(damage: int):
 	hp.TakeDamage(damage)
 	
 func _LostAllHP():
-	auto_walk.start()
+#	auto_walk.start()
 	get_node("CollisionShape2D").disabled = true
 	get_node("Sprite2D").visible = false
 	get_node("HP").visible = false
 	is_dead = true
+	emit_signal("CharacterDestroyed")
 
 func _on_auto_walk_timeout():
 	emit_signal("CharacterMoved")
-	auto_walk.start()

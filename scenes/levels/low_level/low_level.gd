@@ -17,3 +17,4 @@ func CompleteLevel():
 	level_completed = true
 	Global.mission_complete = true
 	LevelFinished()
+

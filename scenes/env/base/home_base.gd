@@ -1,5 +1,9 @@
 extends Area2D
 class_name HomeBase
+
+
+signal HomeBaseDestroyed
+
 var hp = 500
 var max_hp = 500
 var is_active = true
@@ -23,14 +27,13 @@ func _process(delta):
 		Shoot()
 
 func GetHit(dmg: int):
-	print('taking damage')
 	if hp_bar:
 		hp_bar.TakeDamage(dmg)
 #	hp -= dmg
-	if hp <= 0:
-		print('GAME OVER!!!!')
-		Global.game_over = true
-		Global.mission_complete = false
+#	if hp <= 0:
+#		print('GAME OVER!!!!')
+#		Global.game_over = true
+#		Global.mission_complete = false
 #		queue_free()
 		# Game over
 func RecoverAid(aid: int):
@@ -38,7 +41,9 @@ func RecoverAid(aid: int):
 		hp_bar.Recover(aid)
 
 func _LoseGame():
-	Global.game_over = true
+	print('game lost after base hp lost')
+	emit_signal("HomeBaseDestroyed")
+	
 
 func Shoot():
 	if bullets_left == 0:

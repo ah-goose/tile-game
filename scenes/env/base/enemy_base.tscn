@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2exlbcgcd6kb"]
+[gd_scene load_steps=8 format=3 uid="uid://b2exlbcgcd6kb"]
 
 [ext_resource type="Script" path="res://scenes/env/base/enemy_base.gd" id="1_gxqn1"]
-[ext_resource type="Texture2D" uid="uid://bqjt10ce6wu7e" path="res://assets/buildings/castle-1.png" id="2_q5cy7"]
+[ext_resource type="Shader" path="res://assets/shaders/enemy_subbase.gdshader" id="2_3lrt5"]
+[ext_resource type="Texture2D" uid="uid://bbtua3sm4gmn6" path="res://assets/buildings/cave_lg.png" id="3_al3wu"]
 [ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_vrpqm"]
+[ext_resource type="Texture2D" uid="uid://ixfvepw0r5ug" path="res://assets/buildings/cave_shield.png" id="5_dyj30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfvs"]
 size = Vector2(32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7eiw"]
+shader = ExtResource("2_3lrt5")
+shader_parameter/color = null
+shader_parameter/flashState = 0.3
 
 [node name="enemy_base" type="Area2D" node_paths=PackedStringArray("hp") groups=["enemy_base", "invader"]]
 modulate = Color(1, 0.482353, 0.109804, 1)
@@ -18,11 +25,15 @@ hp = NodePath("HP")
 shape = SubResource("RectangleShape2D_3hfvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_q5cy7")
+material = SubResource("ShaderMaterial_t7eiw")
+texture = ExtResource("3_al3wu")
 
 [node name="HP" parent="." instance=ExtResource("3_vrpqm")]
 position = Vector2(-16, 17)
 max_health = 20
+
+[node name="CaveShield" type="Sprite2D" parent="."]
+texture = ExtResource("5_dyj30")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="LostAllHP" from="HP" to="." method="_LostAllHP"]

@@ -72,6 +72,7 @@ signal ResetCountdown
 signal LIStarted
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.LevelResetResources()
 	Global.grid_size_x = tilemap_size[0]
 	Global.grid_size_y = tilemap_size[1]
 	character_origin[0] = base.position.x / Global.grid_cell_size
@@ -91,6 +92,7 @@ func _ready():
 
 func _process(delta):
 	if Global.game_over:
+		print('game over')
 		LevelFinished()
 		
 func SetUpCamera():
@@ -155,6 +157,7 @@ func SetUpCharacter():
 	new_char.active_tile = selected_tile
 	new_char.position = selected_tile.position
 	new_char.connect("CharacterMoved", Callable(self, '_character_moved'))
+	new_char.connect("CharacterDestroyed", Callable(self, 'LevelFinished'))
 	camera.player = new_char
 	add_child(new_char)
 
@@ -214,7 +217,7 @@ func NextInvasionTile():
 
 func SetUpNextInvasion():
 	NextInvasionTile()
-	to_next_invasion = 30
+	to_next_invasion = 0 if Global.is_final_invasion else 30
 	to_next_invasion_count = 0
 	number_of_invaders = ceil(number_of_invaders * increase_invaders_by)
 	is_invading = false
@@ -252,6 +255,8 @@ func AddNewInvader():
 	new_zom.base = base
 	self.connect("CharacterMovedOverview", Callable(new_zom, '_on_Character_move'))
 	add_child(new_zom)
+	if Global.is_final_invasion:
+		return
 	number_of_invaders -= 1
 	
 func LevelFinished():
@@ -281,7 +286,7 @@ func _character_moved():
 		if target_invasion_indicator.visible:
 			target_invasion_indicator.visible = false
 		var all_zombies = get_tree().get_nodes_in_group('zombie')
-		if len(all_zombies) == 0:
+		if len(all_zombies) == 0 and !Global.is_final_invasion:
 			SetUpNextInvasion()
 
 func _on_update_tile_map(tile_coords, map_coords):

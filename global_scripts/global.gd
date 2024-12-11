@@ -89,7 +89,7 @@ var resource_cost = {
 	'aid': {'rock': 35, 'wood': 35, 'food': 35},
 	'wall': {'wood': 10, 'rock': 10},
 	'door': {'wood': 15, 'rock': 15},
-	'bullet': {'rock': 1}
+	'bullet': {'rock': 3}
 }
 
 # Light and dark 
@@ -213,3 +213,14 @@ func ReduceResourceCost(bus):
 		resource_cost[resource][m] -= amount
 	emit_signal('EarningChange')
 	SaveData()
+
+func LevelResetResources():
+	resources = {
+		'rock': 0,
+		'wood': 0,
+	#	'water': 0,
+		'food': 0,
+		'workers': 1,
+		'gems': 0
+	}
+	is_final_invasion = false

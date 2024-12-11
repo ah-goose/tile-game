@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxhtp1t4crx8x"]
+[gd_scene load_steps=11 format=3 uid="uid://dxhtp1t4crx8x"]
 
 [ext_resource type="Script" path="res://scenes/levels/low_level/low_level.gd" id="1_1sm0y"]
 [ext_resource type="Shader" path="res://scenes/levels/tilemap.gdshader" id="2_gk4d7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qkynseolkuhi" path="res://scenes/env/base/home_base.tscn" id="4_258sy"]
 [ext_resource type="PackedScene" uid="uid://b2exlbcgcd6kb" path="res://scenes/env/base/enemy_base.tscn" id="5_cwflk"]
 [ext_resource type="PackedScene" uid="uid://gd3fsrk04328" path="res://scenes/camera.tscn" id="6_gaewo"]
+[ext_resource type="PackedScene" uid="uid://dl5fo5vkfbo22" path="res://scenes/env/base/enemy_subbase.tscn" id="7_jnhj0"]
 [ext_resource type="PackedScene" uid="uid://n8unqd6bldoo" path="res://scenes/interface/gui.tscn" id="7_k00u6"]
 [ext_resource type="PackedScene" uid="uid://chqxnqrccyh8v" path="res://scenes/zombies/target_invasion.tscn" id="8_ux5f8"]
 
@@ -21,7 +22,8 @@ character_origin = Array[int]([96, 112])
 earnings = 3000
 number_of_invaders = 10
 increase_invaders_by = 2
-invasion_prep_duration = 300.0
+invasion_prep_duration = 60.0
+final_duration = 120
 tilemap_size = Array[int]([40, 25])
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -60,8 +62,12 @@ layer_1/tile_data = PackedInt32Array()
 [node name="home_base" parent="." instance=ExtResource("4_258sy")]
 position = Vector2(80, 80)
 
-[node name="enemy_base" parent="." instance=ExtResource("5_cwflk")]
+[node name="enemy_base" parent="." node_paths=PackedStringArray("subbases") instance=ExtResource("5_cwflk")]
 position = Vector2(576, 352)
+subbases = [NodePath("../enemy_subbase")]
+
+[node name="enemy_subbase" parent="." instance=ExtResource("7_jnhj0")]
+position = Vector2(164, 373)
 
 [node name="camera" parent="." instance=ExtResource("6_gaewo")]
 
@@ -79,6 +85,7 @@ wait_time = 180.0
 
 [node name="SpawnInvader" type="Timer" parent="."]
 
+[connection signal="HomeBaseDestroyed" from="home_base" to="." method="LevelFinished"]
 [connection signal="BaseDestroyed" from="enemy_base" to="." method="StartEndGame"]
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_first_invasion_start_timeout"]
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]
