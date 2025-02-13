@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8dkabhv4d0hh"]
 
 [ext_resource type="Script" path="res://scenes/zombies/zombie.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://dpth8uuhbafen" path="res://assets/enemy1.png" id="2_di2ic"]
+[ext_resource type="Texture2D" uid="uid://bi7a8ubhvi134" path="res://assets/enemies/cave_enemy.png" id="2_iw3tt"]
 [ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_1hsj8"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -39,7 +39,7 @@ shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-texture = ExtResource("2_di2ic")
+texture = ExtResource("2_iw3tt")
 hframes = 2
 
 [node name="HP" parent="." instance=ExtResource("3_1hsj8")]

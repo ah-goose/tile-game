@@ -1,6 +1,6 @@
 {
 	"dialog": {
-		"left_": "res://assets/character-1.png",
+		"left_": "res://assets/big_heads/spaceman.png",
 		"right_": "res://assets/chinchilla_16-1.png",
 		"number_of_dialog": 3,
 		"dialog": [

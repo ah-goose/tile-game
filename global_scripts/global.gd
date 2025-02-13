@@ -14,6 +14,7 @@ var is_invasion_phase = false
 var is_prep_phase = true
 var is_inside_base = false
 var is_final_invasion = false
+var levels_completed = []
 
 var default_resources = {
 	'resources': {
@@ -84,7 +85,7 @@ var resource_cost = {
 #	'tower': {'gems': 20},
 #	'light_tower': {'gems': 20},
 #	'aid': {'gems': 20},
-	'tower': {'wood': 50, 'rock': 50, 'food': 30},
+	'tower': {'wood': 70, 'rock': 100, 'food': 70},
 	'light_tower': {'wood': 20, 'rock': 20, 'food': 20},
 	'aid': {'rock': 35, 'wood': 35, 'food': 35},
 	'wall': {'wood': 10, 'rock': 10},
@@ -136,6 +137,7 @@ func LoadData():
 			total_earnings = data.total_earnings
 			store_items = data.store_items
 			tutorial_complete = data.tutorial_complete
+			levels_completed = data.levels_completed if 'levels_completed' in data else [] 
 		file.close()
 
 func SaveData():

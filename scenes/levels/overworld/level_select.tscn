@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2u057sdd3kvv"]
+
+[ext_resource type="Texture2D" uid="uid://ci8dxvjnpo0gr" path="res://assets/areas_overworld/indicator.png" id="1_50o16"]
+[ext_resource type="Script" path="res://scenes/levels/overworld/level_select.gd" id="1_xedxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1icn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4a5c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucwga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qtfm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub7wb"]
+
+[sub_resource type="Animation" id="Animation_vuckk"]
+resource_name = "hovering"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wtrrx"]
+_data = {
+"hovering": SubResource("Animation_vuckk")
+}
+
+[node name="Button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.0234375
+anchor_bottom = 0.042
+offset_bottom = -0.12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b1icn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_q4a5c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ucwga")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4qtfm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ub7wb")
+expand_icon = true
+script = ExtResource("1_xedxx")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wtrrx")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_50o16")
+hframes = 8
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="ChangeScene"]

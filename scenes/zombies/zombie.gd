@@ -14,6 +14,7 @@ var steps_to_destination = 0
 
 func _ready():
 	self.connect('area_entered', Callable(self, '_on_zombie_body_entered'))
+	hp_bar.max_health = hp
 	$AnimationPlayer.play("walking")
 	GetTarget()
 

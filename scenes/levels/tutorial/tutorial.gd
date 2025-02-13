@@ -26,7 +26,6 @@ var dialog_triggers = {
 		'dialog_index': 6
 	}
 }
-@onready var gui = $GUI
 
 func _physics_process(delta):
 	if (Global.CheckResources("rock") or Global.CheckResources("trees") or Global.CheckResources("farm")) and !dialog_triggers['resources'].complete:

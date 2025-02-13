@@ -21,7 +21,6 @@ func DisapearBullet():
 	queue_free()
 	
 func move(delta):
-	print(abs(global_position.distance_to(bull_origin)) >= distance)
 	if abs(global_position.distance_to(bull_origin)) >= distance:
 		DisapearBullet()
 		return
@@ -32,7 +31,9 @@ func move(delta):
 	var collision = move_and_collide(vel)
 	if collision:
 		var col = collision.get_collider()
-		print(col.get_groups())
+		print(col.name == 'TileMap')
+		if col.name == 'TileMap':
+			DisapearBullet()
 #		if 'invader' in col.name or "invader" in collision.get_collider().get_groups():
 #			col.TakeDamage(damage)
 #			DisapearBullet()

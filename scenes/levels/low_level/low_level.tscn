@@ -22,7 +22,6 @@ character_origin = Array[int]([96, 112])
 earnings = 3000
 number_of_invaders = 10
 increase_invaders_by = 2
-invasion_prep_duration = 60.0
 final_duration = 120
 tilemap_size = Array[int]([40, 25])
 

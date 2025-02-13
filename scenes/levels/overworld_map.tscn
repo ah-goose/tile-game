@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://betyl4hwu8q77"]
+
+[ext_resource type="Texture2D" uid="uid://ckhlhyqngqr63" path="res://assets/areas_overworld/overview-1.png" id="1_jc0ci"]
+[ext_resource type="Texture2D" uid="uid://dk34kajmvfx2h" path="res://assets/areas_overworld/overview-2.png" id="2_j70ec"]
+[ext_resource type="Texture2D" uid="uid://uapqqs6jl3v3" path="res://assets/areas_overworld/overview-3.png" id="3_7lysa"]
+[ext_resource type="PackedScene" uid="uid://b2u057sdd3kvv" path="res://scenes/levels/overworld/level_select.tscn" id="4_5fyf3"]
+
+[node name="overworld_map" type="Node2D"]
+
+[node name="Overview-1" type="Sprite2D" parent="."]
+position = Vector2(283, 112)
+texture = ExtResource("1_jc0ci")
+
+[node name="Overview-2" type="Sprite2D" parent="."]
+position = Vector2(408, 136)
+texture = ExtResource("2_j70ec")
+
+[node name="Overview-3" type="Sprite2D" parent="."]
+position = Vector2(293, 220)
+rotation = -0.0676073
+texture = ExtResource("3_7lysa")
+
+[node name="select1_level_1" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 239.0
+offset_top = 84.0
+offset_right = 255.0
+offset_bottom = 99.0
+level_name = "A1L1"
+level = "res://scenes/levels/area1/level_1.tscn"
+
+[node name="select1_level_2" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 299.0
+offset_top = 81.0
+offset_right = 299.0
+offset_bottom = 81.0
+level_name = "A1L2"
+level = "res://scenes/levels/area1/level_1.tscn"
+
+[node name="select1_level_3" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 262.0
+offset_top = 141.0
+offset_right = 262.0
+offset_bottom = 141.0
+level_name = "A1L3"
+level = "res://scenes/levels/area1/level_1.tscn"
+
+[node name="select2_level_1" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 399.0
+offset_top = 77.0
+offset_right = 399.0
+offset_bottom = 77.0
+level_name = "A2L1"
+
+[node name="select2_level_2" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 323.0
+offset_top = 159.0
+offset_right = 323.0
+offset_bottom = 159.0
+level_name = "A2L2"
+
+[node name="select2_level_3" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 482.0
+offset_top = 117.0
+offset_right = 482.0
+offset_bottom = 117.0
+level_name = "A2L3"
+
+[node name="select2_level_4" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 383.0
+offset_top = 141.0
+offset_right = 383.0
+offset_bottom = 141.0
+level_name = "A2L4"
+
+[node name="select3_level_1" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 219.0
+offset_top = 186.0
+offset_right = 219.0
+offset_bottom = 186.0
+level_name = "A3L1"
+
+[node name="select3_level_2" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 290.0
+offset_top = 217.0
+offset_right = 290.0
+offset_bottom = 217.0
+level_name = "A2L1"
+
+[node name="select3_level_3" parent="." instance=ExtResource("4_5fyf3")]
+offset_left = 322.0
+offset_top = 249.0
+offset_right = 322.0
+offset_bottom = 249.0
+level_name = "A3L3"

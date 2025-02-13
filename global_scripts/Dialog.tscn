@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://global_scripts/scripts/Dialog.gd" id="1_v310x"]
 [ext_resource type="Theme" uid="uid://cvti4wwvevvmt" path="res://assets/themes/gui-ui.tres" id="2_2515t"]
-[ext_resource type="Texture2D" uid="uid://tqdx45cjur8r" path="res://assets/character-2.png" id="2_gh5bt"]
+[ext_resource type="Texture2D" uid="uid://b7mqfdoryoc3s" path="res://assets/big_heads/spaceman.png" id="3_sxq5w"]
 [ext_resource type="Texture2D" uid="uid://buhd4hn2pyo1l" path="res://assets/chinchilla_16-1.png" id="3_xuh63"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -41,7 +41,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="character" type="Sprite2D" parent="Dialog/dialog_container/character_focus/left_"]
-texture = ExtResource("2_gh5bt")
+texture = ExtResource("3_sxq5w")
 centered = false
 
 [node name="right_" type="Control" parent="Dialog/dialog_container/character_focus"]

@@ -44,7 +44,8 @@ var used_terrain_tile = []
 @export var increase_invaders_by : int
 @export var invasion_prep_duration : float
 @export var final_duration := 60
-var invasion_wave = 1
+@export var max_invader_hp := 20
+var invasion_wave = 0
 var to_next_invasion := 0
 
 @export_group("Dialog Settings")
@@ -65,6 +66,7 @@ var dialog_focus := 0
 @onready var prep_phase = $PrepPhase
 @onready var target_invasion_indicator = $target_invasion
 @onready var first_invasion_start = $FirstInvasionStart
+@onready var gui = $GUI
 
 var rnd = RandomNumberGenerator.new()
 signal CharacterMovedOverview
@@ -92,9 +94,10 @@ func _ready():
 
 func _process(delta):
 	if Global.game_over:
-		print('game over')
 		LevelFinished()
-		
+
+func SetUpTilemap():
+	pass
 func SetUpCamera():
 	camera.enabled = true
 	camera.limit_top = -150
@@ -230,6 +233,7 @@ func SetUpFinalInvasion():
 	NextInvasionTile()
 	to_next_invasion = 0
 	to_next_invasion_count = 0
+	invasion_wave = 100
 	number_of_invaders = 100000
 	invader_queue = 2
 	is_invading = true
@@ -243,10 +247,15 @@ func StartInvasion():
 	number_of_invaders = 5
 	is_invading = true
 
+func CalcHP(x: float):
+	print(x)
+	return (exp(x) - exp(-x))/(exp(x) + exp(-x))
+
 func AddNewInvader():
 	var new_zom = zombie.instantiate()
 	var selected_tile = target_invasion
-	new_zom.hp *= invasion_wave + (invasion_wave/3)
+	var new_hp = CalcHP(invasion_wave/8.0)
+	new_zom.hp = ceilf(new_hp * max_invader_hp)
 	new_zom.active_tile = selected_tile
 	new_zom.position = selected_tile.position
 	new_zom.buildings = all_buildings
@@ -288,7 +297,11 @@ func _character_moved():
 		var all_zombies = get_tree().get_nodes_in_group('zombie')
 		if len(all_zombies) == 0 and !Global.is_final_invasion:
 			SetUpNextInvasion()
-
+func DefaultStartEndGame():
+	Global.is_final_invasion = true
+	to_next_invasion = 0
+	gui.is_preping = true
+	SetUpFinalInvasion()
 func _on_update_tile_map(tile_coords, map_coords):
 	buildings_map.set_cell(0, tile_coords, 0, map_coords)
 

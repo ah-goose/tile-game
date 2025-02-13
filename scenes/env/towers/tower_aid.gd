@@ -14,12 +14,8 @@ func _process(delta):
 
 func CheckTarget():
 	target_options = get_tree().get_nodes_in_group('building')
-	print(target_options)
 	for t in target_options:
-		print(t, abs(global_position.distance_to(t.global_position)) <= radius)
 		if abs(global_position.distance_to(t.global_position)) <= radius and 'hp' in t and 'max_hp' in t:
-			print('target option ', t, target_aid)
-			print('hp' in t )
 			if not target_aid:
 				target_aid = t
 			if (target_aid.hp/target_aid.max_hp) > (t.hp/t.max_hp):
@@ -27,7 +23,7 @@ func CheckTarget():
 
 func _character_action_taken():
 	print('character moved')
-	if target_aid:
+	if target_aid != null:
 		print('character action taken tower aid ', target_aid)
 		target_aid.RecoverAid(hp_aid)
 	else:
