@@ -15,10 +15,12 @@ shader = ExtResource("2_ixqk5")
 shader_parameter/color = Color(0.0352941, 0.0588235, 0.0509804, 1)
 shader_parameter/flashState = 0.31
 
-[node name="Overworld_tilemap" type="Node2D" node_paths=PackedStringArray("base")]
+[node name="Overworld_tilemap" type="Node2D" node_paths=PackedStringArray("base", "gui", "camera")]
 script = ExtResource("1_vb0l7")
 base = NodePath("home_base")
 character_origin = Array[int]([128, 296])
+gui = NodePath("GUI")
+camera = NodePath("camera")
 number_of_invaders = 5
 next_invasion_steps = 30
 increase_invaders_by = 2
@@ -64,11 +66,12 @@ position = Vector2(128, 296)
 [node name="enemy_base" parent="." instance=ExtResource("8_5tyk4")]
 position = Vector2(288, 223)
 
+[node name="target_invasion" parent="." instance=ExtResource("5_11r2j")]
+
 [node name="camera" parent="." instance=ExtResource("3_g1813")]
 
-[node name="GUI" parent="." instance=ExtResource("4_bdkxr")]
-
-[node name="target_invasion" parent="." instance=ExtResource("5_11r2j")]
+[node name="GUI" parent="." node_paths=PackedStringArray("overworld") instance=ExtResource("4_bdkxr")]
+overworld = NodePath("..")
 
 [node name="FirstInvasionStart" type="Timer" parent="."]
 wait_time = 2.0
@@ -81,7 +84,6 @@ wait_time = 180.0
 
 [node name="CanvasModulate" parent="." instance=ExtResource("9_ciu10")]
 day_night_cycle = true
-dark = true
 
 [connection signal="timeout" from="FirstInvasionStart" to="." method="_on_prep_phase_timeout"]
 [connection signal="timeout" from="InvasionDuration" to="." method="_on_invasion_duration_timeout"]

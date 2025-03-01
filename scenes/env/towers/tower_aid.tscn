@@ -9,6 +9,7 @@
 size = Vector2(16, 16)
 
 [node name="tower_aid" type="StaticBody2D" node_paths=PackedStringArray("hp_c") groups=["aid"]]
+input_pickable = true
 script = ExtResource("1_4yfbw")
 hp_c = NodePath("HP")
 
@@ -23,3 +24,6 @@ texture = ExtResource("2_071rh")
 position = Vector2(-8, 8)
 
 [node name="LightSource" parent="." instance=ExtResource("4_cnjlv")]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

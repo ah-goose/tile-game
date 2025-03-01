@@ -2,16 +2,12 @@ extends 'res://scenes/env/towers/tower.gd'
 
 var hp_aid := 10
 var target_aid
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	queue_redraw()
+	
 func CheckTarget():
 	target_options = get_tree().get_nodes_in_group('building')
 	for t in target_options:

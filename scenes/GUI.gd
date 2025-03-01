@@ -7,12 +7,12 @@ var is_preping = false
 var is_invading = false
 var base : HomeBase
 var final_invasion_duration : int
+@export var overworld : Node2D
 
 signal PrepDone
 signal InvasionDone
 
 func _ready():
-	var overworld = get_tree().get_root().get_node('Overworld_tilemap')
 	final_invasion_duration = overworld.final_duration
 	connect("PrepDone", Callable(overworld, 'CompleteLevel'))
 	connect("InvasionDone", Callable(overworld, '_on_invasion_duration_timeout'))
@@ -20,8 +20,8 @@ func _ready():
 func _physics_process(delta):
 	
 	if base == null:
-		if 'base' in get_tree().get_root().get_node('Overworld_tilemap'):
-			base = get_tree().get_root().get_node('Overworld_tilemap').base
+		if 'base' in overworld:
+			base = overworld.base
 			UpdateBaseHP(true, base.hp_bar.hp)
 	else:
 		if base != null and base_hp.value != base.hp_bar.hp:

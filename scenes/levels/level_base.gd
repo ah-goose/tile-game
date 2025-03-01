@@ -37,6 +37,8 @@ var add_invader_frequency = 1.5
 var level_completed = false
 
 var used_terrain_tile = []
+@export var gui : CanvasLayer
+@export var camera : Camera2D
 
 @export_group("invasion_details")
 @export var number_of_invaders : int
@@ -58,15 +60,16 @@ var dialog_focus := 0
 @export_group('tile settings')
 @export var tilemap_size: Array[int] = [100, 100]
 
+
 @onready var tile_map = $TileMap
 @onready var buildings_map = $Buildings
-@onready var camera = $camera
+
 @onready var invasion_duration = $InvasionDuration
 @onready var spawn_invader = $SpawnInvader
 @onready var prep_phase = $PrepPhase
 @onready var target_invasion_indicator = $target_invasion
 @onready var first_invasion_start = $FirstInvasionStart
-@onready var gui = $GUI
+
 
 var rnd = RandomNumberGenerator.new()
 signal CharacterMovedOverview

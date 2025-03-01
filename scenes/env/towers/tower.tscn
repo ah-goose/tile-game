@@ -1,34 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc4bw80i0b574"]
+[gd_scene load_steps=5 format=3 uid="uid://cc4bw80i0b574"]
 
 [ext_resource type="Script" path="res://scenes/env/towers/tower.gd" id="1_f3lfm"]
-[ext_resource type="Texture2D" uid="uid://dlkqawm46hv57" path="res://assets/buildings/tower_radius.png" id="2_vptci"]
 [ext_resource type="PackedScene" uid="uid://c4hayrb8nrtj7" path="res://scenes/components/HP.tscn" id="3_nuh1t"]
 [ext_resource type="PackedScene" uid="uid://diu275xpx2dhq" path="res://scenes/components/light_source.tscn" id="4_t6xsq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04gwd"]
 size = Vector2(16, 16)
-
-[sub_resource type="Animation" id="Animation_inrkx"]
-resource_name = "radius_spinner"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tower-1:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_if7p2"]
-_data = {
-"radius_spinner": SubResource("Animation_inrkx")
-}
 
 [node name="tower" type="StaticBody2D" node_paths=PackedStringArray("hp_c") groups=["building", "tower"]]
 input_pickable = true
@@ -38,20 +15,9 @@ hp_c = NodePath("HP")
 [node name="tower_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_04gwd")
 
-[node name="Tower-1" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.447059)
-rotation = 2.30383
-texture = ExtResource("2_vptci")
-
 [node name="reload_speed_timer" type="Timer" parent="."]
 
 [node name="fire_rate_timer" type="Timer" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_if7p2")
-}
 
 [node name="HP" parent="." instance=ExtResource("3_nuh1t")]
 position = Vector2(-8, 8)

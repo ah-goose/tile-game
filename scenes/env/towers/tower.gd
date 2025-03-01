@@ -11,24 +11,26 @@ var bullet_capacity = 0.0
 var bullets_left = 5.0
 var bullet_damage = 0.0
 var can_fire = true
-var radius := 10.0
+var radius : float = 16.0
 
 @export var hp_c : HPComponent
 
 @onready var reload_speed_timer = $reload_speed_timer
 @onready var fire_rate_timer = $fire_rate_timer
 @onready var animation_player = $AnimationPlayer
-@onready var tower_1 = $"Tower-1"
+var view_radius : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fire_rate_timer.wait_time = fire_frequency
-	tower_1.scale.y = ceil(radius/8.0)
-	tower_1.scale.x = ceil(radius/8.0)
-	animation_player.play("radius_spinner")
 
+func _draw():
+	if view_radius:
+		draw_circle(Vector2.ZERO, radius, Color(Color.DARK_GREEN, 0.5))
+		draw_arc(Vector2.ZERO, radius, 0.0, 360.0, 360, Color.DARK_GREEN, 3)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	queue_redraw()
 	if can_fire:
 		CheckTarget()
 	if hp_c.max_health != max_hp:
@@ -75,11 +77,13 @@ func _on_fire_rate_timer_timeout():
 
 
 func _on_mouse_entered():
-	tower_1.visible = true
+	print('mouse entered')
+	view_radius = true
 
 
 func _on_mouse_exited():
-	tower_1.visible = false
+	print('mouse entered')
+	view_radius = false
 
 
 func _on_hp_lost_all_hp():

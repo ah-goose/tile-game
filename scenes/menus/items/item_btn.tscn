@@ -5,6 +5,9 @@
 [ext_resource type="Script" path="res://scenes/menus/items/item_btn.gd" id="3_6wl0p"]
 
 [node name="TextureButton" type="TextureButton"]
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
 offset_right = 96.0
 offset_bottom = 96.0
 scale = Vector2(0.75, 0.75)
